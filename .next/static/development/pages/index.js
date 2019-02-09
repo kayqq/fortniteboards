@@ -65912,10 +65912,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Index).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleRouteChange", function (username, callback) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleResultSelect", function (username, resetSearchFn) {
       _this.props.router.push("/profile/".concat(username));
-
-      if (callback) callback();
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "prefetchRoute", function (username) {
@@ -65938,6 +65936,7 @@ function (_Component) {
       });
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Container"], {
+        text: true,
         textAlign: "center",
         style: {
           paddingTop: "200px",
@@ -65955,7 +65954,7 @@ function (_Component) {
         tablet: "6",
         widescreen: "6"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Container"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        handleRouteChange: this.handleRouteChange,
+        handleResultSelect: this.handleResultSelect,
         prefetchRoute: this.prefetchRoute,
         fetchByUsername: debouncedfetchByUsername,
         results: searchResults
@@ -66257,7 +66256,7 @@ function (_Component) {
                 });
 
                 _context.next = 4;
-                return _this.props.handleRouteChange(result.username);
+                return _this.props.handleResultSelect(result.username, _this.resetComponent);
 
               case 4:
               case "end":
@@ -66292,8 +66291,7 @@ function (_Component) {
 
           if (results.length) {
             var firstResult = results[0].username;
-
-            _this.props.prefetchRoute(firstResult);
+            if (_this.props.prefetchRoute) _this.props.prefetchRoute(firstResult);
           }
         });
       });
@@ -66320,9 +66318,9 @@ function (_Component) {
       var results = this.props.results;
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_3__["Search"], {
         input: {
-          fluid: true
+          fluid: true,
+          icon: "arrow circle right"
         },
-        icon: "arrow circle right",
         loading: isLoading,
         placeholder: "Enter your Epic username",
         onResultSelect: this.handleResultSelect,

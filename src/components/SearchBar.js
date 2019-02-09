@@ -24,7 +24,7 @@ export default class SearchBar extends Component {
 
   handleResultSelect = async (e, { result }) => {
     this.setState({ value: result.username, isLoading: true });
-    await this.props.handleRouteChange(result.username);
+    await this.props.handleResultSelect(result.username, this.resetComponent);
   };
 
   handleSearchChange = (e, { value }) => {
@@ -39,7 +39,7 @@ export default class SearchBar extends Component {
         const { results } = this.props;
         if (results.length) {
           const firstResult = results[0].username;
-          this.props.prefetchRoute(firstResult);
+          if (this.props.prefetchRoute) this.props.prefetchRoute(firstResult);
         }
       });
     });
@@ -50,8 +50,7 @@ export default class SearchBar extends Component {
     const { results } = this.props;
     return (
       <Search
-        input={{ fluid: true }}
-        icon="arrow circle right"
+        input={{ fluid: true, icon: "arrow circle right" }}
         loading={isLoading}
         placeholder={"Enter your Epic username"}
         onResultSelect={this.handleResultSelect}

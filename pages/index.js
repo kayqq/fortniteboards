@@ -16,9 +16,8 @@ class Index extends Component {
     this.state = {};
   }
 
-  handleRouteChange = (username, callback) => {
+  handleResultSelect = (username, resetSearchFn) => {
     this.props.router.push(`/profile/${username}`);
-    if (callback) callback();
   };
 
   prefetchRoute = username => {
@@ -36,6 +35,7 @@ class Index extends Component {
     return (
       <React.Fragment>
         <Container
+          text
           textAlign="center"
           style={{
             paddingTop: "200px",
@@ -54,7 +54,7 @@ class Index extends Component {
             >
               <Container>
                 <SearchBar
-                  handleRouteChange={this.handleRouteChange}
+                  handleResultSelect={this.handleResultSelect}
                   prefetchRoute={this.prefetchRoute}
                   fetchByUsername={debouncedfetchByUsername}
                   results={searchResults}

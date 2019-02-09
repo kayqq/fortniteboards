@@ -11,6 +11,75 @@ import {
 
 import { getProfile } from "../src//actions";
 
+const StatsTable = ({ kd, kills, wins, winrate, matches, mode }) => {
+  let backgroundColor = "";
+  switch (mode) {
+    case "SOLO":
+      backgroundColor = "#14c8ff";
+      break;
+    case "DUO":
+      backgroundColor = "#f3af19";
+      break;
+    case "SQUAD":
+      backgroundColor = "#9d4dbb";
+      break;
+    default:
+      break;
+  }
+
+  return (
+    <Grid style={{ backgroundColor: "#2c3c57", color: "white" }}>
+      <Grid.Row style={{ backgroundColor: backgroundColor }}>
+        <Grid.Column>{mode}</Grid.Column>
+      </Grid.Row>
+      {/* <Divider clearing /> */}
+
+      <Grid.Row columns="5" stretched>
+        <Grid.Column textAlign="center" verticalAlign="middle">
+          <Header size="medium" style={{ color: "white" }}>
+            {kd}
+            <Header.Subheader style={{ color: "#92a2bd" }}>
+              K/D
+            </Header.Subheader>
+          </Header>
+        </Grid.Column>
+        <Grid.Column textAlign="center" verticalAlign="middle">
+          <Header size="medium" style={{ color: "white" }}>
+            {wins}
+            <Header.Subheader style={{ color: "#92a2bd" }}>
+              Wins
+            </Header.Subheader>
+          </Header>
+        </Grid.Column>
+        <Grid.Column textAlign="center" verticalAlign="middle">
+          <Header size="medium" style={{ color: "white" }}>
+            {kills}
+            <Header.Subheader style={{ color: "#92a2bd" }}>
+              Kills
+            </Header.Subheader>
+          </Header>
+        </Grid.Column>
+        <Grid.Column textAlign="center" verticalAlign="middle">
+          <Header size="medium" style={{ color: "white" }}>
+            {winrate}
+            <Header.Subheader style={{ color: "#92a2bd" }}>
+              Win %
+            </Header.Subheader>
+          </Header>
+        </Grid.Column>
+        <Grid.Column textAlign="center" verticalAlign="middle">
+          <Header size="medium" style={{ color: "white" }}>
+            {matches}
+            <Header.Subheader style={{ color: "#92a2bd" }}>
+              Matches
+            </Header.Subheader>
+          </Header>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+  );
+};
+
 class Profile extends Component {
   static async getInitialProps({ store, query, pathname, asPath, req }) {
     let profile = (await getProfile(query.username)) || {};
@@ -26,75 +95,6 @@ class Profile extends Component {
 
     this.state = {};
   }
-
-  renderStatsSection = (kd, kills, wins, winrate, matches, mode) => {
-    let backgroundColor = "";
-    switch (mode) {
-      case "SOLO":
-        backgroundColor = "#14c8ff";
-        break;
-      case "DUO":
-        backgroundColor = "#f3af19";
-        break;
-      case "SQUAD":
-        backgroundColor = "#9d4dbb";
-        break;
-      default:
-        break;
-    }
-
-    return (
-      <Grid style={{ backgroundColor: "#2c3c57", color: "white" }}>
-        <Grid.Row style={{ backgroundColor: backgroundColor }}>
-          <Grid.Column>{mode}</Grid.Column>
-        </Grid.Row>
-        {/* <Divider clearing /> */}
-
-        <Grid.Row columns="5" stretched>
-          <Grid.Column textAlign="center" verticalAlign="middle">
-            <Header size="medium" style={{ color: "white" }}>
-              {kd}
-              <Header.Subheader style={{ color: "#92a2bd" }}>
-                K/D
-              </Header.Subheader>
-            </Header>
-          </Grid.Column>
-          <Grid.Column textAlign="center" verticalAlign="middle">
-            <Header size="medium" style={{ color: "white" }}>
-              {wins}
-              <Header.Subheader style={{ color: "#92a2bd" }}>
-                Wins
-              </Header.Subheader>
-            </Header>
-          </Grid.Column>
-          <Grid.Column textAlign="center" verticalAlign="middle">
-            <Header size="medium" style={{ color: "white" }}>
-              {kills}
-              <Header.Subheader style={{ color: "#92a2bd" }}>
-                Kills
-              </Header.Subheader>
-            </Header>
-          </Grid.Column>
-          <Grid.Column textAlign="center" verticalAlign="middle">
-            <Header size="medium" style={{ color: "white" }}>
-              {winrate}
-              <Header.Subheader style={{ color: "#92a2bd" }}>
-                Win %
-              </Header.Subheader>
-            </Header>
-          </Grid.Column>
-          <Grid.Column textAlign="center" verticalAlign="middle">
-            <Header size="medium" style={{ color: "white" }}>
-              {matches}
-              <Header.Subheader style={{ color: "#92a2bd" }}>
-                Matches
-              </Header.Subheader>
-            </Header>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    );
-  };
 
   render() {
     const { profile } = this.props;
@@ -159,36 +159,36 @@ class Profile extends Component {
           </Grid>
 
           <Divider hidden />
-
-          {this.renderStatsSection(
-            stats.kd_solo,
-            stats.placetop1_solo,
-            stats.kills_solo,
-            stats.winrate_solo,
-            stats.matchesplayed_solo,
-            "SOLO"
-          )}
-          <Divider hidden />
-
-          {this.renderStatsSection(
-            stats.kd_duo,
-            stats.placetop1_duo,
-            stats.kills_duo,
-            stats.winrate_duo,
-            stats.matchesplayed_duo,
-            "DUO"
-          )}
+          <StatsTable
+            kd={stats.kd_solo}
+            kills={stats.kills_solo}
+            wins={stats.placetop1_solo}
+            winrate={stats.winrate_solo}
+            matches={stats.matchesplayed_solo}
+            mode={"SOLO"}
+          />
 
           <Divider hidden />
 
-          {this.renderStatsSection(
-            stats.kd_squad,
-            stats.placetop1_squad,
-            stats.kills_squad,
-            stats.winrate_squad,
-            stats.matchesplayed_squad,
-            "SQUAD"
-          )}
+          <StatsTable
+            kd={stats.kd_duo}
+            kills={stats.kills_duo}
+            wins={stats.placetop1_duo}
+            winrate={stats.winrate_duo}
+            matches={stats.matchesplayed_duo}
+            mode={"DUO"}
+          />
+
+          <Divider hidden />
+
+          <StatsTable
+            kd={stats.kd_squad}
+            kills={stats.kills_squad}
+            wins={stats.placetop1_squad}
+            winrate={stats.winrate_squad}
+            matches={stats.matchesplayed_squad}
+            mode={"SQUAD"}
+          />
         </Container>
       </div>
     );

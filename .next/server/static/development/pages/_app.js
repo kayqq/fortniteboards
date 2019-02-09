@@ -695,7 +695,7 @@ function (_Component) {
                 });
 
                 _context.next = 4;
-                return _this.props.handleRouteChange(result.username);
+                return _this.props.handleResultSelect(result.username, _this.resetComponent);
 
               case 4:
               case "end":
@@ -730,8 +730,7 @@ function (_Component) {
 
           if (results.length) {
             var firstResult = results[0].username;
-
-            _this.props.prefetchRoute(firstResult);
+            if (_this.props.prefetchRoute) _this.props.prefetchRoute(firstResult);
           }
         });
       });
@@ -758,9 +757,9 @@ function (_Component) {
       var results = this.props.results;
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_3__["Search"], {
         input: {
-          fluid: true
+          fluid: true,
+          icon: "arrow circle right"
         },
-        icon: "arrow circle right",
         loading: isLoading,
         placeholder: "Enter your Epic username",
         onResultSelect: this.handleResultSelect,
