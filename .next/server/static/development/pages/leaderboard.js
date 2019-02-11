@@ -162,9 +162,29 @@ var Board = function Board(_ref) {
   var players = _ref.players,
       mode = _ref.mode,
       handleModeChange = _ref.handleModeChange;
-  // const columns = { "K/D": "kd", Wins: "placetop1" };
-  // console.log(Object.entries(columns));
-  // Make columns map to make rendering the columns dynamic instead of static written jsx
+  // const columns = {
+  //   "K/D": "kd",
+  //   Wins: "placetop1",
+  //   Kills: "kills",
+  //   "Win %": "winrate",
+  //   Matches: "matchesplayed"
+  // };
+  var columns = [{
+    header: "K/D",
+    accessor: "kd"
+  }, {
+    header: "Wins",
+    accessor: "placetop1"
+  }, {
+    header: "Kills",
+    accessor: "kills"
+  }, {
+    header: "Win %",
+    accessor: "winrate"
+  }, {
+    header: "Matches",
+    accessor: "matchesplayed"
+  }];
   var backgroundColor = "";
   var title = "";
 
@@ -194,7 +214,7 @@ var Board = function Board(_ref) {
       color: "white"
     }
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Grid"].Row, {
-    columns: "3",
+    columns: columns.length,
     style: {
       backgroundColor: backgroundColor
     }
@@ -219,71 +239,33 @@ var Board = function Board(_ref) {
     }
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Icon"], {
     name: "angle right"
-  }))), players.map(function (player) {
+  }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Grid"].Row, {
+    columns: "5",
+    stretched: true
+  }, columns.map(function (column) {
+    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Grid"].Column, {
+      textAlign: "center",
+      verticalAlign: "middle"
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"].Subheader, {
+      style: {
+        color: "#92a2bd"
+      }
+    }, column.header));
+  })), players.map(function (player) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Grid"].Row, {
       columns: "5",
       stretched: true
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Grid"].Column, {
-      textAlign: "center",
-      verticalAlign: "middle"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"], {
-      size: "medium",
-      style: {
-        color: "white"
-      }
-    }, player.stats["kd_".concat(mode)], react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"].Subheader, {
-      style: {
-        color: "#92a2bd"
-      }
-    }, "K/D"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Grid"].Column, {
-      textAlign: "center",
-      verticalAlign: "middle"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"], {
-      size: "medium",
-      style: {
-        color: "white"
-      }
-    }, player.stats["placetop1_".concat(mode)], react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"].Subheader, {
-      style: {
-        color: "#92a2bd"
-      }
-    }, "Wins"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Grid"].Column, {
-      textAlign: "center",
-      verticalAlign: "middle"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"], {
-      size: "medium",
-      style: {
-        color: "white"
-      }
-    }, player.stats["kills_".concat(mode)], react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"].Subheader, {
-      style: {
-        color: "#92a2bd"
-      }
-    }, "Kills"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Grid"].Column, {
-      textAlign: "center",
-      verticalAlign: "middle"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"], {
-      size: "medium",
-      style: {
-        color: "white"
-      }
-    }, player.stats["winrate_".concat(mode)], react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"].Subheader, {
-      style: {
-        color: "#92a2bd"
-      }
-    }, "Win %"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Grid"].Column, {
-      textAlign: "center",
-      verticalAlign: "middle"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"], {
-      size: "medium",
-      style: {
-        color: "white"
-      }
-    }, player.stats["matchesplayed_".concat(mode)], react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"].Subheader, {
-      style: {
-        color: "#92a2bd"
-      }
-    }, "Matches"))));
+    }, columns.map(function (column) {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Grid"].Column, {
+        textAlign: "center",
+        verticalAlign: "middle"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_7__["Header"], {
+        size: "medium",
+        style: {
+          color: "white"
+        }
+      }, player.stats["".concat(column.accessor, "_").concat(mode)]));
+    }));
   }));
 };
 

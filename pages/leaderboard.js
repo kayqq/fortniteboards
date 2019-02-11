@@ -10,9 +10,21 @@ import { Container, Grid, Icon, Header } from "semantic-ui-react";
 // show awards, i.e. most kills, most wins, highest kd etc etc in separate div
 
 const Board = ({ players, mode, handleModeChange }) => {
-  // const columns = { "K/D": "kd", Wins: "placetop1" };
-  // console.log(Object.entries(columns));
-  // Make columns map to make rendering the columns dynamic instead of static written jsx
+  // const columns = {
+  //   "K/D": "kd",
+  //   Wins: "placetop1",
+  //   Kills: "kills",
+  //   "Win %": "winrate",
+  //   Matches: "matchesplayed"
+  // };
+
+  const columns = [
+    { header: "K/D", accessor: "kd" },
+    { header: "Wins", accessor: "placetop1" },
+    { header: "Kills", accessor: "kills" },
+    { header: "Win %", accessor: "winrate" },
+    { header: "Matches", accessor: "matchesplayed" }
+  ];
   let backgroundColor = "";
   let title = "";
   switch (mode) {
@@ -33,7 +45,11 @@ const Board = ({ players, mode, handleModeChange }) => {
   }
   return (
     <Grid style={{ backgroundColor: "#2c3c57", color: "white" }}>
-      <Grid.Row columns="3" style={{ backgroundColor: backgroundColor }}>
+      {/* Render Mode Header / Selector */}
+      <Grid.Row
+        columns={columns.length}
+        style={{ backgroundColor: backgroundColor }}
+      >
         <Grid.Column
           as="span"
           floated="left"
@@ -55,48 +71,27 @@ const Board = ({ players, mode, handleModeChange }) => {
         </Grid.Column>
       </Grid.Row>
 
+      {/* Render Column Header */}
+      <Grid.Row columns="5" stretched>
+        {columns.map(column => (
+          <Grid.Column textAlign="center" verticalAlign="middle">
+            <Header.Subheader style={{ color: "#92a2bd" }}>
+              {column.header}
+            </Header.Subheader>
+          </Grid.Column>
+        ))}
+      </Grid.Row>
+
+      {/* Render Player stats */}
       {players.map(player => (
         <Grid.Row columns="5" stretched>
-          <Grid.Column textAlign="center" verticalAlign="middle">
-            <Header size="medium" style={{ color: "white" }}>
-              {player.stats[`kd_${mode}`]}
-              <Header.Subheader style={{ color: "#92a2bd" }}>
-                K/D
-              </Header.Subheader>
-            </Header>
-          </Grid.Column>
-          <Grid.Column textAlign="center" verticalAlign="middle">
-            <Header size="medium" style={{ color: "white" }}>
-              {player.stats[`placetop1_${mode}`]}
-              <Header.Subheader style={{ color: "#92a2bd" }}>
-                Wins
-              </Header.Subheader>
-            </Header>
-          </Grid.Column>
-          <Grid.Column textAlign="center" verticalAlign="middle">
-            <Header size="medium" style={{ color: "white" }}>
-              {player.stats[`kills_${mode}`]}
-              <Header.Subheader style={{ color: "#92a2bd" }}>
-                Kills
-              </Header.Subheader>
-            </Header>
-          </Grid.Column>
-          <Grid.Column textAlign="center" verticalAlign="middle">
-            <Header size="medium" style={{ color: "white" }}>
-              {player.stats[`winrate_${mode}`]}
-              <Header.Subheader style={{ color: "#92a2bd" }}>
-                Win %
-              </Header.Subheader>
-            </Header>
-          </Grid.Column>
-          <Grid.Column textAlign="center" verticalAlign="middle">
-            <Header size="medium" style={{ color: "white" }}>
-              {player.stats[`matchesplayed_${mode}`]}
-              <Header.Subheader style={{ color: "#92a2bd" }}>
-                Matches
-              </Header.Subheader>
-            </Header>
-          </Grid.Column>
+          {columns.map(column => (
+            <Grid.Column textAlign="center" verticalAlign="middle">
+              <Header size="medium" style={{ color: "white" }}>
+                {player.stats[`${column.accessor}_${mode}`]}
+              </Header>
+            </Grid.Column>
+          ))}
         </Grid.Row>
       ))}
     </Grid>
