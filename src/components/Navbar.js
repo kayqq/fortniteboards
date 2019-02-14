@@ -75,6 +75,11 @@ export default class Navbar extends Component {
               style={{ color: "grey" }}
               onClick={() => console.log("clicked!")}
             >
+              {console.log("COMPUTER", Responsive.onlyComputer)}
+              {console.log("WIDESCREEN", Responsive.onlyWidescreen)}
+              {console.log("TABLET", Responsive.onlyTablet)}
+              {console.log("LARGE SCREEN", Responsive.onlyLargeScreen)}
+              {console.log("MOBILE", Responsive.onlyLargeScreen)}
               <SearchBar />
             </Responsive>
 

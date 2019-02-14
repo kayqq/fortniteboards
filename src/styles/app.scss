@@ -1,8 +1,8 @@
 // --------------------------------------------------------------
 // Semantic UI
-$icons-font-path: "/node_modules/semantic-ui-sass/icons";
-$flags-image-path: "/node_modules/semantic-ui-sass/images";
-@import "semantic-ui";
+$icons-font-path: '/node_modules/semantic-ui-sass/icons';
+$flags-image-path: '/node_modules/semantic-ui-sass/images';
+// @import "semantic-ui";
 
 // --------------------------------------------------------------
 // Colors
@@ -23,52 +23,52 @@ $grey6: #999999;
 // Typographies
 
 @font-face {
-  font-family: "Burbank-Big";
-  src: url("../assets/fonts/Burbank-Big-Regular-Black.ttf");
-  font-weight: normal;
+    font-family: 'Burbank-Big';
+    src: url('../assets/Burbank-Big-Regular-Black.ttf');
+    font-weight: normal;
 }
 h1 {
-  font-size: 4em;
+    font-size: 4em;
 }
 h2 {
-  font-size: 3em;
+    font-size: 3em;
 }
 h3 {
-  font-size: 2em;
+    font-size: 2em;
 }
 h4 {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 h5 {
-  font-size: 1em;
+    font-size: 1em;
 }
 h6 {
-  font-size: 0.75em;
+    font-size: 0.75em;
 }
 body {
-  font-family: "Burbank-Big";
-  font-size: 1em;
-  color: $grey1;
-  // width: 100vw;
-  // background-color: #c6d2e5 !important;
-  overflow-y: auto !important;
-  background-image: radial-gradient(
-    50% 97%,
-    rgb(229, 236, 246) 0%,
-    rgb(214, 225, 247) 98%
-  ) !important;
+    font-family: 'Burbank-Big';
+    font-size: 1em;
+    color: $grey1;
+    // width: 100vw;
+    // background-color: #c6d2e5 !important;
+    overflow-y: auto !important;
+    background-image: radial-gradient(
+        50% 97%,
+        rgb(229, 236, 246) 0%,
+        rgb(214, 225, 247) 98%
+    ) !important;
 }
 a {
-  // color: $primary;
+    // color: $primary;
 }
 
 small {
-  font-size: 0.75em;
+    font-size: 0.75em;
 }
 
 .search {
-  .results {
-    overflow-y: auto;
-    max-height: 300px;
-  }
+    .results {
+        overflow-y: auto;
+        max-height: 300px;
+    }
 }
