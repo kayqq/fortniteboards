@@ -2,7 +2,7 @@
 // Semantic UI
 $icons-font-path: '/node_modules/semantic-ui-sass/icons';
 $flags-image-path: '/node_modules/semantic-ui-sass/images';
-// @import "semantic-ui";
+@import 'semantic-ui';
 
 // --------------------------------------------------------------
 // Colors
@@ -27,6 +27,7 @@ $grey6: #999999;
     src: url('../assets/Burbank-Big-Regular-Black.ttf');
     font-weight: normal;
 }
+
 h1 {
     font-size: 4em;
 }
@@ -71,4 +72,16 @@ small {
         overflow-y: auto;
         max-height: 300px;
     }
+}
+
+.solo {
+    background-color: #14c8ff;
+}
+
+.duo {
+    background-color: #f3af19;
+}
+
+.squad {
+    background-color: #9d4dbb;
 }

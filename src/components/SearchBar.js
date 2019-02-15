@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { Search, Grid, Label } from 'semantic-ui-react';
+import { Search, Label } from 'semantic-ui-react';
 
 const resultRenderer = ({ uid, username }) => <Label key={uid} content={username} />;
 

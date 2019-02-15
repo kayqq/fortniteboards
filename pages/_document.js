@@ -1,9 +1,10 @@
+import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
     render() {
         return (
-            <html>
+            <html lang="en-US">
                 <Head>
                     <meta name="viewport" content="width=device-width" />
                     <link

@@ -7280,7 +7280,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      source_map_support_1.rewriteStacktrace(error, "/Users/kenny/Desktop/test nextjs 8/.next");
+      source_map_support_1.rewriteStacktrace(error, "/Users/kenny/Documents/GitHub/fortniteboards/.next");
       return error;
     }
   };
@@ -8384,7 +8384,7 @@ function () {
 
                       case 2:
                         return _context3.abrupt("return", new _promise.default(function (resolve) {
-                          ws = new WebSocket("".concat(wsProtocol, "://").concat(hostname, ":").concat(50388).concat("/"));
+                          ws = new WebSocket("".concat(wsProtocol, "://").concat(hostname, ":").concat(61870).concat("/"));
 
                           ws.onopen = function () {
                             return resolve();
@@ -18516,7 +18516,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/kenny/Desktop/test nextjs 8/node_modules/next/dist/client/next-dev */"./node_modules/next/dist/client/next-dev.js");
+module.exports = __webpack_require__(/*! /Users/kenny/Documents/GitHub/fortniteboards/node_modules/next/dist/client/next-dev */"./node_modules/next/dist/client/next-dev.js");
 
 
 /***/ }),
