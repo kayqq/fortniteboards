@@ -69370,12 +69370,12 @@ function (_Component) {
           var sortedPlayers = [];
 
           if (accessor == 'username') {
-            sortedPlayers = lodash__WEBPACK_IMPORTED_MODULE_14___default.a.sortBy(players, function (o) {
-              return o.stats["".concat(accessor, "_").concat(mode)];
-            });
-          } else {
             sortedPlayers = lodash__WEBPACK_IMPORTED_MODULE_14___default.a.sortBy(_this.state.players, function (o) {
               return o.username;
+            });
+          } else {
+            sortedPlayers = lodash__WEBPACK_IMPORTED_MODULE_14___default.a.sortBy(players, function (o) {
+              return o.stats["".concat(accessor, "_").concat(mode)];
             });
           }
 
@@ -69514,8 +69514,6 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__["default"])(Leaderboard, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
       var _this$props = this.props,
           initialPlayers = _this$props.initialPlayers,
           entries = _this$props.entries;
@@ -69524,15 +69522,11 @@ function (_Component) {
         columns: [{
           header: 'Player',
           accessor: 'username',
-          sort: this.handleSort(function () {
-            return lodash__WEBPACK_IMPORTED_MODULE_14___default.a.sortBy(_this2.state.players, function (o) {
-              return o.username;
-            });
-          }, 'username')
+          sort: this.handleSort('username')
         }, {
           header: 'K/D',
           accessor: 'kd',
-          sort: this.handleSort('kills')
+          sort: this.handleSort('kd')
         }, {
           header: 'Win %',
           accessor: 'winrate',

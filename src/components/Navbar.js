@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Link from "next/link";
 import { Container, Menu, Icon, Segment, Responsive } from 'semantic-ui-react';
 import { Link } from '../../routes';
 import SearchBar from './SearchBar';

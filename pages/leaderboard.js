@@ -42,9 +42,9 @@ class Leaderboard extends Component {
         if (column !== accessor) {
             let sortedPlayers = [];
             if (accessor == 'username') {
-                sortedPlayers = _.sortBy(players, o => o.stats[`${accessor}_${mode}`]);
-            } else {
                 sortedPlayers = _.sortBy(this.state.players, o => o.username);
+            } else {
+                sortedPlayers = _.sortBy(players, o => o.stats[`${accessor}_${mode}`]);
             }
             this.setState(
                 {
@@ -75,15 +75,12 @@ class Leaderboard extends Component {
                 {
                     header: 'Player',
                     accessor: 'username',
-                    sort: this.handleSort(
-                        () => _.sortBy(this.state.players, o => o.username),
-                        'username'
-                    )
+                    sort: this.handleSort('username')
                 },
                 {
                     header: 'K/D',
                     accessor: 'kd',
-                    sort: this.handleSort('kills')
+                    sort: this.handleSort('kd')
                 },
                 {
                     header: 'Win %',
