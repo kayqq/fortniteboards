@@ -59722,7 +59722,7 @@ var partitionHTMLProps = function partitionHTMLProps(props) {
 /*!*************************************************************!*\
   !*** ./node_modules/semantic-ui-react/dist/es/lib/index.js ***!
   \*************************************************************/
-/*! exports provided: AutoControlledComponent, getChildMapping, mergeChildMappings, childrenUtils, useKeyOnly, useKeyOrValueAndKey, useValueAndKey, useMultipleProp, useTextAlignProp, useVerticalAlignProp, useWidthProp, customPropTypes, debug, makeDebugger, eventStack, getUnhandledProps, getElementType, handleRef, htmlInputAttrs, htmlInputEvents, htmlInputProps, htmlImageProps, partitionHTMLProps, isBrowser, doesNodeContainClick, leven, createPaginationItems, SUI, numberToWordMap, numberToWord, normalizeOffset, normalizeTransitionDuration, objectDiff, createShorthand, createShorthandFactory, createHTMLDivision, createHTMLIframe, createHTMLImage, createHTMLInput, createHTMLLabel, createHTMLParagraph */
+/*! exports provided: AutoControlledComponent, getChildMapping, mergeChildMappings, childrenUtils, useKeyOnly, useKeyOrValueAndKey, useValueAndKey, useMultipleProp, useTextAlignProp, useVerticalAlignProp, useWidthProp, customPropTypes, debug, makeDebugger, eventStack, createShorthand, createShorthandFactory, createHTMLDivision, createHTMLIframe, createHTMLImage, createHTMLInput, createHTMLLabel, createHTMLParagraph, getUnhandledProps, getElementType, handleRef, htmlInputAttrs, htmlInputEvents, htmlInputProps, htmlImageProps, partitionHTMLProps, isBrowser, doesNodeContainClick, leven, createPaginationItems, SUI, numberToWordMap, numberToWord, normalizeOffset, normalizeTransitionDuration, objectDiff */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73857,9 +73857,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_REQUESTED", function() { return FETCH_BY_PLAYERNAME_REQUESTED; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_SUCCESS", function() { return FETCH_BY_PLAYERNAME_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_FAILURE", function() { return FETCH_BY_PLAYERNAME_FAILURE; });
-var FETCH_BY_PLAYERNAME_REQUESTED = "FETCH_BY_PLAYERNAME_REQUESTED";
-var FETCH_BY_PLAYERNAME_SUCCESS = "FETCH_BY_PLAYERNAME_SUCCESS";
-var FETCH_BY_PLAYERNAME_FAILURE = "FETCH_BY_PLAYERNAME_FAILURE";
+var FETCH_BY_PLAYERNAME_REQUESTED = 'FETCH_BY_PLAYERNAME_REQUESTED';
+var FETCH_BY_PLAYERNAME_SUCCESS = 'FETCH_BY_PLAYERNAME_SUCCESS';
+var FETCH_BY_PLAYERNAME_FAILURE = 'FETCH_BY_PLAYERNAME_FAILURE';
 
 /***/ }),
 
@@ -74129,7 +74129,7 @@ function (_Component) {
         onClick: function onClick() {
           return console.log('clicked!');
         }
-      }, console.log('COMPUTER', semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"].onlyComputer), console.log('WIDESCREEN', semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"].onlyWidescreen), console.log('TABLET', semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"].onlyTablet), console.log('LARGE SCREEN', semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"].onlyLargeScreen), console.log('MOBILE', semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"].onlyLargeScreen), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_8__["default"], null)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"], {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_8__["default"], null)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"], {
         as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Menu"].Item,
         icon: true,
         position: "right",
@@ -74233,15 +74233,45 @@ function (_Component) {
               case 0:
                 result = _ref2.result;
 
+                if (!_this.props.checkDuplicateSelect) {
+                  _context.next = 9;
+                  break;
+                }
+
+                if (_this.props.checkDuplicateSelect(result.username)) {
+                  _context.next = 7;
+                  break;
+                }
+
                 _this.setState({
                   value: result.username,
                   isLoading: true
                 });
 
-                _context.next = 4;
-                return _this.props.handleResultSelect(result.username, _this.resetComponent);
+                _context.next = 6;
+                return _this.props.handleResultSelect(result.username);
 
-              case 4:
+              case 6:
+                _this.resetComponent();
+
+              case 7:
+                _context.next = 13;
+                break;
+
+              case 9:
+                // checkDuplicateSelect prop NOT given
+                _this.setState({
+                  value: result.username,
+                  isLoading: true
+                });
+
+                _context.next = 12;
+                return _this.props.handleResultSelect(result.username);
+
+              case 12:
+                _this.resetComponent();
+
+              case 13:
               case "end":
                 return _context.stop();
             }

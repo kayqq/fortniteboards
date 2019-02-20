@@ -1,2 +1,6 @@
 .prettierrc
 .eslintrc.json
+eslint options
+
+junk-code.js
+eslint-options.js

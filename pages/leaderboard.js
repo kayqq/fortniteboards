@@ -12,34 +12,156 @@ import Board from '../src/components/board';
 // show awards, i.e. most kills, most wins, highest kd etc etc in separate div
 
 class Leaderboard extends Component {
-    constructor(props) {
-        super(props);
+    static async getInitialProps({ store, query, pathname, asPath, req }) {
+        const { usernames, entries } = query;
+        let initialPlayers = [];
 
-        this.state = { players: [], mode: 'solo' };
+        if (!usernames) return { initialPlayers };
+
+        if (entries <= 1) {
+            initialPlayers = await getProfile(usernames);
+        } else {
+            initialPlayers = await Promise.all(usernames.map(username => getProfile(username)));
+        }
+        return { initialPlayers, entries };
     }
 
-    handleResultSelect = async (username, resetSearchFn) => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            players: [],
+            mode: 'solo',
+            columns: [],
+            column: null,
+            direction: null
+        };
+    }
+
+    handleSort = accessor => () => {
+        const { column, players, direction, mode } = this.state;
+        if (column !== accessor) {
+            let sortedPlayers = [];
+            if (accessor == 'username') {
+                sortedPlayers = _.sortBy(players, o => o.stats[`${accessor}_${mode}`]);
+            } else {
+                sortedPlayers = _.sortBy(this.state.players, o => o.username);
+            }
+            this.setState(
+                {
+                    column: accessor,
+                    players: sortedPlayers,
+                    direction: 'ascending'
+                },
+                () => this.updateURL()
+            );
+
+            return;
+        }
+
+        this.setState(
+            {
+                players: players.reverse(),
+                direction: direction === 'ascending' ? 'descending' : 'ascending'
+            },
+            () => this.updateURL()
+        );
+    };
+
+    componentDidMount() {
+        const { initialPlayers, entries } = this.props;
+        const { players } = this.state;
+        this.setState({
+            columns: [
+                {
+                    header: 'Player',
+                    accessor: 'username',
+                    sort: this.handleSort(
+                        () => _.sortBy(this.state.players, o => o.username),
+                        'username'
+                    )
+                },
+                {
+                    header: 'K/D',
+                    accessor: 'kd',
+                    sort: this.handleSort('kills')
+                },
+                {
+                    header: 'Win %',
+                    accessor: 'winrate',
+                    sort: this.handleSort('winrate')
+                },
+                {
+                    header: 'Kills',
+                    accessor: 'kills',
+
+                    sort: this.handleSort('kills')
+                },
+                {
+                    header: 'Wins',
+                    accessor: 'placetop1',
+                    sort: this.handleSort('placetop1')
+                }
+            ],
+            players: entries <= 1 ? [...players, initialPlayers] : [...players, ...initialPlayers],
+            entries: entries
+        });
+    }
+
+    addPlayer = async username => {
         const { players } = this.state;
 
-        // Reset component if username is already in table
-        if (isPlayerSelected(username, players)) return resetSearchFn();
-
-        // Get profile of username and add to table
         const newPlayer = await getProfile(username);
-        this.setState({ players: [...players, newPlayer] }, () => resetSearchFn());
+        const updatedPlayers = [...players, newPlayer];
+        this.setState({ players: updatedPlayers }, () => this.updateURL());
+    };
 
-        // Helper function
-        const isPlayerSelected = (username, players) =>
-            players.find(player => player.username === username);
+    removePlayer = index => {
+        const { players } = this.state;
+        const updatedPlayers = players.filter((player, i) => i !== index);
+        this.setState({ players: updatedPlayers }, () => this.updateURL());
+    };
+
+    changeMode = direction => {
+        const { mode } = this.state;
+        let nextMode = '';
+        switch (mode) {
+            case 'solo':
+                nextMode = direction === 'forward' ? 'duo' : 'squad';
+                break;
+            case 'duo':
+                nextMode = direction === 'forward' ? 'squad' : 'solo';
+                break;
+            case 'squad':
+                nextMode = direction === 'forward' ? 'solo' : 'duo';
+                break;
+            default:
+                break;
+        }
+        this.setState({ mode: nextMode });
+    };
+
+    isPlayerSelected = username => {
+        const { players } = this.state;
+        return players.find(player => player.username === username);
+    };
+
+    updateURL = () => {
+        const { router } = this.props;
+        const { players } = this.state;
+        const usernames = players.map(player => player.username);
+        router.push({
+            pathname: '/leaderboard',
+            query: { entries: usernames.length, usernames: usernames },
+            options: { shallow: true }
+        });
     };
 
     render() {
+        const { columns, mode, players } = this.state;
         const { searchResults, fetchByUsername } = this.props;
-
         const debouncedfetchByUsername = _.debounce(fetchByUsername, 500, {
             maxWait: 1000
         });
-
         return (
             <div>
                 <Container
@@ -51,7 +173,7 @@ class Leaderboard extends Component {
                         height: '100%'
                     }}
                 >
-                    <h1>Leaderboard</h1>
+                    <h1>Board</h1>
                     <Grid columns="1" centered textAlign="center">
                         <Grid.Column
                             mobile="16"
@@ -62,14 +184,21 @@ class Leaderboard extends Component {
                         >
                             <Container>
                                 <SearchBar
-                                    handleResultSelect={this.handleResultSelect}
+                                    checkDuplicateSelect={this.isPlayerSelected}
+                                    handleResultSelect={this.addPlayer}
                                     fetchByUsername={debouncedfetchByUsername}
                                     results={searchResults}
                                 />
                             </Container>
                         </Grid.Column>
                         <Grid.Column textAlign="center">
-                            <Board players={this.state.players} />
+                            <Board
+                                columns={columns}
+                                mode={mode}
+                                players={players}
+                                removePlayer={this.removePlayer}
+                                handleModeChange={this.changeMode}
+                            />
                         </Grid.Column>
                     </Grid>
                 </Container>

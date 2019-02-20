@@ -602,30 +602,33 @@ module.exports = __webpack_require__(/*! regenerator-runtime */ "regenerator-run
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! redux */ "redux");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
-/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _src_components_SearchBar__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../src/components/SearchBar */ "./src/components/SearchBar.js");
-/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../src/actions */ "./src/actions/index.js");
-/* harmony import */ var _src_components_board__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../src/components/board */ "./src/components/board/index.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _src_components_SearchBar__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../src/components/SearchBar */ "./src/components/SearchBar.js");
+/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../src/actions */ "./src/actions/index.js");
+/* harmony import */ var _src_components_board__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../src/components/board */ "./src/components/board/index.js");
+
 
 
 
@@ -648,56 +651,62 @@ __webpack_require__.r(__webpack_exports__);
 var Leaderboard =
 /*#__PURE__*/
 function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(Leaderboard, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__["default"])(Leaderboard, _Component);
 
-  function Leaderboard(props) {
-    var _this;
-
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Leaderboard);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Leaderboard).call(this, props));
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_8__["default"])(_this)), "handleResultSelect",
-    /*#__PURE__*/
-    function () {
-      var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__["default"])(Leaderboard, null, [{
+    key: "getInitialProps",
+    value: function () {
+      var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(username, resetSearchFn) {
-        var players, newPlayer, isPlayerSelected;
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee(_ref) {
+        var store, query, pathname, asPath, req, usernames, entries, initialPlayers;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                players = _this.state.players; // Reset component if username is already in table
+                store = _ref.store, query = _ref.query, pathname = _ref.pathname, asPath = _ref.asPath, req = _ref.req;
+                usernames = query.usernames, entries = query.entries;
+                initialPlayers = [];
 
-                if (!isPlayerSelected(username, players)) {
-                  _context.next = 3;
+                if (usernames) {
+                  _context.next = 5;
                   break;
                 }
 
-                return _context.abrupt("return", resetSearchFn());
-
-              case 3:
-                _context.next = 5;
-                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_16__["getProfile"])(username);
+                return _context.abrupt("return", {
+                  initialPlayers: initialPlayers
+                });
 
               case 5:
-                newPlayer = _context.sent;
+                if (!(entries <= 1)) {
+                  _context.next = 11;
+                  break;
+                }
 
-                _this.setState({
-                  players: [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(players), [newPlayer])
-                }, function () {
-                  return resetSearchFn();
-                }); // Helper function
-
-
-                isPlayerSelected = function isPlayerSelected(username, players) {
-                  return players.find(function (player) {
-                    return player.username === username;
-                  });
-                };
+                _context.next = 8;
+                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_17__["getProfile"])(usernames);
 
               case 8:
+                initialPlayers = _context.sent;
+                _context.next = 14;
+                break;
+
+              case 11:
+                _context.next = 13;
+                return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2___default.a.all(usernames.map(function (username) {
+                  return Object(_src_actions__WEBPACK_IMPORTED_MODULE_17__["getProfile"])(username);
+                }));
+
+              case 13:
+                initialPlayers = _context.sent;
+
+              case 14:
+                return _context.abrupt("return", {
+                  initialPlayers: initialPlayers,
+                  entries: entries
+                });
+
+              case 15:
               case "end":
                 return _context.stop();
             }
@@ -705,30 +714,229 @@ function (_Component) {
         }, _callee, this);
       }));
 
-      return function (_x, _x2) {
-        return _ref.apply(this, arguments);
+      function getInitialProps(_x) {
+        return _getInitialProps.apply(this, arguments);
+      }
+
+      return getInitialProps;
+    }()
+  }]);
+
+  function Leaderboard(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Leaderboard);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Leaderboard).call(this, props));
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "handleSort", function (accessor) {
+      return function () {
+        var _this$state = _this.state,
+            column = _this$state.column,
+            players = _this$state.players,
+            direction = _this$state.direction,
+            mode = _this$state.mode;
+
+        if (column !== accessor) {
+          var sortedPlayers = [];
+
+          if (accessor == 'username') {
+            sortedPlayers = lodash__WEBPACK_IMPORTED_MODULE_14___default.a.sortBy(players, function (o) {
+              return o.stats["".concat(accessor, "_").concat(mode)];
+            });
+          } else {
+            sortedPlayers = lodash__WEBPACK_IMPORTED_MODULE_14___default.a.sortBy(_this.state.players, function (o) {
+              return o.username;
+            });
+          }
+
+          _this.setState({
+            column: accessor,
+            players: sortedPlayers,
+            direction: 'ascending'
+          }, function () {
+            return _this.updateURL();
+          });
+
+          return;
+        }
+
+        _this.setState({
+          players: players.reverse(),
+          direction: direction === 'ascending' ? 'descending' : 'ascending'
+        }, function () {
+          return _this.updateURL();
+        });
+      };
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "addPlayer",
+    /*#__PURE__*/
+    function () {
+      var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee2(username) {
+        var players, newPlayer, updatedPlayers;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                players = _this.state.players;
+                _context2.next = 3;
+                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_17__["getProfile"])(username);
+
+              case 3:
+                newPlayer = _context2.sent;
+                updatedPlayers = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(players), [newPlayer]);
+
+                _this.setState({
+                  players: updatedPlayers
+                }, function () {
+                  return _this.updateURL();
+                });
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
       };
     }());
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "removePlayer", function (index) {
+      var players = _this.state.players;
+      var updatedPlayers = players.filter(function (player, i) {
+        return i !== index;
+      });
+
+      _this.setState({
+        players: updatedPlayers
+      }, function () {
+        return _this.updateURL();
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "changeMode", function (direction) {
+      var mode = _this.state.mode;
+      var nextMode = '';
+
+      switch (mode) {
+        case 'solo':
+          nextMode = direction === 'forward' ? 'duo' : 'squad';
+          break;
+
+        case 'duo':
+          nextMode = direction === 'forward' ? 'squad' : 'solo';
+          break;
+
+        case 'squad':
+          nextMode = direction === 'forward' ? 'solo' : 'duo';
+          break;
+
+        default:
+          break;
+      }
+
+      _this.setState({
+        mode: nextMode
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "isPlayerSelected", function (username) {
+      var players = _this.state.players;
+      return players.find(function (player) {
+        return player.username === username;
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "updateURL", function () {
+      var router = _this.props.router;
+      var players = _this.state.players;
+      var usernames = players.map(function (player) {
+        return player.username;
+      });
+      router.push({
+        pathname: '/leaderboard',
+        query: {
+          entries: usernames.length,
+          usernames: usernames
+        },
+        options: {
+          shallow: true
+        }
+      });
+    });
+
     _this.state = {
       players: [],
-      mode: 'solo'
+      mode: 'solo',
+      columns: [],
+      column: null,
+      direction: null
     };
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(Leaderboard, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__["default"])(Leaderboard, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          initialPlayers = _this$props.initialPlayers,
+          entries = _this$props.entries;
+      var players = this.state.players;
+      this.setState({
+        columns: [{
+          header: 'Player',
+          accessor: 'username',
+          sort: this.handleSort(function () {
+            return lodash__WEBPACK_IMPORTED_MODULE_14___default.a.sortBy(_this2.state.players, function (o) {
+              return o.username;
+            });
+          }, 'username')
+        }, {
+          header: 'K/D',
+          accessor: 'kd',
+          sort: this.handleSort('kills')
+        }, {
+          header: 'Win %',
+          accessor: 'winrate',
+          sort: this.handleSort('winrate')
+        }, {
+          header: 'Kills',
+          accessor: 'kills',
+          sort: this.handleSort('kills')
+        }, {
+          header: 'Wins',
+          accessor: 'placetop1',
+          sort: this.handleSort('placetop1')
+        }],
+        players: entries <= 1 ? [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(players), [initialPlayers]) : [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(players), Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(initialPlayers)),
+        entries: entries
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          searchResults = _this$props.searchResults,
-          fetchByUsername = _this$props.fetchByUsername;
+      var _this$state2 = this.state,
+          columns = _this$state2.columns,
+          mode = _this$state2.mode,
+          players = _this$state2.players;
+      var _this$props2 = this.props,
+          searchResults = _this$props2.searchResults,
+          fetchByUsername = _this$props2.fetchByUsername;
 
-      var debouncedfetchByUsername = lodash__WEBPACK_IMPORTED_MODULE_13___default.a.debounce(fetchByUsername, 500, {
+      var debouncedfetchByUsername = lodash__WEBPACK_IMPORTED_MODULE_14___default.a.debounce(fetchByUsername, 500, {
         maxWait: 1000
       });
 
-      return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_14__["Container"], {
+      return react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Container"], {
         text: true,
         textAlign: "center",
         style: {
@@ -736,30 +944,35 @@ function (_Component) {
           paddingBottom: '100px',
           height: '100%'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("h1", null, "Leaderboard"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_14__["Grid"], {
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("h1", null, "Board"), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"], {
         columns: "1",
         centered: true,
         textAlign: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_14__["Grid"].Column, {
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
         mobile: "16",
         computer: "6",
         largeScreen: "6",
         tablet: "6",
         widescreen: "6"
-      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_14__["Container"], null, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        handleResultSelect: this.handleResultSelect,
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Container"], null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        checkDuplicateSelect: this.isPlayerSelected,
+        handleResultSelect: this.addPlayer,
         fetchByUsername: debouncedfetchByUsername,
         results: searchResults
-      }))), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_14__["Grid"].Column, {
+      }))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
         textAlign: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(_src_components_board__WEBPACK_IMPORTED_MODULE_17__["default"], {
-        players: this.state.players
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_board__WEBPACK_IMPORTED_MODULE_18__["default"], {
+        columns: columns,
+        mode: mode,
+        players: players,
+        removePlayer: this.removePlayer,
+        handleModeChange: this.changeMode
       })))));
     }
   }]);
 
   return Leaderboard;
-}(react__WEBPACK_IMPORTED_MODULE_10__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_11__["Component"]);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
@@ -768,12 +981,12 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return Object(redux__WEBPACK_IMPORTED_MODULE_11__["bindActionCreators"])({
-    fetchByUsername: _src_actions__WEBPACK_IMPORTED_MODULE_16__["fetchByUsername"]
+  return Object(redux__WEBPACK_IMPORTED_MODULE_12__["bindActionCreators"])({
+    fetchByUsername: _src_actions__WEBPACK_IMPORTED_MODULE_17__["fetchByUsername"]
   }, dispatch);
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_12__["connect"])(mapStateToProps, mapDispatchToProps)(Leaderboard));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_13__["connect"])(mapStateToProps, mapDispatchToProps)(Leaderboard));
 
 /***/ }),
 
@@ -789,9 +1002,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_REQUESTED", function() { return FETCH_BY_PLAYERNAME_REQUESTED; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_SUCCESS", function() { return FETCH_BY_PLAYERNAME_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_FAILURE", function() { return FETCH_BY_PLAYERNAME_FAILURE; });
-var FETCH_BY_PLAYERNAME_REQUESTED = "FETCH_BY_PLAYERNAME_REQUESTED";
-var FETCH_BY_PLAYERNAME_SUCCESS = "FETCH_BY_PLAYERNAME_SUCCESS";
-var FETCH_BY_PLAYERNAME_FAILURE = "FETCH_BY_PLAYERNAME_FAILURE";
+var FETCH_BY_PLAYERNAME_REQUESTED = 'FETCH_BY_PLAYERNAME_REQUESTED';
+var FETCH_BY_PLAYERNAME_SUCCESS = 'FETCH_BY_PLAYERNAME_SUCCESS';
+var FETCH_BY_PLAYERNAME_FAILURE = 'FETCH_BY_PLAYERNAME_FAILURE';
 
 /***/ }),
 
@@ -877,23 +1090,22 @@ function () {
   _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(username) {
     var platform,
         window,
-        responseProfiles,
+        response,
         profile,
         uid,
-        responseProfile,
         _args2 = arguments;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            platform = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : "pc";
-            window = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : "season7";
+            platform = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : 'pc';
+            window = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : 'season7';
             _context2.next = 4;
             return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search?username=".concat(username));
 
           case 4:
-            responseProfiles = _context2.sent;
-            profile = responseProfiles.data.entries.filter(function (profile) {
+            response = _context2.sent;
+            profile = response.data.entries.filter(function (profile) {
               return profile.username === username;
             });
 
@@ -910,10 +1122,11 @@ function () {
             return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=".concat(uid, "&platform=").concat(platform, "&window=").concat(window));
 
           case 11:
-            responseProfile = _context2.sent;
-            return _context2.abrupt("return", responseProfile.data);
+            response = _context2.sent;
+            profile = response.data;
+            return _context2.abrupt("return", profile);
 
-          case 13:
+          case 14:
           case "end":
             return _context2.stop();
         }
@@ -1008,15 +1221,45 @@ function (_Component) {
               case 0:
                 result = _ref2.result;
 
+                if (!_this.props.checkDuplicateSelect) {
+                  _context.next = 9;
+                  break;
+                }
+
+                if (_this.props.checkDuplicateSelect(result.username)) {
+                  _context.next = 7;
+                  break;
+                }
+
                 _this.setState({
                   value: result.username,
                   isLoading: true
                 });
 
-                _context.next = 4;
-                return _this.props.handleResultSelect(result.username, _this.resetComponent);
+                _context.next = 6;
+                return _this.props.handleResultSelect(result.username);
 
-              case 4:
+              case 6:
+                _this.resetComponent();
+
+              case 7:
+                _context.next = 13;
+                break;
+
+              case 9:
+                // checkDuplicateSelect prop NOT given
+                _this.setState({
+                  value: result.username,
+                  isLoading: true
+                });
+
+                _context.next = 12;
+                return _this.props.handleResultSelect(result.username);
+
+              case 12:
+                _this.resetComponent();
+
+              case 13:
               case "end":
                 return _context.stop();
             }
@@ -1171,27 +1414,52 @@ var Player = function Player(_ref) {
   var columns = _ref.columns,
       mode = _ref.mode,
       player = _ref.player,
-      key = _ref.key;
+      boardIndex = _ref.boardIndex,
+      removePlayer = _ref.removePlayer;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
-    key: key,
     columns: columns.length,
     stretched: true
-  }, columns.map(function (column, columnIndex) {
-    var columnContent = columnIndex === 0 // if first column
-    ? player.username // get username
-    : player.stats["".concat(column.accessor, "_").concat(mode)]; // else get stats
-
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"], {
+    as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column,
+    textAlign: "center",
+    mobile: "1",
+    minWidth: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"].onlyMobile.maxWidth,
+    fireOnMount: true
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Header"], {
+    as: "h6",
+    style: {
+      color: '#92a2bd'
+    }
+  }, boardIndex + 1)), columns.map(function (column, columnIndex) {
+    var columnContent = columnIndex === 0 ? player.username : player.stats["".concat(column.accessor, "_").concat(mode)];
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
+      className: columnIndex == 0 ? '' : 'compact',
       key: columnIndex,
-      textAlign: "center",
-      verticalAlign: "middle"
+      textAlign: columnIndex == 0 ? 'left' : 'center',
+      mobile: columnIndex == 0 ? '6' : '2'
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Header"], {
-      size: "medium",
+      as: columnIndex == 0 ? 'h4' : 'h4',
       style: {
         color: 'white'
       }
-    }, columnContent));
-  }));
+    }, columnContent, columnIndex == 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Header"].Subheader, {
+      size: "small",
+      style: {
+        color: '#92a2bd',
+        whiteSpace: 'nowrap'
+      }
+    }, player.stats["matchesplayed_".concat(mode)], " Matches") : null));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
+    textAlign: "center",
+    mobile: "1",
+    onClick: function onClick() {
+      removePlayer(boardIndex);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
+    size: "small",
+    color: "red",
+    name: "trash alternate outline"
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Player);
@@ -1216,17 +1484,36 @@ __webpack_require__.r(__webpack_exports__);
 
 var StatsHeader = function StatsHeader(_ref) {
   var columns = _ref.columns;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
-    columns: columns.length,
-    stretched: true
-  }, columns.map(function (column, key) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"], {
+    as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column,
+    minWidth: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"].onlyMobile.maxWidth,
+    textAlign: "center",
+    verticalAlign: "middle",
+    mobile: "1"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Header"], {
+    size: "tiny"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Header"].Subheader, {
+    as: "h6",
+    style: {
+      color: '#92a2bd'
+    }
+  }, "#"))), columns.map(function (column, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
-      key: key,
-      textAlign: "center",
-      verticalAlign: "middle"
+      style: {
+        backgroundColor: '#2c3c57'
+      },
+      className: index == 0 ? '' : 'compact',
+      key: index,
+      onClick: function onClick() {
+        return column.sort();
+      },
+      textAlign: index == 0 ? 'left' : 'center',
+      verticalAlign: "middle",
+      mobile: index == 0 ? '6' : '2'
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Header"], {
       size: "tiny"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Header"].Subheader, {
+      as: "h6",
       style: {
         color: '#92a2bd'
       }
@@ -1247,127 +1534,48 @@ var StatsHeader = function StatsHeader(_ref) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Board; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
-/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _ModeHeader__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ModeHeader */ "./src/components/board/ModeHeader.js");
-/* harmony import */ var _StatsHeader__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./StatsHeader */ "./src/components/board/StatsHeader.js");
-/* harmony import */ var _Player__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Player */ "./src/components/board/Player.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ModeHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ModeHeader */ "./src/components/board/ModeHeader.js");
+/* harmony import */ var _StatsHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StatsHeader */ "./src/components/board/StatsHeader.js");
+/* harmony import */ var _Player__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Player */ "./src/components/board/Player.js");
 
 
 
 
 
 
-
-
-
-
-
-
-
-var Board =
-/*#__PURE__*/
-function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Board, _Component);
-
-  function Board(props) {
-    var _this;
-
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Board);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Board).call(this, props));
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this)), "handleModeChange", function (direction) {
-      var mode = _this.state.mode;
-      var nextMode = '';
-
-      switch (mode) {
-        case 'solo':
-          nextMode = direction === 'forward' ? 'duo' : 'squad';
-          break;
-
-        case 'duo':
-          nextMode = direction === 'forward' ? 'squad' : 'solo';
-          break;
-
-        case 'squad':
-          nextMode = direction === 'forward' ? 'solo' : 'duo';
-          break;
-
-        default:
-          break;
-      }
-
-      _this.setState({
-        mode: nextMode
-      });
-    });
-
-    _this.state = {
-      mode: 'solo'
-    };
-    return _this;
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Board, [{
-    key: "render",
-    value: function render() {
-      var players = this.props.players;
-      var mode = this.state.mode;
-      var columns = [{
-        header: 'Player',
-        accessor: 'username'
-      }, {
-        header: 'K/D',
-        accessor: 'kd'
-      }, {
-        header: 'Wins',
-        accessor: 'placetop1'
-      }, {
-        header: 'Kills',
-        accessor: 'kills'
-      }, {
-        header: 'Win %',
-        accessor: 'winrate'
-      }, {
-        header: 'Matches',
-        accessor: 'matchesplayed'
-      }];
-      return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_8__["Grid"], {
-        style: {
-          backgroundColor: '#2c3c57',
-          color: 'white'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_ModeHeader__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        mode: mode,
-        handleModeChange: this.handleModeChange
-      }), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_StatsHeader__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        columns: columns
-      }), players.map(function (player, key) {
-        return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_Player__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          columns: columns,
-          player: player,
-          key: key,
-          mode: mode
-        });
-      }));
+var index = function index(_ref) {
+  var columns = _ref.columns,
+      players = _ref.players,
+      removePlayer = _ref.removePlayer,
+      handleModeChange = _ref.handleModeChange,
+      mode = _ref.mode;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+    style: {
+      backgroundColor: '#2c3c57',
+      color: 'white'
     }
-  }]);
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ModeHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    mode: mode,
+    handleModeChange: handleModeChange
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StatsHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    columns: columns
+  }), players.map(function (player, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Player__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      columns: columns,
+      player: player,
+      key: index,
+      mode: mode,
+      boardIndex: index,
+      removePlayer: removePlayer
+    });
+  }));
+};
 
-  return Board;
-}(react__WEBPACK_IMPORTED_MODULE_7__["Component"]);
-
-
+/* harmony default export */ __webpack_exports__["default"] = (index);
 
 /***/ }),
 

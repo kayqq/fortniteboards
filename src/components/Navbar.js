@@ -42,17 +42,17 @@ export default class Navbar extends Component {
                                     </Link>
                                 </Menu.Item>
                                 {/* <Responsive {...Responsive.onlyMobile} maxWidth={425}>
-                  <Menu.Item
-                    as="a"
-                    icon
-                    position="right"
-                    active
-                    style={{ color: "grey" }}
-                    onClick={() => this.setState({ searchVisible: true })}
-                  >
-                    <Icon name="search" size="large" />
-                  </Menu.Item>
-                </Responsive> */}
+                                        <Menu.Item
+                                            as="a"
+                                            icon
+                                            position="right"
+                                            active
+                                            style={{ color: "grey" }}
+                                            onClick={() => this.setState({ searchVisible: true })}
+                                        >
+                                            <Icon name="search" size="large" />
+                                        </Menu.Item>
+                                    </Responsive> */}
                             </React.Fragment>
                         )}
 
@@ -64,11 +64,11 @@ export default class Navbar extends Component {
                             icon
                             onClick={() => console.log('clicked!')}
                         >
-                            {console.log('COMPUTER', Responsive.onlyComputer)}
+                            {/* {console.log('COMPUTER', Responsive.onlyComputer)}
                             {console.log('WIDESCREEN', Responsive.onlyWidescreen)}
                             {console.log('TABLET', Responsive.onlyTablet)}
                             {console.log('LARGE SCREEN', Responsive.onlyLargeScreen)}
-                            {console.log('MOBILE', Responsive.onlyLargeScreen)}
+                            {console.log('MOBILE', Responsive.onlyLargeScreen)} */}
                             <SearchBar />
                         </Responsive>
 

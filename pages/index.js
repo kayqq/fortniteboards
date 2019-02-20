@@ -15,7 +15,7 @@ class Index extends Component {
         this.state = {};
     }
 
-    handleResultSelect = (username, resetSearchFn) => {
+    handleResultSelect = username => {
         this.props.router.push(`/profile/${username}`);
     };
 

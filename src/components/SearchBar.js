@@ -21,8 +21,19 @@ export default class SearchBar extends Component {
     resetComponent = () => this.setState({ isLoading: false, value: '' });
 
     handleResultSelect = async (e, { result }) => {
-        this.setState({ value: result.username, isLoading: true });
-        await this.props.handleResultSelect(result.username, this.resetComponent);
+        // checkDuplicateSelect prop given
+        if (this.props.checkDuplicateSelect) {
+            if (!this.props.checkDuplicateSelect(result.username)) {
+                this.setState({ value: result.username, isLoading: true });
+                await this.props.handleResultSelect(result.username);
+                this.resetComponent();
+            }
+        } else {
+            // checkDuplicateSelect prop NOT given
+            this.setState({ value: result.username, isLoading: true });
+            await this.props.handleResultSelect(result.username);
+            this.resetComponent();
+        }
     };
 
     handleSearchChange = (e, { value }) => {
