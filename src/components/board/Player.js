@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Grid, Header, Icon, Responsive } from 'semantic-ui-react';
 
 const Player = ({ columns, mode, player, boardIndex, removePlayer }) => {
@@ -6,10 +7,9 @@ const Player = ({ columns, mode, player, boardIndex, removePlayer }) => {
         <Grid.Row columns={columns.length} stretched>
             <Responsive
                 as={Grid.Column}
+                minWidth={Responsive.onlyMobile.maxWidth}
                 textAlign="center"
                 mobile="1"
-                minWidth={Responsive.onlyMobile.maxWidth}
-                fireOnMount
             >
                 <Header as="h6" style={{ color: '#92a2bd' }}>
                     {boardIndex + 1}
@@ -17,9 +17,11 @@ const Player = ({ columns, mode, player, boardIndex, removePlayer }) => {
             </Responsive>
             {columns.map((column, columnIndex) => {
                 const columnContent =
-                    columnIndex === 0
-                        ? player.username
-                        : player.stats[`${column.accessor}_${mode}`];
+                    columnIndex === 0 ? (
+                        <Link href={`/profile/${player.username}`}>{player.username}</Link>
+                    ) : (
+                        player.stats[`${column.accessor}_${mode}`]
+                    );
                 return (
                     <Grid.Column
                         className={columnIndex == 0 ? '' : 'compact'}

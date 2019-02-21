@@ -32,50 +32,42 @@ class Index extends Component {
         });
 
         return (
-            <React.Fragment>
-                <Container
-                    text
-                    textAlign="center"
-                    style={{
-                        paddingTop: '200px',
-                        paddingBottom: '100px',
-                        height: '100%'
-                    }}
-                >
-                    <h1>Fortnite Boards</h1>
-                    <Grid columns="1" centered textAlign="center">
-                        <Grid.Column
-                            mobile="16"
-                            computer="6"
-                            largeScreen="6"
-                            tablet="6"
-                            widescreen="6"
+            <Container
+                text
+                textAlign="center"
+                style={{
+                    paddingTop: '100px',
+                    paddingBottom: '100px',
+                    height: '100%'
+                }}
+            >
+                <h1>Fortnite Boards</h1>
+                <Grid columns="1" centered textAlign="center">
+                    <Grid.Column mobile="16" computer="6" largeScreen="6" tablet="6" widescreen="6">
+                        <Container>
+                            <SearchBar
+                                handleResultSelect={this.handleResultSelect}
+                                prefetchRoute={this.prefetchRoute}
+                                fetchByUsername={debouncedfetchByUsername}
+                                results={searchResults}
+                            />
+                        </Container>
+                    </Grid.Column>
+                    <Grid.Column textAlign="center">
+                        <Segment
+                            padded
+                            style={{
+                                backgroundColor: 'white',
+                                height: '200px'
+                            }}
                         >
-                            <Container>
-                                <SearchBar
-                                    handleResultSelect={this.handleResultSelect}
-                                    prefetchRoute={this.prefetchRoute}
-                                    fetchByUsername={debouncedfetchByUsername}
-                                    results={searchResults}
-                                />
-                            </Container>
-                        </Grid.Column>
-                        <Grid.Column textAlign="center">
-                            <Segment
-                                padded
-                                style={{
-                                    backgroundColor: 'white',
-                                    height: '200px'
-                                }}
-                            >
-                                <h2>NEWS</h2>
-                                <h2>NEWS</h2>
-                                <h2>NEWS</h2>
-                            </Segment>
-                        </Grid.Column>
-                    </Grid>
-                </Container>
-            </React.Fragment>
+                            <h2>NEWS</h2>
+                            <h2>NEWS</h2>
+                            <h2>NEWS</h2>
+                        </Segment>
+                    </Grid.Column>
+                </Grid>
+            </Container>
         );
     }
 }

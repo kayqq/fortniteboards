@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { Container, Grid } from 'semantic-ui-react';
+import { Container, Grid, Icon } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
 import { fetchByUsername, getProfile } from '../src/actions';
 
@@ -13,17 +13,15 @@ import Board from '../src/components/board';
 
 class Leaderboard extends Component {
     static async getInitialProps({ store, query, pathname, asPath, req }) {
-        const { usernames, entries } = query;
+        const { usernames } = query;
         let initialPlayers = [];
 
         if (!usernames) return { initialPlayers };
 
-        if (entries <= 1) {
-            initialPlayers = await getProfile(usernames);
-        } else {
-            initialPlayers = await Promise.all(usernames.map(username => getProfile(username)));
-        }
-        return { initialPlayers, entries };
+        const players = typeof usernames == 'string' ? [usernames] : usernames;
+        initialPlayers = await Promise.all(players.map(player => getProfile(player)));
+
+        return { initialPlayers };
     }
 
     constructor(props) {
@@ -37,38 +35,8 @@ class Leaderboard extends Component {
         };
     }
 
-    handleSort = accessor => () => {
-        const { column, players, direction, mode } = this.state;
-        if (column !== accessor) {
-            let sortedPlayers = [];
-            if (accessor == 'username') {
-                sortedPlayers = _.sortBy(this.state.players, o => o.username);
-            } else {
-                sortedPlayers = _.sortBy(players, o => o.stats[`${accessor}_${mode}`]);
-            }
-            this.setState(
-                {
-                    column: accessor,
-                    players: sortedPlayers,
-                    direction: 'ascending'
-                },
-                () => this.updateURL()
-            );
-
-            return;
-        }
-
-        this.setState(
-            {
-                players: players.reverse(),
-                direction: direction === 'ascending' ? 'descending' : 'ascending'
-            },
-            () => this.updateURL()
-        );
-    };
-
     componentDidMount() {
-        const { initialPlayers, entries } = this.props;
+        const { initialPlayers } = this.props;
         const { players } = this.state;
         this.setState({
             columns: [
@@ -99,16 +67,20 @@ class Leaderboard extends Component {
                     sort: this.handleSort('placetop1')
                 }
             ],
-            players: entries <= 1 ? [...players, initialPlayers] : [...players, ...initialPlayers],
-            entries: entries
+            players: [...players, ...initialPlayers]
         });
     }
 
     addPlayer = async username => {
-        const { players } = this.state;
-
+        const { players, column, mode, direction } = this.state;
         const newPlayer = await getProfile(username);
-        const updatedPlayers = [...players, newPlayer];
+        let updatedPlayers = [...players, newPlayer];
+
+        // if previous sorted then apply sort setting to updated players
+        if (column !== null) {
+            updatedPlayers = this.sortPlayers(updatedPlayers, column, mode, direction);
+        }
+
         this.setState({ players: updatedPlayers }, () => this.updateURL());
     };
 
@@ -142,13 +114,43 @@ class Leaderboard extends Component {
         return players.find(player => player.username === username);
     };
 
+    handleSort = accessor => () => {
+        const { column, players, direction, mode } = this.state;
+        // Reverse order if direction set, else default to desc
+        let sortDirection = direction === 'desc' ? 'asc' : 'desc';
+        let sortedColumn = column;
+        // First click default setting
+        if (column !== accessor) {
+            // Default to desc order, unless username column
+            sortDirection = accessor == 'username' ? 'asc' : 'desc';
+            sortedColumn = accessor; // Set sorted column name
+        }
+        // Sort players
+        const sortedPlayers = this.sortPlayers(players, accessor, mode, sortDirection);
+
+        this.setState(
+            {
+                column: sortedColumn,
+                players: sortedPlayers,
+                direction: sortDirection
+            },
+            () => this.updateURL()
+        );
+    };
+
+    sortPlayers = (players, accessor, mode, direction) => {
+        return accessor == 'username'
+            ? _.orderBy(this.state.players, [o => o.username.toLowerCase()], [direction])
+            : _.orderBy(players, o => o.stats[`${accessor}_${mode}`], [direction]);
+    };
+
     updateURL = () => {
         const { router } = this.props;
         const { players } = this.state;
         const usernames = players.map(player => player.username);
-        router.push({
+        router.replace({
             pathname: '/leaderboard',
-            query: { entries: usernames.length, usernames: usernames },
+            query: { usernames: usernames },
             options: { shallow: true }
         });
     };
@@ -160,46 +162,39 @@ class Leaderboard extends Component {
             maxWait: 1000
         });
         return (
-            <div>
-                <Container
-                    text
-                    textAlign="center"
-                    style={{
-                        paddingTop: '200px',
-                        paddingBottom: '100px',
-                        height: '100%'
-                    }}
-                >
-                    <h1>Board</h1>
-                    <Grid columns="1" centered textAlign="center">
-                        <Grid.Column
-                            mobile="16"
-                            computer="6"
-                            largeScreen="6"
-                            tablet="6"
-                            widescreen="6"
-                        >
-                            <Container>
-                                <SearchBar
-                                    checkDuplicateSelect={this.isPlayerSelected}
-                                    handleResultSelect={this.addPlayer}
-                                    fetchByUsername={debouncedfetchByUsername}
-                                    results={searchResults}
-                                />
-                            </Container>
-                        </Grid.Column>
-                        <Grid.Column textAlign="center">
-                            <Board
-                                columns={columns}
-                                mode={mode}
-                                players={players}
-                                removePlayer={this.removePlayer}
-                                handleModeChange={this.changeMode}
+            <Container
+                text
+                textAlign="center"
+                style={{
+                    paddingTop: '100px',
+                    paddingBottom: '100px',
+                    height: '100%'
+                }}
+            >
+                <h1>Board</h1>
+                <Grid columns="1" centered textAlign="center">
+                    <Grid.Column mobile="16" computer="6" largeScreen="6" tablet="6" widescreen="6">
+                        <Container>
+                            <SearchBar
+                                checkDuplicateSelect={this.isPlayerSelected}
+                                handleResultSelect={this.addPlayer}
+                                fetchByUsername={debouncedfetchByUsername}
+                                results={searchResults}
                             />
-                        </Grid.Column>
-                    </Grid>
-                </Container>
-            </div>
+                        </Container>
+                        <Icon name="share square" />
+                    </Grid.Column>
+                    <Grid.Column textAlign="center">
+                        <Board
+                            columns={columns}
+                            mode={mode}
+                            players={players}
+                            removePlayer={this.removePlayer}
+                            handleModeChange={this.changeMode}
+                        />
+                    </Grid.Column>
+                </Grid>
+            </Container>
         );
     }
 }

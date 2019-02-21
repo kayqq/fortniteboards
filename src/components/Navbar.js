@@ -15,13 +15,14 @@ export default class Navbar extends Component {
     render() {
         return (
             <Segment
-                style={{ backgroundColor: '#4a4a4a', color: 'white' }}
+                style={{ backgroundColor: '#4a4a4a', color: 'white', padding: '0px' }}
                 textAlign="center"
                 vertical
             >
-                <Container>
+                <Container style={{ backgroundColor: '#4a4a4a', color: 'white' }}>
                     <Menu
                         pointing
+                        // fixed="top"
                         secondary
                         size="large"
                         style={{ backgroundColor: '#4a4a4a', color: 'white' }}
@@ -30,9 +31,9 @@ export default class Navbar extends Component {
                             <SearchBar />
                         ) : (
                             <React.Fragment>
-                                <Menu.Item active style={{ color: 'white' }}>
-                                    <Link route="/">
-                                        <span>Home</span>
+                                <Menu.Item as="a" active style={{ color: 'white' }}>
+                                    <Link as="a" route="/">
+                                        <span as="a">Home</span>
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item style={{ color: 'white' }}>
