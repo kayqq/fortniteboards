@@ -3,16 +3,23 @@ import { bindActionCreators } from 'redux';
 
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Container, Grid, Segment } from 'semantic-ui-react';
+import { Container, Grid, Card } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
+import NewsCard from '../src/components/NewsCard';
 
-import { fetchByUsername } from '../src/actions';
+import { fetchByUsername, getNews } from '../src/actions';
 
 class Index extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            news: []
+        };
+    }
+    async componentDidMount() {
+        const data = await getNews();
+        this.setState({ news: data.entries.slice(0, 3) });
     }
 
     handleResultSelect = username => {
@@ -33,7 +40,6 @@ class Index extends Component {
 
         return (
             <Container
-                text
                 textAlign="center"
                 style={{
                     paddingTop: '100px',
@@ -41,31 +47,45 @@ class Index extends Component {
                     height: '100%'
                 }}
             >
-                <h1>Fortnite Boards</h1>
-                <Grid columns="1" centered textAlign="center">
-                    <Grid.Column mobile="16" computer="6" largeScreen="6" tablet="6" widescreen="6">
-                        <Container>
+                <Grid centered textAlign="center">
+                    <Grid.Row>
+                        <h3>Fortnite Boards</h3>
+                    </Grid.Row>
+                    <Grid.Row style={{ backgroundColor: 'grey' }}>
+                        <Grid.Column
+                            mobile="16"
+                            computer="6"
+                            largeScreen="6"
+                            tablet="6"
+                            widescreen="6"
+                        >
                             <SearchBar
                                 handleResultSelect={this.handleResultSelect}
                                 prefetchRoute={this.prefetchRoute}
                                 fetchByUsername={debouncedfetchByUsername}
                                 results={searchResults}
                             />
-                        </Container>
-                    </Grid.Column>
-                    <Grid.Column textAlign="center">
-                        <Segment
-                            padded
-                            style={{
-                                backgroundColor: 'white',
-                                height: '200px'
-                            }}
-                        >
-                            <h2>NEWS</h2>
-                            <h2>NEWS</h2>
-                            <h2>NEWS</h2>
-                        </Segment>
-                    </Grid.Column>
+                        </Grid.Column>
+                    </Grid.Row>
+
+                    <Grid.Row style={{ backgroundColor: 'green' }}>
+                        <h3>News</h3>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <Card.Group stackable itemsPerRow={3}>
+                                {this.state.news.map(article => (
+                                    <NewsCard
+                                        key={article.title}
+                                        imagesrc={article.image}
+                                        title={article.title}
+                                        description={article.body}
+                                        date={article.time}
+                                    />
+                                ))}
+                            </Card.Group>
+                        </Grid.Column>
+                    </Grid.Row>
                 </Grid>
             </Container>
         );

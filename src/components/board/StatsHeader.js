@@ -3,7 +3,7 @@ import { Grid, Header, Responsive } from 'semantic-ui-react';
 
 const StatsHeader = ({ columns }) => {
     return (
-        <Grid.Row>
+        <Grid.Row stretched>
             <Responsive
                 as={Grid.Column}
                 minWidth={Responsive.onlyMobile.maxWidth}

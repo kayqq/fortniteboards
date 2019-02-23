@@ -5,70 +5,55 @@ import _ from 'lodash';
 
 import { Container, Grid, Icon } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
-import { fetchByUsername, getProfile } from '../src/actions';
+import { fetchByUsername, getUsers, getProfile } from '../src/actions';
 
 import Board from '../src/components/board';
 
 // show awards, i.e. most kills, most wins, highest kd etc etc in separate div
 
 class Leaderboard extends Component {
-    static async getInitialProps({ store, query, pathname, asPath, req }) {
-        const { usernames } = query;
-        let initialPlayers = [];
-
-        if (!usernames) return { initialPlayers };
-
-        const players = typeof usernames == 'string' ? [usernames] : usernames;
-        initialPlayers = await Promise.all(players.map(player => getProfile(player)));
-
-        return { initialPlayers };
+    static async getInitialProps({ query }) {
+        let { usernames } = query;
+        const { mode } = query;
+        if (!usernames) return { usernames: [] };
+        usernames = typeof usernames == 'string' ? [usernames] : usernames;
+        return { usernames, mode };
     }
 
     constructor(props) {
         super(props);
         this.state = {
             players: [],
-            mode: 'solo',
+            mode: props.mode || 'solo',
             columns: [],
             column: null,
-            direction: null
+            direction: null,
+            loading: null
         };
     }
 
-    componentDidMount() {
-        const { initialPlayers } = this.props;
-        const { players } = this.state;
-        this.setState({
-            columns: [
-                {
-                    header: 'Player',
-                    accessor: 'username',
-                    sort: this.handleSort('username')
-                },
-                {
-                    header: 'K/D',
-                    accessor: 'kd',
-                    sort: this.handleSort('kd')
-                },
-                {
-                    header: 'Win %',
-                    accessor: 'winrate',
-                    sort: this.handleSort('winrate')
-                },
-                {
-                    header: 'Kills',
-                    accessor: 'kills',
+    async componentDidMount() {
+        const { usernames } = this.props;
+        let initialPlayers = [];
+        // Initialize column headers
+        this.initColumns();
 
-                    sort: this.handleSort('kills')
-                },
-                {
-                    header: 'Wins',
-                    accessor: 'placetop1',
-                    sort: this.handleSort('placetop1')
-                }
-            ],
-            players: [...players, ...initialPlayers]
+        // Start load player stats
+        this.setState({
+            loading: true,
+            players: usernames ? new Array(usernames.length).fill(null) : []
         });
+
+        initialPlayers = await Promise.all(usernames.map(username => getProfile(username)));
+
+        // End load player stats
+        this.setState(
+            {
+                players: [...initialPlayers],
+                loading: false
+            },
+            () => this.updateURL()
+        );
     }
 
     addPlayer = async username => {
@@ -76,7 +61,7 @@ class Leaderboard extends Component {
         const newPlayer = await getProfile(username);
         let updatedPlayers = [...players, newPlayer];
 
-        // if previous sorted then apply sort setting to updated players
+        // if pre-sorted then apply sort setting to updated players
         if (column !== null) {
             updatedPlayers = this.sortPlayers(updatedPlayers, column, mode, direction);
         }
@@ -106,28 +91,25 @@ class Leaderboard extends Component {
             default:
                 break;
         }
-        this.setState({ mode: nextMode });
-    };
-
-    isPlayerSelected = username => {
-        const { players } = this.state;
-        return players.find(player => player.username === username);
+        this.setState({ mode: nextMode }, () => this.updateURL());
     };
 
     handleSort = accessor => () => {
         const { column, players, direction, mode } = this.state;
+
         // Reverse order if direction set, else default to desc
         let sortDirection = direction === 'desc' ? 'asc' : 'desc';
         let sortedColumn = column;
-        // First click default setting
+
+        // Default to desc order on column switch
         if (column !== accessor) {
-            // Default to desc order, unless username column
+            // Default to asc order if username column
             sortDirection = accessor == 'username' ? 'asc' : 'desc';
-            sortedColumn = accessor; // Set sorted column name
+            // Set sorted column name
+            sortedColumn = accessor;
         }
         // Sort players
         const sortedPlayers = this.sortPlayers(players, accessor, mode, sortDirection);
-
         this.setState(
             {
                 column: sortedColumn,
@@ -144,19 +126,57 @@ class Leaderboard extends Component {
             : _.orderBy(players, o => o.stats[`${accessor}_${mode}`], [direction]);
     };
 
+    isPlayerSelected = username => {
+        const { players } = this.state;
+        return players.find(player => player.username === username);
+    };
+
     updateURL = () => {
         const { router } = this.props;
-        const { players } = this.state;
+        const { players, mode } = this.state;
         const usernames = players.map(player => player.username);
         router.replace({
             pathname: '/leaderboard',
-            query: { usernames: usernames },
+            query: { mode: mode, usernames: usernames },
             options: { shallow: true }
         });
     };
 
+    initColumns = () => {
+        this.setState({
+            columns: [
+                {
+                    header: 'Player',
+                    accessor: 'username',
+                    sort: this.handleSort('username')
+                },
+                {
+                    header: 'K/D',
+                    accessor: 'kd',
+                    sort: this.handleSort('kd')
+                },
+                {
+                    header: 'Win %',
+                    accessor: 'winrate',
+                    sort: this.handleSort('winrate')
+                },
+                {
+                    header: 'Kills',
+                    accessor: 'kills',
+
+                    sort: this.handleSort('kills')
+                },
+                {
+                    header: 'Wins',
+                    accessor: 'placetop1',
+                    sort: this.handleSort('placetop1')
+                }
+            ]
+        });
+    };
+
     render() {
-        const { columns, mode, players } = this.state;
+        const { columns, mode, players, loading } = this.state;
         const { searchResults, fetchByUsername } = this.props;
         const debouncedfetchByUsername = _.debounce(fetchByUsername, 500, {
             maxWait: 1000
@@ -171,28 +191,39 @@ class Leaderboard extends Component {
                     height: '100%'
                 }}
             >
-                <h1>Board</h1>
-                <Grid columns="1" centered textAlign="center">
-                    <Grid.Column mobile="16" computer="6" largeScreen="6" tablet="6" widescreen="6">
-                        <Container>
+                <Grid centered textAlign="center">
+                    <Grid.Row>
+                        <h3>Leaderboards</h3>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column
+                            mobile="16"
+                            computer="6"
+                            largeScreen="6"
+                            tablet="6"
+                            widescreen="6"
+                        >
                             <SearchBar
                                 checkDuplicateSelect={this.isPlayerSelected}
                                 handleResultSelect={this.addPlayer}
                                 fetchByUsername={debouncedfetchByUsername}
                                 results={searchResults}
                             />
-                        </Container>
-                        <Icon name="share square" />
-                    </Grid.Column>
-                    <Grid.Column textAlign="center">
-                        <Board
-                            columns={columns}
-                            mode={mode}
-                            players={players}
-                            removePlayer={this.removePlayer}
-                            handleModeChange={this.changeMode}
-                        />
-                    </Grid.Column>
+                            <Icon name="share" />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column textAlign="center">
+                            <Board
+                                columns={columns}
+                                mode={mode}
+                                players={players}
+                                removePlayer={this.removePlayer}
+                                handleModeChange={this.changeMode}
+                                loading={loading}
+                            />
+                        </Grid.Column>
+                    </Grid.Row>
                 </Grid>
             </Container>
         );

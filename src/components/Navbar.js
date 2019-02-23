@@ -19,58 +19,30 @@ export default class Navbar extends Component {
                 textAlign="center"
                 vertical
             >
-                <Container style={{ backgroundColor: '#4a4a4a', color: 'white' }}>
-                    <Menu
-                        pointing
-                        // fixed="top"
-                        secondary
-                        size="large"
-                        style={{ backgroundColor: '#4a4a4a', color: 'white' }}
-                    >
+                <Menu
+                    pointing
+                    fixed="top"
+                    secondary
+                    size="large"
+                    style={{ backgroundColor: '#4a4a4a', color: 'white' }}
+                >
+                    <Container style={{ backgroundColor: '#4a4a4a', color: 'white' }}>
                         {this.state.searchVisible ? (
                             <SearchBar />
                         ) : (
                             <React.Fragment>
                                 <Menu.Item as="a" active style={{ color: 'white' }}>
-                                    <Link as="a" route="/">
+                                    <Link as="/" href="/">
                                         <span as="a">Home</span>
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item style={{ color: 'white' }}>
-                                    <Link route="/leaderboard">
-                                        <span>Create</span>
+                                    <Link as="/leaderboard" href="/leaderboard">
+                                        <span as="a">Leaderboards</span>
                                     </Link>
                                 </Menu.Item>
-                                {/* <Responsive {...Responsive.onlyMobile} maxWidth={425}>
-                                        <Menu.Item
-                                            as="a"
-                                            icon
-                                            position="right"
-                                            active
-                                            style={{ color: "grey" }}
-                                            onClick={() => this.setState({ searchVisible: true })}
-                                        >
-                                            <Icon name="search" size="large" />
-                                        </Menu.Item>
-                                    </Responsive> */}
                             </React.Fragment>
                         )}
-
-                        {/* DESKTOP SEARCH */}
-                        <Responsive
-                            as={Menu.Item}
-                            style={{ width: '40px', color: 'grey' }}
-                            minWidth={Responsive.onlyTablet.minWidth}
-                            icon
-                            onClick={() => console.log('clicked!')}
-                        >
-                            {/* {console.log('COMPUTER', Responsive.onlyComputer)}
-                            {console.log('WIDESCREEN', Responsive.onlyWidescreen)}
-                            {console.log('TABLET', Responsive.onlyTablet)}
-                            {console.log('LARGE SCREEN', Responsive.onlyLargeScreen)}
-                            {console.log('MOBILE', Responsive.onlyLargeScreen)} */}
-                            <SearchBar />
-                        </Responsive>
 
                         {/* BARS */}
                         <Responsive
@@ -83,8 +55,8 @@ export default class Navbar extends Component {
                         >
                             <Icon name="bars" size="large" />
                         </Responsive>
-                    </Menu>
-                </Container>
+                    </Container>
+                </Menu>
             </Segment>
         );
     }

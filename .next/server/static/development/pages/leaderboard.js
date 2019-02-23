@@ -1514,11 +1514,11 @@ module.exports = __webpack_require__(/*! ./dist/client/router */ "./node_modules
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
@@ -1570,15 +1570,15 @@ function (_Component) {
     value: function () {
       var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee(_ref) {
-        var store, query, pathname, asPath, req, usernames, initialPlayers, players;
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee(_ref) {
+        var query, usernames, mode;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                store = _ref.store, query = _ref.query, pathname = _ref.pathname, asPath = _ref.asPath, req = _ref.req;
+                query = _ref.query;
                 usernames = query.usernames;
-                initialPlayers = [];
+                mode = query.mode;
 
                 if (usernames) {
                   _context.next = 5;
@@ -1586,23 +1586,17 @@ function (_Component) {
                 }
 
                 return _context.abrupt("return", {
-                  initialPlayers: initialPlayers
+                  usernames: []
                 });
 
               case 5:
-                players = typeof usernames == 'string' ? [usernames] : usernames;
-                _context.next = 8;
-                return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2___default.a.all(players.map(function (player) {
-                  return Object(_src_actions__WEBPACK_IMPORTED_MODULE_17__["getProfile"])(player);
-                }));
-
-              case 8:
-                initialPlayers = _context.sent;
+                usernames = typeof usernames == 'string' ? [usernames] : usernames;
                 return _context.abrupt("return", {
-                  initialPlayers: initialPlayers
+                  usernames: usernames,
+                  mode: mode
                 });
 
-              case 10:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -1630,10 +1624,10 @@ function (_Component) {
     function () {
       var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee2(username) {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee2(username) {
         var _this$state, players, column, mode, direction, newPlayer, updatedPlayers;
 
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee2$(_context2) {
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
@@ -1643,7 +1637,7 @@ function (_Component) {
 
               case 3:
                 newPlayer = _context2.sent;
-                updatedPlayers = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(players), [newPlayer]); // if previous sorted then apply sort setting to updated players
+                updatedPlayers = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(players), [newPlayer]); // if pre-sorted then apply sort setting to updated players
 
                 if (column !== null) {
                   updatedPlayers = _this.sortPlayers(updatedPlayers, column, mode, direction);
@@ -1704,13 +1698,8 @@ function (_Component) {
 
       _this.setState({
         mode: nextMode
-      });
-    });
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "isPlayerSelected", function (username) {
-      var players = _this.state.players;
-      return players.find(function (player) {
-        return player.username === username;
+      }, function () {
+        return _this.updateURL();
       });
     });
 
@@ -1723,12 +1712,13 @@ function (_Component) {
             mode = _this$state2.mode; // Reverse order if direction set, else default to desc
 
         var sortDirection = direction === 'desc' ? 'asc' : 'desc';
-        var sortedColumn = column; // First click default setting
+        var sortedColumn = column; // Default to desc order on column switch
 
         if (column !== accessor) {
-          // Default to desc order, unless username column
-          sortDirection = accessor == 'username' ? 'asc' : 'desc';
-          sortedColumn = accessor; // Set sorted column name
+          // Default to asc order if username column
+          sortDirection = accessor == 'username' ? 'asc' : 'desc'; // Set sorted column name
+
+          sortedColumn = accessor;
         } // Sort players
 
 
@@ -1752,15 +1742,25 @@ function (_Component) {
       }, [direction]);
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "isPlayerSelected", function (username) {
+      var players = _this.state.players;
+      return players.find(function (player) {
+        return player.username === username;
+      });
+    });
+
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "updateURL", function () {
       var router = _this.props.router;
-      var players = _this.state.players;
+      var _this$state3 = _this.state,
+          players = _this$state3.players,
+          mode = _this$state3.mode;
       var usernames = players.map(function (player) {
         return player.username;
       });
       router.replace({
         pathname: '/leaderboard',
         query: {
+          mode: mode,
           usernames: usernames
         },
         options: {
@@ -1769,53 +1769,102 @@ function (_Component) {
       });
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "initColumns", function () {
+      _this.setState({
+        columns: [{
+          header: 'Player',
+          accessor: 'username',
+          sort: _this.handleSort('username')
+        }, {
+          header: 'K/D',
+          accessor: 'kd',
+          sort: _this.handleSort('kd')
+        }, {
+          header: 'Win %',
+          accessor: 'winrate',
+          sort: _this.handleSort('winrate')
+        }, {
+          header: 'Kills',
+          accessor: 'kills',
+          sort: _this.handleSort('kills')
+        }, {
+          header: 'Wins',
+          accessor: 'placetop1',
+          sort: _this.handleSort('placetop1')
+        }]
+      });
+    });
+
     _this.state = {
       players: [],
-      mode: 'solo',
+      mode: props.mode || 'solo',
       columns: [],
       column: null,
-      direction: null
+      direction: null,
+      loading: null
     };
     return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__["default"])(Leaderboard, [{
     key: "componentDidMount",
-    value: function componentDidMount() {
-      var initialPlayers = this.props.initialPlayers;
-      var players = this.state.players;
-      this.setState({
-        columns: [{
-          header: 'Player',
-          accessor: 'username',
-          sort: this.handleSort('username')
-        }, {
-          header: 'K/D',
-          accessor: 'kd',
-          sort: this.handleSort('kd')
-        }, {
-          header: 'Win %',
-          accessor: 'winrate',
-          sort: this.handleSort('winrate')
-        }, {
-          header: 'Kills',
-          accessor: 'kills',
-          sort: this.handleSort('kills')
-        }, {
-          header: 'Wins',
-          accessor: 'placetop1',
-          sort: this.handleSort('placetop1')
-        }],
-        players: [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(players), Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(initialPlayers))
-      });
-    }
+    value: function () {
+      var _componentDidMount = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee3() {
+        var _this2 = this;
+
+        var usernames, initialPlayers;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                usernames = this.props.usernames;
+                initialPlayers = []; // Initialize column headers
+
+                this.initColumns(); // Start load player stats
+
+                this.setState({
+                  loading: true,
+                  players: usernames ? new Array(usernames.length).fill(null) : []
+                });
+                _context3.next = 6;
+                return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.all(usernames.map(function (username) {
+                  return Object(_src_actions__WEBPACK_IMPORTED_MODULE_17__["getProfile"])(username);
+                }));
+
+              case 6:
+                initialPlayers = _context3.sent;
+                // End load player stats
+                this.setState({
+                  players: Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(initialPlayers),
+                  loading: false
+                }, function () {
+                  return _this2.updateURL();
+                });
+
+              case 8:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
   }, {
     key: "render",
     value: function render() {
-      var _this$state3 = this.state,
-          columns = _this$state3.columns,
-          mode = _this$state3.mode,
-          players = _this$state3.players;
+      var _this$state4 = this.state,
+          columns = _this$state4.columns,
+          mode = _this$state4.mode,
+          players = _this$state4.players,
+          loading = _this$state4.loading;
       var _this$props = this.props,
           searchResults = _this$props.searchResults,
           fetchByUsername = _this$props.fetchByUsername;
@@ -1832,32 +1881,32 @@ function (_Component) {
           paddingBottom: '100px',
           height: '100%'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("h1", null, "Board"), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"], {
-        columns: "1",
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"], {
         centered: true,
         textAlign: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("h3", null, "Leaderboards")), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
         mobile: "16",
         computer: "6",
         largeScreen: "6",
         tablet: "6",
         widescreen: "6"
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Container"], null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_16__["default"], {
         checkDuplicateSelect: this.isPlayerSelected,
         handleResultSelect: this.addPlayer,
         fetchByUsername: debouncedfetchByUsername,
         results: searchResults
-      })), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Icon"], {
-        name: "share square"
-      })), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
+      }), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Icon"], {
+        name: "share"
+      }))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
         textAlign: "center"
       }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_board__WEBPACK_IMPORTED_MODULE_18__["default"], {
         columns: columns,
         mode: mode,
         players: players,
         removePlayer: this.removePlayer,
-        handleModeChange: this.changeMode
-      }))));
+        handleModeChange: this.changeMode,
+        loading: loading
+      })))));
     }
   }]);
 
@@ -1902,13 +1951,15 @@ var FETCH_BY_PLAYERNAME_FAILURE = 'FETCH_BY_PLAYERNAME_FAILURE';
 /*!******************************!*\
   !*** ./src/actions/index.js ***!
   \******************************/
-/*! exports provided: fetchByUsername, getProfile */
+/*! exports provided: fetchByUsername, getUsers, getProfile, getNews */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchByUsername", function() { return fetchByUsername; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUsers", function() { return getUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProfile", function() { return getProfile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNews", function() { return getNews; });
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
@@ -1936,7 +1987,11 @@ var fetchByUsername = function fetchByUsername(username, callback) {
                 });
                 _context.prev = 1;
                 _context.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search?username=".concat(username));
+                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search", {
+                  params: {
+                    username: username
+                  }
+                });
 
               case 4:
                 response = _context.sent;
@@ -1972,51 +2027,30 @@ var fetchByUsername = function fetchByUsername(username, callback) {
     }()
   );
 };
-var getProfile =
+var getUsers =
 /*#__PURE__*/
 function () {
   var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
   /*#__PURE__*/
-  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(username) {
-    var platform,
-        window,
-        response,
-        profile,
-        uid,
-        _args2 = arguments;
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(username, callback) {
+    var response;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            platform = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : 'pc';
-            window = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : 'season7';
-            _context2.next = 4;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search?username=".concat(username));
-
-          case 4:
-            response = _context2.sent;
-            profile = response.data.entries.filter(function (profile) {
-              return profile.username === username;
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search", {
+              params: {
+                username: username
+              }
             });
 
-            if (profile.length) {
-              _context2.next = 8;
-              break;
-            }
-
-            return _context2.abrupt("return", new Error());
-
-          case 8:
-            uid = profile[0].uid;
-            _context2.next = 11;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats?user_id=".concat(uid, "&platform=").concat(platform, "&window=").concat(window));
-
-          case 11:
+          case 2:
             response = _context2.sent;
-            profile = response.data;
-            return _context2.abrupt("return", profile);
+            callback();
+            return _context2.abrupt("return", response.data.entries);
 
-          case 14:
+          case 5:
           case "end":
             return _context2.stop();
         }
@@ -2024,8 +2058,111 @@ function () {
     }, _callee2, this);
   }));
 
-  return function getProfile(_x2) {
+  return function getUsers(_x2, _x3) {
     return _ref2.apply(this, arguments);
+  };
+}();
+var getProfile =
+/*#__PURE__*/
+function () {
+  var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  /*#__PURE__*/
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(username) {
+    var platform,
+        window,
+        response,
+        profile,
+        uid,
+        _args3 = arguments;
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            platform = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : 'pc';
+            window = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : 'season7';
+            _context3.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search", {
+              params: {
+                username: username
+              }
+            });
+
+          case 4:
+            response = _context3.sent;
+            profile = response.data.entries.filter(function (profile) {
+              return profile.username === username;
+            });
+
+            if (profile.length) {
+              _context3.next = 8;
+              break;
+            }
+
+            return _context3.abrupt("return", new Error());
+
+          case 8:
+            uid = profile[0].uid;
+            _context3.next = 11;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats", {
+              params: {
+                user_id: uid,
+                platform: platform,
+                window: window
+              }
+            });
+
+          case 11:
+            response = _context3.sent;
+            profile = response.data;
+            return _context3.abrupt("return", profile);
+
+          case 14:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, this);
+  }));
+
+  return function getProfile(_x4) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+var getNews =
+/*#__PURE__*/
+function () {
+  var _ref4 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  /*#__PURE__*/
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+    var language,
+        response,
+        _args4 = arguments;
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            language = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : 'en';
+            _context4.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://fortnite-public-api.theapinetwork.com/prod09/br_motd/get', {
+              params: {
+                language: language
+              }
+            });
+
+          case 3:
+            response = _context4.sent;
+            return _context4.abrupt("return", response.data);
+
+          case 5:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4, this);
+  }));
+
+  return function getNews() {
+    return _ref4.apply(this, arguments);
   };
 }();
 
@@ -2303,14 +2440,53 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Player = function Player(_ref) {
-  var columns = _ref.columns,
-      mode = _ref.mode,
-      player = _ref.player,
-      boardIndex = _ref.boardIndex,
-      removePlayer = _ref.removePlayer;
+var StatsColumn = function StatsColumn(_ref) {
+  var index = _ref.index,
+      _ref$content = _ref.content,
+      content = _ref$content === void 0 ? null : _ref$content,
+      _ref$matches = _ref.matches,
+      matches = _ref$matches === void 0 ? null : _ref$matches;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
+    className: index == 0 ? '' : 'compact',
+    textAlign: index == 0 ? 'left' : 'center',
+    mobile: index == 0 ? '6' : '2'
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"], {
+    as: index == 0 ? 'h4' : 'h4',
+    style: {
+      color: 'white'
+    }
+  }, content == null ? 'XXXX' : content, index == 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"].Subheader, {
+    size: "small",
+    style: {
+      color: '#92a2bd',
+      whiteSpace: 'nowrap'
+    }
+  }, matches == null ? '0000' : matches, " Matches") : null));
+};
+
+var TrashColumn = function TrashColumn(_ref2) {
+  var index = _ref2.index,
+      removePlayer = _ref2.removePlayer;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
+    textAlign: "center",
+    mobile: "1",
+    onClick: function onClick() {
+      removePlayer(index);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
+    size: "small",
+    color: "red",
+    name: "trash alternate outline"
+  }));
+};
+
+var Player = function Player(_ref3) {
+  var columns = _ref3.columns,
+      mode = _ref3.mode,
+      player = _ref3.player,
+      boardIndex = _ref3.boardIndex,
+      removePlayer = _ref3.removePlayer;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Row, {
-    columns: columns.length,
     stretched: true
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Responsive"], {
     as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column,
@@ -2323,37 +2499,27 @@ var Player = function Player(_ref) {
       color: '#92a2bd'
     }
   }, boardIndex + 1)), columns.map(function (column, columnIndex) {
+    if (!player) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StatsColumn, {
+        key: columnIndex,
+        index: columnIndex
+      });
+    }
+
     var columnContent = columnIndex === 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
       href: "/profile/".concat(player.username)
     }, player.username) : player.stats["".concat(column.accessor, "_").concat(mode)];
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
-      className: columnIndex == 0 ? '' : 'compact',
+    var matches = player.stats["matchesplayed_".concat(mode)];
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StatsColumn, {
       key: columnIndex,
-      textAlign: columnIndex == 0 ? 'left' : 'center',
-      mobile: columnIndex == 0 ? '6' : '2'
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"], {
-      as: columnIndex == 0 ? 'h4' : 'h4',
-      style: {
-        color: 'white'
-      }
-    }, columnContent, columnIndex == 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"].Subheader, {
-      size: "small",
-      style: {
-        color: '#92a2bd',
-        whiteSpace: 'nowrap'
-      }
-    }, player.stats["matchesplayed_".concat(mode)], " Matches") : null));
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
-    textAlign: "center",
-    mobile: "1",
-    onClick: function onClick() {
-      removePlayer(boardIndex);
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
-    size: "small",
-    color: "red",
-    name: "trash alternate outline"
-  })));
+      index: columnIndex,
+      content: columnContent,
+      matches: matches
+    });
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TrashColumn, {
+    index: boardIndex,
+    removePlayer: removePlayer
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Player);
@@ -2378,7 +2544,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var StatsHeader = function StatsHeader(_ref) {
   var columns = _ref.columns;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
+    stretched: true
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"], {
     as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column,
     minWidth: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"].onlyMobile.maxWidth,
     textAlign: "center",
@@ -2446,8 +2614,9 @@ var Index = function Index(_ref) {
       players = _ref.players,
       removePlayer = _ref.removePlayer,
       handleModeChange = _ref.handleModeChange,
-      mode = _ref.mode;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+      mode = _ref.mode,
+      loading = _ref.loading;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
     style: {
       backgroundColor: '#2c3c57',
       color: 'white'
@@ -2457,7 +2626,16 @@ var Index = function Index(_ref) {
     handleModeChange: handleModeChange
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StatsHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
     columns: columns
-  }), players.map(function (player, index) {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dimmer"].Dimmable, {
+    as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"],
+    dimmed: loading,
+    style: {
+      backgroundColor: '#2c3c57',
+      color: 'white'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dimmer"], {
+    active: loading
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Loader"], null, "Loading...")), players.map(function (player, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Player__WEBPACK_IMPORTED_MODULE_4__["default"], {
       key: index,
       columns: columns,
@@ -2466,7 +2644,7 @@ var Index = function Index(_ref) {
       boardIndex: index,
       removePlayer: removePlayer
     });
-  }));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);

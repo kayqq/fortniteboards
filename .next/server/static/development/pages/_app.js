@@ -1930,16 +1930,16 @@ function (_Component) {
         },
         textAlign: "center",
         vertical: true
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Container"], {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Menu"], {
+        pointing: true,
+        fixed: "top",
+        secondary: true,
+        size: "large",
         style: {
           backgroundColor: '#4a4a4a',
           color: 'white'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Menu"], {
-        pointing: true // fixed="top"
-        ,
-        secondary: true,
-        size: "large",
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Container"], {
         style: {
           backgroundColor: '#4a4a4a',
           color: 'white'
@@ -1951,8 +1951,8 @@ function (_Component) {
           color: 'white'
         }
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_7__["Link"], {
-        as: "a",
-        route: "/"
+        as: "/",
+        href: "/"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         as: "a"
       }, "Home"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Menu"].Item, {
@@ -1960,19 +1960,11 @@ function (_Component) {
           color: 'white'
         }
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_7__["Link"], {
-        route: "/leaderboard"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "Create")))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"], {
-        as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Menu"].Item,
-        style: {
-          width: '40px',
-          color: 'grey'
-        },
-        minWidth: semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"].onlyTablet.minWidth,
-        icon: true,
-        onClick: function onClick() {
-          return console.log('clicked!');
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_8__["default"], null)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"], {
+        as: "/leaderboard",
+        href: "/leaderboard"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        as: "a"
+      }, "Leaderboards")))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Responsive"], {
         as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_6__["Menu"].Item,
         icon: true,
         position: "right",
