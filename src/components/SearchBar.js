@@ -45,11 +45,11 @@ export default class SearchBar extends Component {
             this.props.fetchByUsername(this.state.value, () => {
                 this.setState({ isLoading: false });
                 // prefetch first result
-                const { results } = this.props;
-                if (results.length) {
-                    const firstResult = results[0].username;
-                    if (this.props.prefetchRoute) this.props.prefetchRoute(firstResult);
-                }
+                // const { results } = this.props;
+                // if (results.length) {
+                //     const firstResult = results[0].username;
+                //     if (this.props.prefetchRoute) this.props.prefetchRoute(firstResult);
+                // }
             });
         });
     };

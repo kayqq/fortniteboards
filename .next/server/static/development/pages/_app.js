@@ -126,28 +126,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/define-proper
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-descriptor */ "core-js/library/fn/object/get-own-property-descriptor");
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-symbols */ "core-js/library/fn/object/get-own-property-symbols");
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-prototype-of.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-prototype-of.js ***!
@@ -156,17 +134,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-prope
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/get-prototype-of */ "core-js/library/fn/object/get-prototype-of");
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/keys */ "core-js/library/fn/object/keys");
 
 /***/ }),
 
@@ -624,49 +591,6 @@ function _inherits(subClass, superClass) {
     }
   });
   if (superClass) Object(_setPrototypeOf__WEBPACK_IMPORTED_MODULE_1__["default"])(subClass, superClass);
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js ***!
-  \*************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _objectSpread; });
-/* harmony import */ var _core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/get-own-property-descriptor */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js");
-/* harmony import */ var _core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../core-js/object/get-own-property-symbols */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js");
-/* harmony import */ var _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
-/* harmony import */ var _core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _defineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-
-
-
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    var ownKeys = _core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default()(source);
-
-    if (typeof _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1___default.a === 'function') {
-      ownKeys = ownKeys.concat(_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1___default()(source).filter(function (sym) {
-        return _core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      Object(_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(target, key, source[key]);
-    });
-  }
-
-  return target;
 }
 
 /***/ }),
@@ -1545,17 +1469,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var next_redux_wrapper__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! next-redux-wrapper */ "next-redux-wrapper");
-/* harmony import */ var next_redux_wrapper__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(next_redux_wrapper__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _src_store_createStore__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../src/store/createStore */ "./src/store/createStore.js");
-/* harmony import */ var _src_components_Layout__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../src/components/Layout */ "./src/components/Layout.js");
-/* harmony import */ var _src_styles_app_scss__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../src/styles/app.scss */ "./src/styles/app.scss");
-/* harmony import */ var _src_styles_app_scss__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_src_styles_app_scss__WEBPACK_IMPORTED_MODULE_15__);
-
-
-
+/* harmony import */ var _src_components_Layout__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../src/components/Layout */ "./src/components/Layout.js");
+/* harmony import */ var _src_styles_app_scss__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../src/styles/app.scss */ "./src/styles/app.scss");
+/* harmony import */ var _src_styles_app_scss__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_src_styles_app_scss__WEBPACK_IMPORTED_MODULE_12__);
 
 
 
@@ -1587,13 +1503,10 @@ function (_App) {
       var _this$props = this.props,
           Component = _this$props.Component,
           pageProps = _this$props.pageProps,
-          store = _this$props.store,
           router = _this$props.router;
-      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_8__["Container"], null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_11__["Provider"], {
-        store: store
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_src_components_Layout__WEBPACK_IMPORTED_MODULE_14__["default"], null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
+      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_8__["Container"], null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_src_components_Layout__WEBPACK_IMPORTED_MODULE_11__["default"], null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
         router: router
-      }, pageProps)))));
+      }, pageProps))));
     }
   }], [{
     key: "getInitialProps",
@@ -1644,7 +1557,7 @@ function (_App) {
   return MyApp;
 }(next_app__WEBPACK_IMPORTED_MODULE_8___default.a);
 
-/* harmony default export */ __webpack_exports__["default"] = (next_redux_wrapper__WEBPACK_IMPORTED_MODULE_12___default()(_src_store_createStore__WEBPACK_IMPORTED_MODULE_13__["default"])(Object(next_router__WEBPACK_IMPORTED_MODULE_10__["withRouter"])(MyApp)));
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_10__["withRouter"])(MyApp));
 
 /***/ }),
 
@@ -1674,24 +1587,6 @@ var APP_ROUTES = [{
 APP_ROUTES.forEach(function (route) {
   return routes.add(route);
 });
-
-/***/ }),
-
-/***/ "./src/actions/constants.js":
-/*!**********************************!*\
-  !*** ./src/actions/constants.js ***!
-  \**********************************/
-/*! exports provided: FETCH_BY_PLAYERNAME_REQUESTED, FETCH_BY_PLAYERNAME_SUCCESS, FETCH_BY_PLAYERNAME_FAILURE */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_REQUESTED", function() { return FETCH_BY_PLAYERNAME_REQUESTED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_SUCCESS", function() { return FETCH_BY_PLAYERNAME_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_FAILURE", function() { return FETCH_BY_PLAYERNAME_FAILURE; });
-var FETCH_BY_PLAYERNAME_REQUESTED = 'FETCH_BY_PLAYERNAME_REQUESTED';
-var FETCH_BY_PLAYERNAME_SUCCESS = 'FETCH_BY_PLAYERNAME_SUCCESS';
-var FETCH_BY_PLAYERNAME_FAILURE = 'FETCH_BY_PLAYERNAME_FAILURE';
 
 /***/ }),
 
@@ -2134,14 +2029,12 @@ function (_Component) {
           _this.setState({
             isLoading: false
           }); // prefetch first result
+          // const { results } = this.props;
+          // if (results.length) {
+          //     const firstResult = results[0].username;
+          //     if (this.props.prefetchRoute) this.props.prefetchRoute(firstResult);
+          // }
 
-
-          var results = _this.props.results;
-
-          if (results.length) {
-            var firstResult = results[0].username;
-            if (_this.props.prefetchRoute) _this.props.prefetchRoute(firstResult);
-          }
         });
       });
     });
@@ -2188,95 +2081,6 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_10__["Component"]);
 
 
-
-/***/ }),
-
-/***/ "./src/reducers/index.js":
-/*!*******************************!*\
-  !*** ./src/reducers/index.js ***!
-  \*******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search */ "./src/reducers/search.js");
-
-
-var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  search: _search__WEBPACK_IMPORTED_MODULE_1__["default"]
-});
-/* harmony default export */ __webpack_exports__["default"] = (rootReducer);
-
-/***/ }),
-
-/***/ "./src/reducers/search.js":
-/*!********************************!*\
-  !*** ./src/reducers/search.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
-/* harmony import */ var _actions_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/constants */ "./src/actions/constants.js");
-
-
-var initialState = {
-  running: false,
-  searchResults: []
-};
-/* harmony default export */ __webpack_exports__["default"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case _actions_constants__WEBPACK_IMPORTED_MODULE_1__["FETCH_BY_PLAYERNAME_SUCCESS"]:
-      // The following is a work around for Semantic Search key and title prop bug
-      var searchResults = action.payload.map(function (result, index) {
-        result.key = index;
-        result.title = result.username;
-        return result;
-      });
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
-        searchResults: searchResults
-      });
-
-    default:
-      return state;
-  }
-});
-
-/***/ }),
-
-/***/ "./src/store/createStore.js":
-/*!**********************************!*\
-  !*** ./src/store/createStore.js ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-devtools-extension */ "redux-devtools-extension");
-/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-thunk */ "redux-thunk");
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redux_thunk__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reducers */ "./src/reducers/index.js");
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = (function () {
-  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var options = arguments.length > 1 ? arguments[1] : undefined;
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_3__["default"], Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2___default.a)));
-});
 
 /***/ }),
 
@@ -2336,28 +2140,6 @@ module.exports = require("core-js/library/fn/object/define-property");
 
 /***/ }),
 
-/***/ "core-js/library/fn/object/get-own-property-descriptor":
-/*!************************************************************************!*\
-  !*** external "core-js/library/fn/object/get-own-property-descriptor" ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/object/get-own-property-descriptor");
-
-/***/ }),
-
-/***/ "core-js/library/fn/object/get-own-property-symbols":
-/*!*********************************************************************!*\
-  !*** external "core-js/library/fn/object/get-own-property-symbols" ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/object/get-own-property-symbols");
-
-/***/ }),
-
 /***/ "core-js/library/fn/object/get-prototype-of":
 /*!*************************************************************!*\
   !*** external "core-js/library/fn/object/get-prototype-of" ***!
@@ -2366,17 +2148,6 @@ module.exports = require("core-js/library/fn/object/get-own-property-symbols");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/get-prototype-of");
-
-/***/ }),
-
-/***/ "core-js/library/fn/object/keys":
-/*!*************************************************!*\
-  !*** external "core-js/library/fn/object/keys" ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/object/keys");
 
 /***/ }),
 
@@ -2446,17 +2217,6 @@ module.exports = require("lodash");
 
 /***/ }),
 
-/***/ "next-redux-wrapper":
-/*!*************************************!*\
-  !*** external "next-redux-wrapper" ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("next-redux-wrapper");
-
-/***/ }),
-
 /***/ "next-routes":
 /*!******************************!*\
   !*** external "next-routes" ***!
@@ -2520,50 +2280,6 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-is");
-
-/***/ }),
-
-/***/ "react-redux":
-/*!******************************!*\
-  !*** external "react-redux" ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
-
-/***/ "redux":
-/*!************************!*\
-  !*** external "redux" ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("redux");
-
-/***/ }),
-
-/***/ "redux-devtools-extension":
-/*!*******************************************!*\
-  !*** external "redux-devtools-extension" ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-devtools-extension");
-
-/***/ }),
-
-/***/ "redux-thunk":
-/*!******************************!*\
-  !*** external "redux-thunk" ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-thunk");
 
 /***/ }),
 

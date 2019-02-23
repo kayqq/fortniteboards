@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import { Container, Grid, Icon } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
-import { fetchByUsername, getUsers, getProfile } from '../src/actions';
+import { getUsernames, getProfile } from '../src/actions';
 
 import Board from '../src/components/board';
 
@@ -28,7 +26,8 @@ class Leaderboard extends Component {
             columns: [],
             column: null,
             direction: null,
-            loading: null
+            loading: null,
+            results: []
         };
     }
 
@@ -142,6 +141,19 @@ class Leaderboard extends Component {
         });
     };
 
+    handleUsernameSearch = async (username, callback) => {
+        const usernames = await getUsernames(username);
+        // OPTIMIZE:
+        // CHANGE SEARCH RESULTS TO ACCEPT DATA GIVEN WITHOUT HAVING TO PRE-MODIFY THE DATA TO FIT
+        const formattedResults = usernames.map((result, index) => {
+            result.key = index;
+            result.title = result.username;
+            return result;
+        });
+        callback();
+        this.setState({ results: formattedResults });
+    };
+
     initColumns = () => {
         this.setState({
             columns: [
@@ -176,9 +188,8 @@ class Leaderboard extends Component {
     };
 
     render() {
-        const { columns, mode, players, loading } = this.state;
-        const { searchResults, fetchByUsername } = this.props;
-        const debouncedfetchByUsername = _.debounce(fetchByUsername, 500, {
+        const { columns, mode, players, loading, results } = this.state;
+        const debouncedfetchByUsername = _.debounce(this.handleUsernameSearch, 500, {
             maxWait: 1000
         });
         return (
@@ -207,7 +218,7 @@ class Leaderboard extends Component {
                                 checkDuplicateSelect={this.isPlayerSelected}
                                 handleResultSelect={this.addPlayer}
                                 fetchByUsername={debouncedfetchByUsername}
-                                results={searchResults}
+                                results={results}
                             />
                             <Icon name="share" />
                         </Grid.Column>
@@ -230,15 +241,4 @@ class Leaderboard extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        searchResults: state.search.searchResults
-    };
-};
-
-const mapDispatchToProps = dispatch => bindActionCreators({ fetchByUsername }, dispatch);
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Leaderboard);
+export default Leaderboard;

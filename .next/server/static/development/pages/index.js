@@ -496,19 +496,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! redux */ "redux");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
-/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _src_components_SearchBar__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../src/components/SearchBar */ "./src/components/SearchBar.js");
-/* harmony import */ var _src_components_NewsCard__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../src/components/NewsCard */ "./src/components/NewsCard.js");
-/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../src/actions */ "./src/actions/index.js");
-
-
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _src_components_SearchBar__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../src/components/SearchBar */ "./src/components/SearchBar.js");
+/* harmony import */ var _src_components_NewsCard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../src/components/NewsCard */ "./src/components/NewsCard.js");
+/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../src/actions */ "./src/actions/index.js");
 
 
 
@@ -545,7 +539,48 @@ function (_Component) {
       _this.props.router.prefetch("/profile/".concat(username));
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__["default"])(_this)), "handleUsernameSearch",
+    /*#__PURE__*/
+    function () {
+      var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(username, callback) {
+        var usernames, formattedResults;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_14__["getUsernames"])(username);
+
+              case 2:
+                usernames = _context.sent;
+                formattedResults = usernames.map(function (result, index) {
+                  result.key = index;
+                  result.title = result.username;
+                  return result;
+                });
+                callback();
+
+                _this.setState({
+                  results: formattedResults
+                });
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      return function (_x, _x2) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+
     _this.state = {
+      results: [],
       news: []
     };
     return _this;
@@ -556,27 +591,27 @@ function (_Component) {
     value: function () {
       var _componentDidMount = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var data;
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context.next = 2;
-                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_16__["getNews"])();
+                _context2.next = 2;
+                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_14__["getNews"])();
 
               case 2:
-                data = _context.sent;
+                data = _context2.sent;
                 this.setState({
                   news: data.entries.slice(0, 3)
                 });
 
               case 4:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
 
       function componentDidMount() {
@@ -588,48 +623,46 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          searchResults = _this$props.searchResults,
-          fetchByUsername = _this$props.fetchByUsername; // debounced fetch
+      var results = this.state.results; // debounced fetch
 
-      var debouncedfetchByUsername = lodash__WEBPACK_IMPORTED_MODULE_12___default.a.debounce(fetchByUsername, 500, {
+      var debouncedfetchByUsername = lodash__WEBPACK_IMPORTED_MODULE_10___default.a.debounce(this.handleUsernameSearch, 500, {
         maxWait: 1000
       });
 
-      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Container"], {
+      return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Container"], {
         textAlign: "center",
         style: {
           paddingTop: '100px',
           paddingBottom: '100px',
           height: '100%'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"], {
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Grid"], {
         centered: true,
         textAlign: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h3", null, "Fortnite Boards")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Row, {
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h3", null, "Fortnite Boards")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h4", null, "Welcome to Fortnite Boards! Search player stats by battle tag or build your own Leaderboard and share to your friends!")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Grid"].Row, {
         style: {
           backgroundColor: 'grey'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Column, {
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Grid"].Column, {
         mobile: "16",
         computer: "6",
         largeScreen: "6",
         tablet: "6",
         widescreen: "6"
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_12__["default"], {
         handleResultSelect: this.handleResultSelect,
         prefetchRoute: this.prefetchRoute,
         fetchByUsername: debouncedfetchByUsername,
-        results: searchResults
-      }))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Row, {
+        results: results
+      }))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Grid"].Row, {
         style: {
           backgroundColor: 'green'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h3", null, "News")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Card"].Group, {
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h3", null, "News")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Card"].Group, {
         stackable: true,
         itemsPerRow: 3
       }, this.state.news.map(function (article) {
-        return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_src_components_NewsCard__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_src_components_NewsCard__WEBPACK_IMPORTED_MODULE_13__["default"], {
           key: article.title,
           imagesrc: article.image,
           title: article.title,
@@ -643,37 +676,7 @@ function (_Component) {
   return Index;
 }(react__WEBPACK_IMPORTED_MODULE_9__["Component"]);
 
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    searchResults: state.search.searchResults
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return Object(redux__WEBPACK_IMPORTED_MODULE_10__["bindActionCreators"])({
-    fetchByUsername: _src_actions__WEBPACK_IMPORTED_MODULE_16__["fetchByUsername"]
-  }, dispatch);
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_11__["connect"])(mapStateToProps, mapDispatchToProps)(Index));
-
-/***/ }),
-
-/***/ "./src/actions/constants.js":
-/*!**********************************!*\
-  !*** ./src/actions/constants.js ***!
-  \**********************************/
-/*! exports provided: FETCH_BY_PLAYERNAME_REQUESTED, FETCH_BY_PLAYERNAME_SUCCESS, FETCH_BY_PLAYERNAME_FAILURE */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_REQUESTED", function() { return FETCH_BY_PLAYERNAME_REQUESTED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_SUCCESS", function() { return FETCH_BY_PLAYERNAME_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_BY_PLAYERNAME_FAILURE", function() { return FETCH_BY_PLAYERNAME_FAILURE; });
-var FETCH_BY_PLAYERNAME_REQUESTED = 'FETCH_BY_PLAYERNAME_REQUESTED';
-var FETCH_BY_PLAYERNAME_SUCCESS = 'FETCH_BY_PLAYERNAME_SUCCESS';
-var FETCH_BY_PLAYERNAME_FAILURE = 'FETCH_BY_PLAYERNAME_FAILURE';
+/* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),
 
@@ -681,13 +684,12 @@ var FETCH_BY_PLAYERNAME_FAILURE = 'FETCH_BY_PLAYERNAME_FAILURE';
 /*!******************************!*\
   !*** ./src/actions/index.js ***!
   \******************************/
-/*! exports provided: fetchByUsername, getUsers, getProfile, getNews */
+/*! exports provided: getUsernames, getProfile, getNews */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchByUsername", function() { return fetchByUsername; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUsers", function() { return getUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUsernames", function() { return getUsernames; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProfile", function() { return getProfile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNews", function() { return getNews; });
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
@@ -695,80 +697,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants */ "./src/actions/constants.js");
 
 
 
-
-var fetchByUsername = function fetchByUsername(username, callback) {
-  return (
-    /*#__PURE__*/
-    function () {
-      var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
-      /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(dispatch) {
-        var response;
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                dispatch({
-                  type: _constants__WEBPACK_IMPORTED_MODULE_3__["FETCH_BY_PLAYERNAME_REQUESTED"]
-                });
-                _context.prev = 1;
-                _context.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search", {
-                  params: {
-                    username: username
-                  }
-                });
-
-              case 4:
-                response = _context.sent;
-                dispatch({
-                  type: _constants__WEBPACK_IMPORTED_MODULE_3__["FETCH_BY_PLAYERNAME_SUCCESS"],
-                  payload: response.data.entries
-                });
-                _context.next = 11;
-                break;
-
-              case 8:
-                _context.prev = 8;
-                _context.t0 = _context["catch"](1);
-                dispatch({
-                  type: _constants__WEBPACK_IMPORTED_MODULE_3__["FETCH_BY_PLAYERNAME_FAILURE"],
-                  payload: _context.t0
-                });
-
-              case 11:
-                callback();
-
-              case 12:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this, [[1, 8]]);
-      }));
-
-      return function (_x) {
-        return _ref.apply(this, arguments);
-      };
-    }()
-  );
-};
-var getUsers =
+var getUsernames =
 /*#__PURE__*/
 function () {
-  var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
   /*#__PURE__*/
-  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(username, callback) {
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(username) {
     var response;
-    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context.prev = _context.next) {
           case 0:
-            _context2.next = 2;
+            _context.next = 2;
             return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search", {
               params: {
                 username: username
@@ -776,63 +719,49 @@ function () {
             });
 
           case 2:
-            response = _context2.sent;
-            callback();
-            return _context2.abrupt("return", response.data.entries);
+            response = _context.sent;
+            return _context.abrupt("return", response.data.entries);
 
-          case 5:
+          case 4:
           case "end":
-            return _context2.stop();
+            return _context.stop();
         }
       }
-    }, _callee2, this);
+    }, _callee, this);
   }));
 
-  return function getUsers(_x2, _x3) {
-    return _ref2.apply(this, arguments);
+  return function getUsernames(_x) {
+    return _ref.apply(this, arguments);
   };
 }();
 var getProfile =
 /*#__PURE__*/
 function () {
-  var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
   /*#__PURE__*/
-  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(username) {
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(username) {
     var platform,
         window,
         response,
-        profile,
         uid,
-        _args3 = arguments;
-    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        _args2 = arguments;
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
-            platform = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : 'pc';
-            window = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : 'season7';
-            _context3.next = 4;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search", {
+            platform = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : 'pc';
+            window = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : 'season7';
+            _context2.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://fortnite-public-api.theapinetwork.com/prod09/users/id', {
               params: {
                 username: username
               }
             });
 
           case 4:
-            response = _context3.sent;
-            profile = response.data.entries.filter(function (profile) {
-              return profile.username === username;
-            });
-
-            if (profile.length) {
-              _context3.next = 8;
-              break;
-            }
-
-            return _context3.abrupt("return", new Error());
-
-          case 8:
-            uid = profile[0].uid;
-            _context3.next = 11;
+            response = _context2.sent;
+            uid = response.data.uid;
+            _context2.next = 8;
             return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats", {
               params: {
                 user_id: uid,
@@ -841,38 +770,37 @@ function () {
               }
             });
 
-          case 11:
-            response = _context3.sent;
-            profile = response.data;
-            return _context3.abrupt("return", profile);
+          case 8:
+            response = _context2.sent;
+            return _context2.abrupt("return", response.data);
 
-          case 14:
+          case 10:
           case "end":
-            return _context3.stop();
+            return _context2.stop();
         }
       }
-    }, _callee3, this);
+    }, _callee2, this);
   }));
 
-  return function getProfile(_x4) {
-    return _ref3.apply(this, arguments);
+  return function getProfile(_x2) {
+    return _ref2.apply(this, arguments);
   };
 }();
 var getNews =
 /*#__PURE__*/
 function () {
-  var _ref4 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
   /*#__PURE__*/
-  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
     var language,
         response,
-        _args4 = arguments;
-    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        _args3 = arguments;
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
       while (1) {
-        switch (_context4.prev = _context4.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
-            language = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : 'en';
-            _context4.next = 3;
+            language = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : 'en';
+            _context3.next = 3;
             return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://fortnite-public-api.theapinetwork.com/prod09/br_motd/get', {
               params: {
                 language: language
@@ -880,19 +808,19 @@ function () {
             });
 
           case 3:
-            response = _context4.sent;
-            return _context4.abrupt("return", response.data);
+            response = _context3.sent;
+            return _context3.abrupt("return", response.data);
 
           case 5:
           case "end":
-            return _context4.stop();
+            return _context3.stop();
         }
       }
-    }, _callee4, this);
+    }, _callee3, this);
   }));
 
   return function getNews() {
-    return _ref4.apply(this, arguments);
+    return _ref3.apply(this, arguments);
   };
 }();
 
@@ -1077,14 +1005,12 @@ function (_Component) {
           _this.setState({
             isLoading: false
           }); // prefetch first result
+          // const { results } = this.props;
+          // if (results.length) {
+          //     const firstResult = results[0].username;
+          //     if (this.props.prefetchRoute) this.props.prefetchRoute(firstResult);
+          // }
 
-
-          var results = _this.props.results;
-
-          if (results.length) {
-            var firstResult = results[0].username;
-            if (_this.props.prefetchRoute) _this.props.prefetchRoute(firstResult);
-          }
         });
       });
     });
@@ -1253,28 +1179,6 @@ module.exports = require("lodash");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
-
-/***/ }),
-
-/***/ "react-redux":
-/*!******************************!*\
-  !*** external "react-redux" ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
-
-/***/ "redux":
-/*!************************!*\
-  !*** external "redux" ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("redux");
 
 /***/ }),
 

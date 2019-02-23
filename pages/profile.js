@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Container, Header, Grid, Divider } from 'semantic-ui-react';
 
 import { getProfile } from '../src/actions';
@@ -179,11 +178,4 @@ class Profile extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {};
-};
-
-export default connect(
-    mapStateToProps,
-    {}
-)(Profile);
+export default Profile;

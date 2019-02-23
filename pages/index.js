@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-
-import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Container, Grid, Card } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
 import NewsCard from '../src/components/NewsCard';
 
-import { fetchByUsername, getNews } from '../src/actions';
+import { getNews, getUsernames } from '../src/actions';
 
 class Index extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            results: [],
             news: []
         };
     }
@@ -30,11 +28,22 @@ class Index extends Component {
         this.props.router.prefetch(`/profile/${username}`);
     };
 
+    handleUsernameSearch = async (username, callback) => {
+        const usernames = await getUsernames(username);
+        const formattedResults = usernames.map((result, index) => {
+            result.key = index;
+            result.title = result.username;
+            return result;
+        });
+        callback();
+        this.setState({ results: formattedResults });
+    };
+
     render() {
-        const { searchResults, fetchByUsername } = this.props;
+        const { results } = this.state;
 
         // debounced fetch
-        const debouncedfetchByUsername = _.debounce(fetchByUsername, 500, {
+        const debouncedfetchByUsername = _.debounce(this.handleUsernameSearch, 500, {
             maxWait: 1000
         });
 
@@ -51,6 +60,12 @@ class Index extends Component {
                     <Grid.Row>
                         <h3>Fortnite Boards</h3>
                     </Grid.Row>
+                    <Grid.Row>
+                        <h4>
+                            Welcome to Fortnite Boards! Search player stats by battle tag or build
+                            your own Leaderboard and share to your friends!
+                        </h4>
+                    </Grid.Row>
                     <Grid.Row style={{ backgroundColor: 'grey' }}>
                         <Grid.Column
                             mobile="16"
@@ -63,7 +78,7 @@ class Index extends Component {
                                 handleResultSelect={this.handleResultSelect}
                                 prefetchRoute={this.prefetchRoute}
                                 fetchByUsername={debouncedfetchByUsername}
-                                results={searchResults}
+                                results={results}
                             />
                         </Grid.Column>
                     </Grid.Row>
@@ -92,15 +107,4 @@ class Index extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        searchResults: state.search.searchResults
-    };
-};
-
-const mapDispatchToProps = dispatch => bindActionCreators({ fetchByUsername }, dispatch);
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Index);
+export default Index;
