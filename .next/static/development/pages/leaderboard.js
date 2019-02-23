@@ -73087,13 +73087,7 @@ function (_Component) {
         _this.props.fetchByUsername(_this.state.value, function () {
           _this.setState({
             isLoading: false
-          }); // prefetch first result
-          // const { results } = this.props;
-          // if (results.length) {
-          //     const firstResult = results[0].username;
-          //     if (this.props.prefetchRoute) this.props.prefetchRoute(firstResult);
-          // }
-
+          });
         });
       });
     });
