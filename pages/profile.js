@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Grid, Divider } from 'semantic-ui-react';
 
-import { getProfile } from '../src/actions';
+import { getProfileByUsername } from '../src/actions';
 
 const StatsTable = ({ kd, kills, wins, winrate, matches, mode }) => {
     let backgroundColor = '';
@@ -64,7 +64,7 @@ const StatsTable = ({ kd, kills, wins, winrate, matches, mode }) => {
 
 class Profile extends Component {
     static async getInitialProps({ store, query, pathname, asPath, req }) {
-        const profile = (await getProfile(query.username)) || {};
+        const profile = (await getProfileByUsername(query.username)) || {};
         if (!profile.uid) {
             const err = new Error();
             err.code = 'ENOENT';
@@ -81,8 +81,7 @@ class Profile extends Component {
 
     render() {
         const { profile } = this.props;
-        const { stats } = profile;
-        const { totals } = profile;
+        const { stats, totals } = profile;
 
         return (
             <div>
@@ -91,10 +90,10 @@ class Profile extends Component {
                         <Grid.Row stretched style={{ backgroundColor: '#6c80a2' }}>
                             <Grid.Column>
                                 {/* <Image
-                    src="https://pm1.narvii.com/6918/222ae5aa45c92f4ce6b86e39d3be5c0385473d9er1-928-760v2_hq.jpg"
-                    size="small"
-                    circular
-                  /> */}
+                                    src="https://pm1.narvii.com/6918/222ae5aa45c92f4ce6b86e39d3be5c0385473d9er1-928-760v2_hq.jpg"
+                                    size="small"
+                                    circular
+                                /> */}
                                 <Grid.Row>
                                     <Header as="h1" style={{ color: 'white' }}>
                                         {profile.username}

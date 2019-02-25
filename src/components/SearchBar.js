@@ -1,70 +1,68 @@
-import _ from 'lodash';
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Label } from 'semantic-ui-react';
+import { getUsernames } from '../actions';
+
+import { useDebounce } from '../hooks/useDebounce';
 
 const resultRenderer = ({ uid, username }) => <Label key={uid} content={username} />;
 
-export default class SearchBar extends Component {
-    constructor(props) {
-        super(props);
+const SearchBar = ({ handleResultSelect }) => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [results, setResults] = useState([]);
+    const [isSearching, setIsSearching] = useState(false);
+    const debouncedSearchTerm = useDebounce(searchTerm, 200);
 
-        this.state = {
-            value: '',
-            isLoading: false
-        };
-    }
-
-    componentWillMount() {
-        this.resetComponent();
-    }
-
-    resetComponent = () => this.setState({ isLoading: false, value: '' });
-
-    handleResultSelect = async (e, { result }) => {
-        // checkDuplicateSelect prop given
-        if (this.props.checkDuplicateSelect) {
-            if (!this.props.checkDuplicateSelect(result.username)) {
-                this.setState({ value: result.username, isLoading: true });
-                await this.props.handleResultSelect(result.username);
-                this.resetComponent();
-            }
-        } else {
-            // checkDuplicateSelect prop NOT given
-            this.setState({ value: result.username, isLoading: true });
-            await this.props.handleResultSelect(result.username);
-            this.resetComponent();
-        }
-    };
-
-    handleSearchChange = (e, { value }) => {
-        this.setState({ isLoading: true, value }, () => {
-            // reset loading if empty
-            if (this.state.value.length < 1) return this.resetComponent();
-
-            // fetch users by username
-            this.props.fetchByUsername(this.state.value, () => {
-                this.setState({ isLoading: false });
-            });
+    async function fetch() {
+        const response = await getUsernames(debouncedSearchTerm);
+        const formattedResults = response.map((result, index) => {
+            result.key = index;
+            result.title = result.username;
+            return result;
         });
+        setResults(formattedResults);
+        setIsSearching(false);
+    }
+
+    useEffect(() => {
+        if (debouncedSearchTerm) {
+            setIsSearching(true);
+            fetch();
+        } else {
+            resetComponent();
+        }
+    }, [debouncedSearchTerm]);
+
+    const resetComponent = () => {
+        setSearchTerm('');
+        setIsSearching(false);
+        setResults([]);
     };
 
-    render() {
-        const { isLoading, value } = this.state;
-        const { results } = this.props;
-        return (
-            <Search
-                input={{ fluid: true, icon: 'arrow circle right' }}
-                loading={isLoading}
-                placeholder={'Enter your Epic username'}
-                onResultSelect={this.handleResultSelect}
-                onSearchChange={_.debounce(this.handleSearchChange, 500, {
-                    leading: true
-                })}
-                results={results}
-                resultRenderer={resultRenderer}
-                value={value}
-                showNoResults={false}
-            />
-        );
-    }
-}
+    const onResultSelect = (e, { result }) => {
+        setSearchTerm(result.username);
+        handleResultSelect(result);
+        resetComponent();
+    };
+
+    const onSearchChange = (e, { value }) => {
+        if (!value.length) return resetComponent();
+        setIsSearching(true);
+        setSearchTerm(value);
+    };
+
+    return (
+        <Search
+            input={{ fluid: true, icon: 'arrow circle right' }}
+            loading={isSearching}
+            placeholder={'Enter your Epic username'}
+            onResultSelect={onResultSelect}
+            onSearchChange={onSearchChange}
+            results={results}
+            resultRenderer={resultRenderer}
+            value={searchTerm}
+            showNoResults={true}
+        />
+    );
+};
+
+export default SearchBar;

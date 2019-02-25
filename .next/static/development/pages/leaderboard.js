@@ -72399,6 +72399,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
  // show awards, i.e. most kills, most wins, highest kd etc etc in separate div
+// share / reset / refresh buttons
 
 var Leaderboard =
 /*#__PURE__*/
@@ -72464,18 +72465,27 @@ function (_Component) {
     function () {
       var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee2(username) {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee2(player) {
         var _this$state, players, column, mode, direction, newPlayer, updatedPlayers;
 
         return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this$state = _this.state, players = _this$state.players, column = _this$state.column, mode = _this$state.mode, direction = _this$state.direction;
-                _context2.next = 3;
-                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_15__["getProfile"])(username);
+                _this$state = _this.state, players = _this$state.players, column = _this$state.column, mode = _this$state.mode, direction = _this$state.direction; // Check if already added to board
+
+                if (!_this.isPlayerSelected(player.uid)) {
+                  _context2.next = 3;
+                  break;
+                }
+
+                return _context2.abrupt("return");
 
               case 3:
+                _context2.next = 5;
+                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_15__["getProfileByUid"])(player.uid);
+
+              case 5:
                 newPlayer = _context2.sent;
                 updatedPlayers = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(players), [newPlayer]); // if pre-sorted then apply sort setting to updated players
 
@@ -72489,7 +72499,7 @@ function (_Component) {
                   return _this.updateURL();
                 });
 
-              case 7:
+              case 9:
               case "end":
                 return _context2.stop();
             }
@@ -72582,10 +72592,10 @@ function (_Component) {
       }, [direction]);
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "isPlayerSelected", function (username) {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "isPlayerSelected", function (uid) {
       var players = _this.state.players;
       return players.find(function (player) {
-        return player.username === username;
+        return player.uid === uid;
       });
     });
 
@@ -72608,48 +72618,6 @@ function (_Component) {
         }
       });
     });
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "handleUsernameSearch",
-    /*#__PURE__*/
-    function () {
-      var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
-      /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee3(username, callback) {
-        var usernames, formattedResults;
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_15__["getUsernames"])(username);
-
-              case 2:
-                usernames = _context3.sent;
-                // OPTIMIZE:
-                // CHANGE SEARCH RESULTS TO ACCEPT DATA GIVEN WITHOUT HAVING TO PRE-MODIFY THE DATA TO FIT
-                formattedResults = usernames.map(function (result, index) {
-                  result.key = index;
-                  result.title = result.username;
-                  return result;
-                });
-                callback();
-
-                _this.setState({
-                  results: formattedResults
-                });
-
-              case 6:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this);
-      }));
-
-      return function (_x3, _x4) {
-        return _ref3.apply(this, arguments);
-      };
-    }());
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "initColumns", function () {
       _this.setState({
@@ -72683,8 +72651,7 @@ function (_Component) {
       columns: [],
       column: null,
       direction: null,
-      loading: null,
-      results: []
+      loading: null
     };
     return _this;
   }
@@ -72694,13 +72661,13 @@ function (_Component) {
     value: function () {
       var _componentDidMount = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee4() {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee3() {
         var _this2 = this;
 
         var usernames, initialPlayers;
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee4$(_context4) {
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 usernames = this.props.usernames;
                 initialPlayers = []; // Initialize column headers
@@ -72711,13 +72678,13 @@ function (_Component) {
                   loading: true,
                   players: usernames ? new Array(usernames.length).fill(null) : []
                 });
-                _context4.next = 6;
+                _context3.next = 6;
                 return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.all(usernames.map(function (username) {
-                  return Object(_src_actions__WEBPACK_IMPORTED_MODULE_15__["getProfile"])(username);
+                  return Object(_src_actions__WEBPACK_IMPORTED_MODULE_15__["getProfileByUsername"])(username);
                 }));
 
               case 6:
-                initialPlayers = _context4.sent;
+                initialPlayers = _context3.sent;
                 // End load player stats
                 this.setState({
                   players: Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(initialPlayers),
@@ -72728,10 +72695,10 @@ function (_Component) {
 
               case 8:
               case "end":
-                return _context4.stop();
+                return _context3.stop();
             }
           }
-        }, _callee4, this);
+        }, _callee3, this);
       }));
 
       function componentDidMount() {
@@ -72747,13 +72714,7 @@ function (_Component) {
           columns = _this$state4.columns,
           mode = _this$state4.mode,
           players = _this$state4.players,
-          loading = _this$state4.loading,
-          results = _this$state4.results;
-
-      var debouncedfetchByUsername = lodash__WEBPACK_IMPORTED_MODULE_12___default.a.debounce(this.handleUsernameSearch, 500, {
-        maxWait: 1000
-      });
-
+          loading = _this$state4.loading;
       return react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Container"], {
         text: true,
         textAlign: "center",
@@ -72772,10 +72733,7 @@ function (_Component) {
         tablet: "6",
         widescreen: "6"
       }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        checkDuplicateSelect: this.isPlayerSelected,
-        handleResultSelect: this.addPlayer,
-        fetchByUsername: debouncedfetchByUsername,
-        results: results
+        handleResultSelect: this.addPlayer
       }), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
         name: "share"
       }))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Column, {
@@ -72802,13 +72760,14 @@ function (_Component) {
 /*!******************************!*\
   !*** ./src/actions/index.js ***!
   \******************************/
-/*! exports provided: getUsernames, getProfile, getNews */
+/*! exports provided: getUsernames, getProfileByUsername, getProfileByUid, getNews */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUsernames", function() { return getUsernames; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProfile", function() { return getProfile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProfileByUsername", function() { return getProfileByUsername; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProfileByUid", function() { return getProfileByUid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNews", function() { return getNews; });
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -72852,7 +72811,7 @@ function () {
     return _ref.apply(this, arguments);
   };
 }();
-var getProfile =
+var getProfileByUsername =
 /*#__PURE__*/
 function () {
   var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
@@ -72900,36 +72859,40 @@ function () {
     }, _callee2, this);
   }));
 
-  return function getProfile(_x2) {
+  return function getProfileByUsername(_x2) {
     return _ref2.apply(this, arguments);
   };
 }();
-var getNews =
+var getProfileByUid =
 /*#__PURE__*/
 function () {
   var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
   /*#__PURE__*/
-  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-    var language,
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(uid) {
+    var platform,
+        window,
         response,
         _args3 = arguments;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            language = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : 'en';
-            _context3.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://fortnite-public-api.theapinetwork.com/prod09/br_motd/get', {
+            platform = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : 'pc';
+            window = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : 'season7';
+            _context3.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats", {
               params: {
-                language: language
+                user_id: uid,
+                platform: platform,
+                window: window
               }
             });
 
-          case 3:
+          case 4:
             response = _context3.sent;
             return _context3.abrupt("return", response.data);
 
-          case 5:
+          case 6:
           case "end":
             return _context3.stop();
         }
@@ -72937,8 +72900,45 @@ function () {
     }, _callee3, this);
   }));
 
-  return function getNews() {
+  return function getProfileByUid(_x3) {
     return _ref3.apply(this, arguments);
+  };
+}();
+var getNews =
+/*#__PURE__*/
+function () {
+  var _ref4 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  /*#__PURE__*/
+  _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+    var language,
+        response,
+        _args4 = arguments;
+    return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            language = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : 'en';
+            _context4.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://fortnite-public-api.theapinetwork.com/prod09/br_motd/get', {
+              params: {
+                language: language
+              }
+            });
+
+          case 3:
+            response = _context4.sent;
+            return _context4.abrupt("return", response.data);
+
+          case 5:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4, this);
+  }));
+
+  return function getNews() {
+    return _ref4.apply(this, arguments);
   };
 }();
 
@@ -72953,27 +72953,15 @@ function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SearchBar; });
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
-
-
-
-
-
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+/* harmony import */ var _hooks_useDebounce__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useDebounce */ "./src/hooks/useDebounce.js");
 
 
 
@@ -72985,155 +72973,114 @@ __webpack_require__.r(__webpack_exports__);
 var resultRenderer = function resultRenderer(_ref) {
   var uid = _ref.uid,
       username = _ref.username;
-  return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Label"], {
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Label"], {
     key: uid,
     content: username
   });
 };
 
-var SearchBar =
-/*#__PURE__*/
-function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(SearchBar, _Component);
+var SearchBar = function SearchBar(_ref2) {
+  var handleResultSelect = _ref2.handleResultSelect;
 
-  function SearchBar(props) {
-    var _this;
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(''),
+      _useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_useState, 2),
+      searchTerm = _useState2[0],
+      setSearchTerm = _useState2[1];
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, SearchBar);
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])([]),
+      _useState4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_useState3, 2),
+      results = _useState4[0],
+      setResults = _useState4[1];
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(SearchBar).call(this, props));
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])(false),
+      _useState6 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_useState5, 2),
+      isSearching = _useState6[0],
+      setIsSearching = _useState6[1];
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__["default"])(_this)), "resetComponent", function () {
-      return _this.setState({
-        isLoading: false,
-        value: ''
-      });
-    });
+  var debouncedSearchTerm = Object(_hooks_useDebounce__WEBPACK_IMPORTED_MODULE_6__["useDebounce"])(searchTerm, 200);
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__["default"])(_this)), "handleResultSelect",
-    /*#__PURE__*/
-    function () {
-      var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
-      /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e, _ref2) {
-        var result;
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                result = _ref2.result;
-
-                if (!_this.props.checkDuplicateSelect) {
-                  _context.next = 9;
-                  break;
-                }
-
-                if (_this.props.checkDuplicateSelect(result.username)) {
-                  _context.next = 7;
-                  break;
-                }
-
-                _this.setState({
-                  value: result.username,
-                  isLoading: true
-                });
-
-                _context.next = 6;
-                return _this.props.handleResultSelect(result.username);
-
-              case 6:
-                _this.resetComponent();
-
-              case 7:
-                _context.next = 13;
-                break;
-
-              case 9:
-                // checkDuplicateSelect prop NOT given
-                _this.setState({
-                  value: result.username,
-                  isLoading: true
-                });
-
-                _context.next = 12;
-                return _this.props.handleResultSelect(result.username);
-
-              case 12:
-                _this.resetComponent();
-
-              case 13:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      return function (_x, _x2) {
-        return _ref3.apply(this, arguments);
-      };
-    }());
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7__["default"])(_this)), "handleSearchChange", function (e, _ref4) {
-      var value = _ref4.value;
-
-      _this.setState({
-        isLoading: true,
-        value: value
-      }, function () {
-        // reset loading if empty
-        if (_this.state.value.length < 1) return _this.resetComponent(); // fetch users by username
-
-        _this.props.fetchByUsername(_this.state.value, function () {
-          _this.setState({
-            isLoading: false
-          });
-        });
-      });
-    });
-
-    _this.state = {
-      value: '',
-      isLoading: false
-    };
-    return _this;
+  function fetch() {
+    return _fetch.apply(this, arguments);
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(SearchBar, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      this.resetComponent();
+  function _fetch() {
+    _fetch = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+    /*#__PURE__*/
+    _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var response, formattedResults;
+      return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return Object(_actions__WEBPACK_IMPORTED_MODULE_5__["getUsernames"])(debouncedSearchTerm);
+
+            case 2:
+              response = _context.sent;
+              formattedResults = response.map(function (result, index) {
+                result.key = index;
+                result.title = result.username;
+                return result;
+              });
+              setResults(formattedResults);
+              setIsSearching(false);
+
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+    return _fetch.apply(this, arguments);
+  }
+
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
+    if (debouncedSearchTerm) {
+      setIsSearching(true);
+      fetch();
+    } else {
+      resetComponent();
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$state = this.state,
-          isLoading = _this$state.isLoading,
-          value = _this$state.value;
-      var results = this.props.results;
-      return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_11__["Search"], {
-        input: {
-          fluid: true,
-          icon: 'arrow circle right'
-        },
-        loading: isLoading,
-        placeholder: 'Enter your Epic username',
-        onResultSelect: this.handleResultSelect,
-        onSearchChange: lodash__WEBPACK_IMPORTED_MODULE_9___default.a.debounce(this.handleSearchChange, 500, {
-          leading: true
-        }),
-        results: results,
-        resultRenderer: resultRenderer,
-        value: value,
-        showNoResults: false
-      });
-    }
-  }]);
+  }, [debouncedSearchTerm]);
 
-  return SearchBar;
-}(react__WEBPACK_IMPORTED_MODULE_10__["Component"]);
+  var resetComponent = function resetComponent() {
+    setSearchTerm('');
+    setIsSearching(false);
+    setResults([]);
+  };
 
+  var onResultSelect = function onResultSelect(e, _ref3) {
+    var result = _ref3.result;
+    setSearchTerm(result.username);
+    handleResultSelect(result);
+    resetComponent();
+  };
 
+  var onSearchChange = function onSearchChange(e, _ref4) {
+    var value = _ref4.value;
+    if (!value.length) return resetComponent();
+    setIsSearching(true);
+    setSearchTerm(value);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Search"], {
+    input: {
+      fluid: true,
+      icon: 'arrow circle right'
+    },
+    loading: isSearching,
+    placeholder: 'Enter your Epic username',
+    onResultSelect: onResultSelect,
+    onSearchChange: onSearchChange,
+    results: results,
+    resultRenderer: resultRenderer,
+    value: searchTerm,
+    showNoResults: true
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SearchBar);
 
 /***/ }),
 
@@ -73411,6 +73358,40 @@ var Index = function Index(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
+
+/***/ }),
+
+/***/ "./src/hooks/useDebounce.js":
+/*!**********************************!*\
+  !*** ./src/hooks/useDebounce.js ***!
+  \**********************************/
+/*! exports provided: useDebounce */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useDebounce", function() { return useDebounce; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var useDebounce = function useDebounce(value, delay) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(value),
+      _useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState, 2),
+      debouncedValue = _useState2[0],
+      setDebouncedValue = _useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var handler = setTimeout(function () {
+      setDebouncedValue(value);
+    }, delay);
+    return function () {
+      clearTimeout(handler);
+    };
+  }, [value]);
+  return debouncedValue;
+};
 
 /***/ }),
 

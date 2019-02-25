@@ -5,11 +5,10 @@ export const getUsernames = async username => {
         `https://fortnite-public-api.theapinetwork.com/prod09/users/search`,
         { params: { username: username } }
     );
-
     return response.data.entries;
 };
 
-export const getProfile = async (username, platform = 'pc', window = 'season7') => {
+export const getProfileByUsername = async (username, platform = 'pc', window = 'season7') => {
     let response = await axios.get(
         'https://fortnite-public-api.theapinetwork.com/prod09/users/id',
         { params: { username: username } }
@@ -18,6 +17,20 @@ export const getProfile = async (username, platform = 'pc', window = 'season7') 
     const { uid } = response.data;
 
     response = await axios.get(
+        `https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats`,
+        {
+            params: {
+                user_id: uid,
+                platform: platform,
+                window: window
+            }
+        }
+    );
+    return response.data;
+};
+
+export const getProfileByUid = async (uid, platform = 'pc', window = 'season7') => {
+    const response = await axios.get(
         `https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats`,
         {
             params: {

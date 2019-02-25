@@ -3,11 +3,12 @@ import _ from 'lodash';
 
 import { Container, Grid, Icon } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
-import { getUsernames, getProfile } from '../src/actions';
+import { getProfileByUsername, getProfileByUid } from '../src/actions';
 
 import Board from '../src/components/board';
 
 // show awards, i.e. most kills, most wins, highest kd etc etc in separate div
+// share / reset / refresh buttons
 
 class Leaderboard extends Component {
     static async getInitialProps({ query }) {
@@ -26,8 +27,7 @@ class Leaderboard extends Component {
             columns: [],
             column: null,
             direction: null,
-            loading: null,
-            results: []
+            loading: null
         };
     }
 
@@ -43,7 +43,9 @@ class Leaderboard extends Component {
             players: usernames ? new Array(usernames.length).fill(null) : []
         });
 
-        initialPlayers = await Promise.all(usernames.map(username => getProfile(username)));
+        initialPlayers = await Promise.all(
+            usernames.map(username => getProfileByUsername(username))
+        );
 
         // End load player stats
         this.setState(
@@ -55,9 +57,12 @@ class Leaderboard extends Component {
         );
     }
 
-    addPlayer = async username => {
+    addPlayer = async player => {
         const { players, column, mode, direction } = this.state;
-        const newPlayer = await getProfile(username);
+        // Check if already added to board
+        if (this.isPlayerSelected(player.uid)) return;
+        // Not duplicate, get profile and add
+        const newPlayer = await getProfileByUid(player.uid);
         let updatedPlayers = [...players, newPlayer];
 
         // if pre-sorted then apply sort setting to updated players
@@ -125,9 +130,9 @@ class Leaderboard extends Component {
             : _.orderBy(players, o => o.stats[`${accessor}_${mode}`], [direction]);
     };
 
-    isPlayerSelected = username => {
+    isPlayerSelected = uid => {
         const { players } = this.state;
-        return players.find(player => player.username === username);
+        return players.find(player => player.uid === uid);
     };
 
     updateURL = () => {
@@ -139,19 +144,6 @@ class Leaderboard extends Component {
             query: { mode: mode, usernames: usernames },
             options: { shallow: true }
         });
-    };
-
-    handleUsernameSearch = async (username, callback) => {
-        const usernames = await getUsernames(username);
-        // OPTIMIZE:
-        // CHANGE SEARCH RESULTS TO ACCEPT DATA GIVEN WITHOUT HAVING TO PRE-MODIFY THE DATA TO FIT
-        const formattedResults = usernames.map((result, index) => {
-            result.key = index;
-            result.title = result.username;
-            return result;
-        });
-        callback();
-        this.setState({ results: formattedResults });
     };
 
     initColumns = () => {
@@ -188,10 +180,8 @@ class Leaderboard extends Component {
     };
 
     render() {
-        const { columns, mode, players, loading, results } = this.state;
-        const debouncedfetchByUsername = _.debounce(this.handleUsernameSearch, 500, {
-            maxWait: 1000
-        });
+        const { columns, mode, players, loading } = this.state;
+
         return (
             <Container
                 text
@@ -214,12 +204,7 @@ class Leaderboard extends Component {
                             tablet="6"
                             widescreen="6"
                         >
-                            <SearchBar
-                                checkDuplicateSelect={this.isPlayerSelected}
-                                handleResultSelect={this.addPlayer}
-                                fetchByUsername={debouncedfetchByUsername}
-                                results={results}
-                            />
+                            <SearchBar handleResultSelect={this.addPlayer} />
                             <Icon name="share" />
                         </Grid.Column>
                     </Grid.Row>

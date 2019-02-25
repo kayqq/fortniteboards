@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { Container, Grid, Card } from 'semantic-ui-react';
+import { Container, Grid, Card, Segment } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
 import NewsCard from '../src/components/NewsCard';
 
-import { getNews, getUsernames } from '../src/actions';
+import { getNews } from '../src/actions';
 
 class Index extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            results: [],
             news: []
         };
     }
@@ -20,33 +19,11 @@ class Index extends Component {
         this.setState({ news: data.entries.slice(0, 3) });
     }
 
-    handleResultSelect = username => {
-        this.props.router.push(`/profile/${username}`);
-    };
-
-    prefetchRoute = username => {
-        this.props.router.prefetch(`/profile/${username}`);
-    };
-
-    handleUsernameSearch = async (username, callback) => {
-        const usernames = await getUsernames(username);
-        const formattedResults = usernames.map((result, index) => {
-            result.key = index;
-            result.title = result.username;
-            return result;
-        });
-        callback();
-        this.setState({ results: formattedResults });
+    handleResultSelect = player => {
+        this.props.router.push(`/profile/${player.username}`);
     };
 
     render() {
-        const { results } = this.state;
-
-        // debounced fetch
-        const debouncedfetchByUsername = _.debounce(this.handleUsernameSearch, 500, {
-            maxWait: 1000
-        });
-
         return (
             <Container
                 textAlign="center"
@@ -57,33 +34,31 @@ class Index extends Component {
                 }}
             >
                 <Grid centered textAlign="center">
-                    <Grid.Row>
+                    <Grid.Row as={Segment}>
                         <h3>Fortnite Boards</h3>
-                    </Grid.Row>
-                    <Grid.Row>
-                        <h4>
-                            Welcome to Fortnite Boards! Search player stats by battle tag or build
-                            your own Leaderboard and share to your friends!
-                        </h4>
-                    </Grid.Row>
-                    <Grid.Row style={{ backgroundColor: 'grey' }}>
+                        <Container>
+                            <h4>
+                                Welcome to Fortnite Boards! Search player stats by battle tag or
+                                build your own Leaderboard and share to your friends!
+                            </h4>
+                        </Container>
+
                         <Grid.Column
                             mobile="16"
                             computer="6"
                             largeScreen="6"
                             tablet="6"
                             widescreen="6"
+                            style={{ paddingBottom: '1em', paddingTop: '1em' }}
                         >
                             <SearchBar
                                 handleResultSelect={this.handleResultSelect}
                                 prefetchRoute={this.prefetchRoute}
-                                fetchByUsername={debouncedfetchByUsername}
-                                results={results}
                             />
                         </Grid.Column>
                     </Grid.Row>
 
-                    <Grid.Row style={{ backgroundColor: 'green' }}>
+                    <Grid.Row as={Segment}>
                         <h3>News</h3>
                     </Grid.Row>
                     <Grid.Row>
