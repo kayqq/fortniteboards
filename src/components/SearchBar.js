@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Label } from 'semantic-ui-react';
+import { Search } from 'semantic-ui-react';
 import { getUsernames } from '../actions';
 
 import { useDebounce } from '../hooks/useDebounce';
 
-const resultRenderer = ({ uid, username }) => <Label key={uid} content={username} />;
+const resultRenderer = ({ uid, username }) => (
+    <span key={uid} title={username}>
+        {username}
+    </span>
+);
 
 const SearchBar = ({ handleResultSelect }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -60,7 +64,7 @@ const SearchBar = ({ handleResultSelect }) => {
             results={results}
             resultRenderer={resultRenderer}
             value={searchTerm}
-            showNoResults={true}
+            showNoResults={isSearching ? false : true}
         />
     );
 };

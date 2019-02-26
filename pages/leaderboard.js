@@ -32,15 +32,53 @@ class Leaderboard extends Component {
     }
 
     async componentDidMount() {
-        const { usernames } = this.props;
-        let initialPlayers = [];
-        // Initialize column headers
         this.initColumns();
 
+        const { usernames } = this.props;
+        if (usernames.length) {
+            this.initPlayers(usernames);
+        }
+    }
+
+    initColumns = () => {
+        this.setState({
+            columns: [
+                {
+                    header: 'Player',
+                    accessor: 'username',
+                    sort: this.handleSort('username')
+                },
+                {
+                    header: 'K/D',
+                    accessor: 'kd',
+                    sort: this.handleSort('kd')
+                },
+                {
+                    header: 'Win %',
+                    accessor: 'winrate',
+                    sort: this.handleSort('winrate')
+                },
+                {
+                    header: 'Kills',
+                    accessor: 'kills',
+
+                    sort: this.handleSort('kills')
+                },
+                {
+                    header: 'Wins',
+                    accessor: 'placetop1',
+                    sort: this.handleSort('placetop1')
+                }
+            ]
+        });
+    };
+
+    initPlayers = async usernames => {
+        let initialPlayers = [];
         // Start load player stats
         this.setState({
             loading: true,
-            players: usernames ? new Array(usernames.length).fill(null) : []
+            players: new Array(usernames.length).fill(null)
         });
 
         initialPlayers = await Promise.all(
@@ -55,7 +93,7 @@ class Leaderboard extends Component {
             },
             () => this.updateURL()
         );
-    }
+    };
 
     addPlayer = async player => {
         const { players, column, mode, direction } = this.state;
@@ -146,39 +184,6 @@ class Leaderboard extends Component {
         });
     };
 
-    initColumns = () => {
-        this.setState({
-            columns: [
-                {
-                    header: 'Player',
-                    accessor: 'username',
-                    sort: this.handleSort('username')
-                },
-                {
-                    header: 'K/D',
-                    accessor: 'kd',
-                    sort: this.handleSort('kd')
-                },
-                {
-                    header: 'Win %',
-                    accessor: 'winrate',
-                    sort: this.handleSort('winrate')
-                },
-                {
-                    header: 'Kills',
-                    accessor: 'kills',
-
-                    sort: this.handleSort('kills')
-                },
-                {
-                    header: 'Wins',
-                    accessor: 'placetop1',
-                    sort: this.handleSort('placetop1')
-                }
-            ]
-        });
-    };
-
     render() {
         const { columns, mode, players, loading } = this.state;
 
@@ -205,7 +210,9 @@ class Leaderboard extends Component {
                             widescreen="6"
                         >
                             <SearchBar handleResultSelect={this.addPlayer} />
+                            <Icon name="redo alternate" />
                             <Icon name="share" />
+                            <Icon name="sync alternate" />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>

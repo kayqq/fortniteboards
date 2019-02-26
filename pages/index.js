@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import { Container, Grid, Card, Segment } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
 import NewsCard from '../src/components/NewsCard';
@@ -51,10 +50,7 @@ class Index extends Component {
                             widescreen="6"
                             style={{ paddingBottom: '1em', paddingTop: '1em' }}
                         >
-                            <SearchBar
-                                handleResultSelect={this.handleResultSelect}
-                                prefetchRoute={this.prefetchRoute}
-                            />
+                            <SearchBar handleResultSelect={this.handleResultSelect} />
                         </Grid.Column>
                     </Grid.Row>
 

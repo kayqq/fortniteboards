@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1623,9 +1623,9 @@ module.exports = __webpack_require__(/*! ./dist/client/router */ "./node_modules
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
@@ -1723,34 +1723,107 @@ function (_Component) {
 
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Leaderboard).call(this, props));
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "addPlayer",
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "initColumns", function () {
+      _this.setState({
+        columns: [{
+          header: 'Player',
+          accessor: 'username',
+          sort: _this.handleSort('username')
+        }, {
+          header: 'K/D',
+          accessor: 'kd',
+          sort: _this.handleSort('kd')
+        }, {
+          header: 'Win %',
+          accessor: 'winrate',
+          sort: _this.handleSort('winrate')
+        }, {
+          header: 'Kills',
+          accessor: 'kills',
+          sort: _this.handleSort('kills')
+        }, {
+          header: 'Wins',
+          accessor: 'placetop1',
+          sort: _this.handleSort('placetop1')
+        }]
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "initPlayers",
     /*#__PURE__*/
     function () {
       var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee2(player) {
-        var _this$state, players, column, mode, direction, newPlayer, updatedPlayers;
-
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee2(usernames) {
+        var initialPlayers;
         return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                initialPlayers = []; // Start load player stats
+
+                _this.setState({
+                  loading: true,
+                  players: new Array(usernames.length).fill(null)
+                });
+
+                _context2.next = 4;
+                return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a.all(usernames.map(function (username) {
+                  return Object(_src_actions__WEBPACK_IMPORTED_MODULE_15__["getProfileByUsername"])(username);
+                }));
+
+              case 4:
+                initialPlayers = _context2.sent;
+
+                // End load player stats
+                _this.setState({
+                  players: Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(initialPlayers),
+                  loading: false
+                }, function () {
+                  return _this.updateURL();
+                });
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "addPlayer",
+    /*#__PURE__*/
+    function () {
+      var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee3(player) {
+        var _this$state, players, column, mode, direction, newPlayer, updatedPlayers;
+
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
                 _this$state = _this.state, players = _this$state.players, column = _this$state.column, mode = _this$state.mode, direction = _this$state.direction; // Check if already added to board
 
                 if (!_this.isPlayerSelected(player.uid)) {
-                  _context2.next = 3;
+                  _context3.next = 3;
                   break;
                 }
 
-                return _context2.abrupt("return");
+                return _context3.abrupt("return");
 
               case 3:
-                _context2.next = 5;
+                _context3.next = 5;
                 return Object(_src_actions__WEBPACK_IMPORTED_MODULE_15__["getProfileByUid"])(player.uid);
 
               case 5:
-                newPlayer = _context2.sent;
-                updatedPlayers = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(players), [newPlayer]); // if pre-sorted then apply sort setting to updated players
+                newPlayer = _context3.sent;
+                updatedPlayers = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(players), [newPlayer]); // if pre-sorted then apply sort setting to updated players
 
                 if (column !== null) {
                   updatedPlayers = _this.sortPlayers(updatedPlayers, column, mode, direction);
@@ -1764,14 +1837,14 @@ function (_Component) {
 
               case 9:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee3, this);
       }));
 
-      return function (_x2) {
-        return _ref2.apply(this, arguments);
+      return function (_x3) {
+        return _ref3.apply(this, arguments);
       };
     }());
 
@@ -1882,32 +1955,6 @@ function (_Component) {
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "initColumns", function () {
-      _this.setState({
-        columns: [{
-          header: 'Player',
-          accessor: 'username',
-          sort: _this.handleSort('username')
-        }, {
-          header: 'K/D',
-          accessor: 'kd',
-          sort: _this.handleSort('kd')
-        }, {
-          header: 'Win %',
-          accessor: 'winrate',
-          sort: _this.handleSort('winrate')
-        }, {
-          header: 'Kills',
-          accessor: 'kills',
-          sort: _this.handleSort('kills')
-        }, {
-          header: 'Wins',
-          accessor: 'placetop1',
-          sort: _this.handleSort('placetop1')
-        }]
-      });
-    });
-
     _this.state = {
       players: [],
       mode: props.mode || 'solo',
@@ -1924,44 +1971,25 @@ function (_Component) {
     value: function () {
       var _componentDidMount = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee3() {
-        var _this2 = this;
-
-        var usernames, initialPlayers;
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee3$(_context3) {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee4() {
+        var usernames;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
+                this.initColumns();
                 usernames = this.props.usernames;
-                initialPlayers = []; // Initialize column headers
 
-                this.initColumns(); // Start load player stats
+                if (usernames.length) {
+                  this.initPlayers(usernames);
+                }
 
-                this.setState({
-                  loading: true,
-                  players: usernames ? new Array(usernames.length).fill(null) : []
-                });
-                _context3.next = 6;
-                return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.all(usernames.map(function (username) {
-                  return Object(_src_actions__WEBPACK_IMPORTED_MODULE_15__["getProfileByUsername"])(username);
-                }));
-
-              case 6:
-                initialPlayers = _context3.sent;
-                // End load player stats
-                this.setState({
-                  players: Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(initialPlayers),
-                  loading: false
-                }, function () {
-                  return _this2.updateURL();
-                });
-
-              case 8:
+              case 3:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, this);
+        }, _callee4, this);
       }));
 
       function componentDidMount() {
@@ -1998,7 +2026,11 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_14__["default"], {
         handleResultSelect: this.addPlayer
       }), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        name: "redo alternate"
+      }), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
         name: "share"
+      }), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+        name: "sync alternate"
       }))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Column, {
         textAlign: "center"
       }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_board__WEBPACK_IMPORTED_MODULE_16__["default"], {
@@ -2040,29 +2072,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var axiosInstance = axios__WEBPACK_IMPORTED_MODULE_2___default.a.create({
+  baseURL: "https://fortnite-public-api.theapinetwork.com/prod09",
+  timeout: 3000
+});
 var getUsernames =
 /*#__PURE__*/
 function () {
   var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
   /*#__PURE__*/
   _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(username) {
-    var response;
+    var endPoint, response;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search", {
-              params: {
-                username: username
-              }
-            });
+            endPoint = "/users/search?username=".concat(username);
+            _context.next = 3;
+            return axiosInstance.get(endPoint);
 
-          case 2:
+          case 3:
             response = _context.sent;
             return _context.abrupt("return", response.data.entries);
 
-          case 4:
+          case 5:
           case "end":
             return _context.stop();
         }
@@ -2082,6 +2115,7 @@ function () {
   _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(username) {
     var platform,
         window,
+        endPoint,
         response,
         uid,
         _args2 = arguments;
@@ -2091,30 +2125,22 @@ function () {
           case 0:
             platform = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : 'pc';
             window = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : 'season7';
-            _context2.next = 4;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://fortnite-public-api.theapinetwork.com/prod09/users/id', {
-              params: {
-                username: username
-              }
-            });
+            endPoint = "/users/id?username=".concat(username, "&platform=").concat(platform, "&window=").concat(window);
+            _context2.next = 5;
+            return axiosInstance.get(endPoint);
 
-          case 4:
+          case 5:
             response = _context2.sent;
             uid = response.data.uid;
-            _context2.next = 8;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats", {
-              params: {
-                user_id: uid,
-                platform: platform,
-                window: window
-              }
-            });
+            endPoint = "/users/public/br_stats?user_id=".concat(uid, "&platform=").concat(platform, "&window=").concat(window);
+            _context2.next = 10;
+            return axiosInstance.get(endPoint);
 
-          case 8:
+          case 10:
             response = _context2.sent;
             return _context2.abrupt("return", response.data);
 
-          case 10:
+          case 12:
           case "end":
             return _context2.stop();
         }
@@ -2134,6 +2160,7 @@ function () {
   _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(uid) {
     var platform,
         window,
+        endPoint,
         response,
         _args3 = arguments;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -2142,20 +2169,15 @@ function () {
           case 0:
             platform = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : 'pc';
             window = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : 'season7';
-            _context3.next = 4;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats", {
-              params: {
-                user_id: uid,
-                platform: platform,
-                window: window
-              }
-            });
+            endPoint = "/users/public/br_stats?user_id=".concat(uid, "&platform=").concat(platform, "&window=").concat(window);
+            _context3.next = 5;
+            return axiosInstance.get(endPoint);
 
-          case 4:
+          case 5:
             response = _context3.sent;
             return _context3.abrupt("return", response.data);
 
-          case 6:
+          case 7:
           case "end":
             return _context3.stop();
         }
@@ -2174,6 +2196,7 @@ function () {
   /*#__PURE__*/
   _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
     var language,
+        endPoint,
         response,
         _args4 = arguments;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
@@ -2181,18 +2204,15 @@ function () {
         switch (_context4.prev = _context4.next) {
           case 0:
             language = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : 'en';
-            _context4.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://fortnite-public-api.theapinetwork.com/prod09/br_motd/get', {
-              params: {
-                language: language
-              }
-            });
+            endPoint = "/br_motd/get?language=".concat(language);
+            _context4.next = 4;
+            return axiosInstance.get(endPoint);
 
-          case 3:
+          case 4:
             response = _context4.sent;
             return _context4.abrupt("return", response.data);
 
-          case 5:
+          case 6:
           case "end":
             return _context4.stop();
         }
@@ -2237,10 +2257,10 @@ __webpack_require__.r(__webpack_exports__);
 var resultRenderer = function resultRenderer(_ref) {
   var uid = _ref.uid,
       username = _ref.username;
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Label"], {
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("span", {
     key: uid,
-    content: username
-  });
+    title: username
+  }, username);
 };
 
 var SearchBar = function SearchBar(_ref2) {
@@ -2340,7 +2360,7 @@ var SearchBar = function SearchBar(_ref2) {
     results: results,
     resultRenderer: resultRenderer,
     value: searchTerm,
-    showNoResults: true
+    showNoResults: isSearching ? false : true
   });
 };
 
@@ -2663,7 +2683,7 @@ var useDebounce = function useDebounce(value, delay) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!************************************!*\
   !*** multi ./pages/leaderboard.js ***!
   \************************************/

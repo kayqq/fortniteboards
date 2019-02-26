@@ -56179,29 +56179,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var axiosInstance = axios__WEBPACK_IMPORTED_MODULE_2___default.a.create({
+  baseURL: "https://fortnite-public-api.theapinetwork.com/prod09",
+  timeout: 3000
+});
 var getUsernames =
 /*#__PURE__*/
 function () {
   var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
   /*#__PURE__*/
   _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(username) {
-    var response;
+    var endPoint, response;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/search", {
-              params: {
-                username: username
-              }
-            });
+            endPoint = "/users/search?username=".concat(username);
+            _context.next = 3;
+            return axiosInstance.get(endPoint);
 
-          case 2:
+          case 3:
             response = _context.sent;
             return _context.abrupt("return", response.data.entries);
 
-          case 4:
+          case 5:
           case "end":
             return _context.stop();
         }
@@ -56221,6 +56222,7 @@ function () {
   _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(username) {
     var platform,
         window,
+        endPoint,
         response,
         uid,
         _args2 = arguments;
@@ -56230,30 +56232,22 @@ function () {
           case 0:
             platform = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : 'pc';
             window = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : 'season7';
-            _context2.next = 4;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://fortnite-public-api.theapinetwork.com/prod09/users/id', {
-              params: {
-                username: username
-              }
-            });
+            endPoint = "/users/id?username=".concat(username, "&platform=").concat(platform, "&window=").concat(window);
+            _context2.next = 5;
+            return axiosInstance.get(endPoint);
 
-          case 4:
+          case 5:
             response = _context2.sent;
             uid = response.data.uid;
-            _context2.next = 8;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats", {
-              params: {
-                user_id: uid,
-                platform: platform,
-                window: window
-              }
-            });
+            endPoint = "/users/public/br_stats?user_id=".concat(uid, "&platform=").concat(platform, "&window=").concat(window);
+            _context2.next = 10;
+            return axiosInstance.get(endPoint);
 
-          case 8:
+          case 10:
             response = _context2.sent;
             return _context2.abrupt("return", response.data);
 
-          case 10:
+          case 12:
           case "end":
             return _context2.stop();
         }
@@ -56273,6 +56267,7 @@ function () {
   _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(uid) {
     var platform,
         window,
+        endPoint,
         response,
         _args3 = arguments;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -56281,20 +56276,15 @@ function () {
           case 0:
             platform = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : 'pc';
             window = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : 'season7';
-            _context3.next = 4;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats", {
-              params: {
-                user_id: uid,
-                platform: platform,
-                window: window
-              }
-            });
+            endPoint = "/users/public/br_stats?user_id=".concat(uid, "&platform=").concat(platform, "&window=").concat(window);
+            _context3.next = 5;
+            return axiosInstance.get(endPoint);
 
-          case 4:
+          case 5:
             response = _context3.sent;
             return _context3.abrupt("return", response.data);
 
-          case 6:
+          case 7:
           case "end":
             return _context3.stop();
         }
@@ -56313,6 +56303,7 @@ function () {
   /*#__PURE__*/
   _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
     var language,
+        endPoint,
         response,
         _args4 = arguments;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
@@ -56320,18 +56311,15 @@ function () {
         switch (_context4.prev = _context4.next) {
           case 0:
             language = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : 'en';
-            _context4.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://fortnite-public-api.theapinetwork.com/prod09/br_motd/get', {
-              params: {
-                language: language
-              }
-            });
+            endPoint = "/br_motd/get?language=".concat(language);
+            _context4.next = 4;
+            return axiosInstance.get(endPoint);
 
-          case 3:
+          case 4:
             response = _context4.sent;
             return _context4.abrupt("return", response.data);
 
-          case 5:
+          case 6:
           case "end":
             return _context4.stop();
         }
@@ -56667,10 +56655,10 @@ __webpack_require__.r(__webpack_exports__);
 var resultRenderer = function resultRenderer(_ref) {
   var uid = _ref.uid,
       username = _ref.username;
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Label"], {
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("span", {
     key: uid,
-    content: username
-  });
+    title: username
+  }, username);
 };
 
 var SearchBar = function SearchBar(_ref2) {
@@ -56770,7 +56758,7 @@ var SearchBar = function SearchBar(_ref2) {
     results: results,
     resultRenderer: resultRenderer,
     value: searchTerm,
-    showNoResults: true
+    showNoResults: isSearching ? false : true
   });
 };
 
