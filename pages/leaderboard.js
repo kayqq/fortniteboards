@@ -5,7 +5,7 @@ import { Container, Grid, Icon } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
 import { getProfileByUsername, getProfileByUid } from '../src/actions';
 
-import Board from '../src/components/board';
+import Board from '../src/components/Board';
 
 // show awards, i.e. most kills, most wins, highest kd etc etc in separate div
 // share / reset / refresh buttons
@@ -15,6 +15,7 @@ class Leaderboard extends Component {
         let { usernames } = query;
         const { mode } = query;
         if (!usernames) return { usernames: [] };
+        // Format into Array
         usernames = typeof usernames == 'string' ? [usernames] : usernames;
         return { usernames, mode };
     }
@@ -31,7 +32,7 @@ class Leaderboard extends Component {
         };
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         this.initColumns();
 
         const { usernames } = this.props;
@@ -201,7 +202,7 @@ class Leaderboard extends Component {
                     <Grid.Row>
                         <h3>Leaderboards</h3>
                     </Grid.Row>
-                    <Grid.Row>
+                    <Grid.Row columns="1">
                         <Grid.Column
                             mobile="16"
                             computer="6"
@@ -210,11 +211,17 @@ class Leaderboard extends Component {
                             widescreen="6"
                         >
                             <SearchBar handleResultSelect={this.addPlayer} />
-                            <Icon name="redo alternate" />
-                            <Icon name="share" />
-                            <Icon name="sync alternate" />
                         </Grid.Column>
                     </Grid.Row>
+                    <Grid.Row style={{ paddingTop: '0px' }} columns="2" divided>
+                        <Grid.Column textAlign="center">
+                            Share <Icon name="share" />
+                        </Grid.Column>
+                        <Grid.Column textAlign="center">
+                            Refresh <Icon name="sync alternate" />
+                        </Grid.Column>
+                    </Grid.Row>
+
                     <Grid.Row>
                         <Grid.Column textAlign="center">
                             <Board

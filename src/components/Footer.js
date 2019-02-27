@@ -9,7 +9,7 @@ class Footer extends Component {
                 <Container>
                     <Grid divided inverted stackable>
                         <Grid.Row>
-                            <Grid.Column width={3}>
+                            {/* <Grid.Column width={3}>
                                 <Header inverted as="h4" content="About" />
                                 <List link inverted>
                                     <List.Item as="a">Sitemap</List.Item>
@@ -26,7 +26,7 @@ class Footer extends Component {
                                     <List.Item as="a">How To Access</List.Item>
                                     <List.Item as="a">Favorite X-Men</List.Item>
                                 </List>
-                            </Grid.Column>
+                            </Grid.Column> */}
                             <Grid.Column width={7}>
                                 <Header as="h4" inverted>
                                     Footer Header

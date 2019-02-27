@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+// import { Link } from '../../../routes';
 import { Grid, Header, Icon, Responsive } from 'semantic-ui-react';
 
 const StatsColumn = ({ index, content = null, matches = null }) => {
@@ -57,7 +58,9 @@ const Player = ({ columns, mode, player, boardIndex, removePlayer }) => {
                 }
                 const columnContent =
                     columnIndex === 0 ? (
-                        <Link href={`/profile/${player.username}`}>{player.username}</Link>
+                        <Link href={`/profile/${player.username}`}>
+                            <a>{player.username}</a>
+                        </Link>
                     ) : (
                         player.stats[`${column.accessor}_${mode}`]
                     );

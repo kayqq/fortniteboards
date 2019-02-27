@@ -20,7 +20,7 @@ class MyApp extends App {
         const { Component, pageProps, router } = this.props;
         return (
             <Container>
-                <Layout>
+                <Layout router={router}>
                     <Component router={router} {...pageProps} />
                 </Layout>
             </Container>

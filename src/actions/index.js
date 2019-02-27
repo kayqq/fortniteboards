@@ -1,9 +1,16 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseURL: `https://fortnite-public-api.theapinetwork.com/prod09`,
-    timeout: 3000
+    baseURL: `https://fortnite-public-api.theapinetwork.com/prod09`
 });
+
+// const onDownloadProgress = {
+//     onDownloadProgress: progressEvent => {
+//         let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+//         console.log(progressEvent.lengthComputable);
+//         console.log(percentCompleted);
+//     }
+// };
 
 export const getUsernames = async username => {
     const endPoint = `/users/search?username=${username}`;

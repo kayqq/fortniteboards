@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Grid, Card, Segment } from 'semantic-ui-react';
+import { Container, Grid, Segment } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
-import NewsCard from '../src/components/NewsCard';
+import News from '../src/components/News';
 
 import { getNews } from '../src/actions';
 
@@ -59,17 +59,7 @@ class Index extends Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column>
-                            <Card.Group stackable itemsPerRow={3}>
-                                {this.state.news.map(article => (
-                                    <NewsCard
-                                        key={article.title}
-                                        imagesrc={article.image}
-                                        title={article.title}
-                                        description={article.body}
-                                        date={article.time}
-                                    />
-                                ))}
-                            </Card.Group>
+                            <News itemsPerRow={3} maxItems={3} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

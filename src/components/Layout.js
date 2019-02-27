@@ -4,12 +4,12 @@ import Footer from './Footer';
 
 export default class Layout extends PureComponent {
     render() {
-        const { children } = this.props;
+        const { children, router } = this.props;
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar router={router} />
                 {children}
-                {/* <Footer /> */}
+                <Footer />
             </React.Fragment>
         );
     }

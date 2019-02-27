@@ -619,7 +619,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _src_components_SearchBar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../src/components/SearchBar */ "./src/components/SearchBar.js");
-/* harmony import */ var _src_components_NewsCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../src/components/NewsCard */ "./src/components/NewsCard.js");
+/* harmony import */ var _src_components_News__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../src/components/News */ "./src/components/News/index.js");
 /* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../src/actions */ "./src/actions/index.js");
 
 
@@ -721,18 +721,10 @@ function (_Component) {
         handleResultSelect: this.handleResultSelect
       }))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_10__["Grid"].Row, {
         as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_10__["Segment"]
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h3", null, "News")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_10__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_10__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_10__["Card"].Group, {
-        stackable: true,
-        itemsPerRow: 3
-      }, this.state.news.map(function (article) {
-        return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_src_components_NewsCard__WEBPACK_IMPORTED_MODULE_12__["default"], {
-          key: article.title,
-          imagesrc: article.image,
-          title: article.title,
-          description: article.body,
-          date: article.time
-        });
-      }))))));
+      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h3", null, "News")), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_10__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_10__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_src_components_News__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        itemsPerRow: 3,
+        maxItems: 3
+      })))));
     }
   }]);
 
@@ -765,9 +757,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var axiosInstance = axios__WEBPACK_IMPORTED_MODULE_2___default.a.create({
-  baseURL: "https://fortnite-public-api.theapinetwork.com/prod09",
-  timeout: 3000
-});
+  baseURL: "https://fortnite-public-api.theapinetwork.com/prod09"
+}); // const onDownloadProgress = {
+//     onDownloadProgress: progressEvent => {
+//         let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+//         console.log(progressEvent.lengthComputable);
+//         console.log(percentCompleted);
+//     }
+// };
+
 var getUsernames =
 /*#__PURE__*/
 function () {
@@ -919,10 +917,10 @@ function () {
 
 /***/ }),
 
-/***/ "./src/components/NewsCard.js":
-/*!************************************!*\
-  !*** ./src/components/NewsCard.js ***!
-  \************************************/
+/***/ "./src/components/News/NewsCard.js":
+/*!*****************************************!*\
+  !*** ./src/components/News/NewsCard.js ***!
+  \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -950,6 +948,93 @@ var NewsCard = function NewsCard(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NewsCard);
+
+/***/ }),
+
+/***/ "./src/components/News/index.js":
+/*!**************************************!*\
+  !*** ./src/components/News/index.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _NewsCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NewsCard */ "./src/components/News/NewsCard.js");
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions */ "./src/actions/index.js");
+
+
+
+
+
+
+
+
+var index = function index(_ref) {
+  var itemsPerRow = _ref.itemsPerRow,
+      maxItems = _ref.maxItems;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])([]),
+      _useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_useState, 2),
+      news = _useState2[0],
+      setNews = _useState2[1];
+
+  function fetch() {
+    return _fetch.apply(this, arguments);
+  }
+
+  function _fetch() {
+    _fetch = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+    /*#__PURE__*/
+    _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var response;
+      return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return Object(_actions__WEBPACK_IMPORTED_MODULE_6__["getNews"])();
+
+            case 2:
+              response = _context.sent;
+              setNews(response.entries.slice(0, maxItems));
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+    return _fetch.apply(this, arguments);
+  }
+
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
+    fetch();
+  }, []);
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_5__["Card"].Group, {
+    stackable: true,
+    itemsPerRow: itemsPerRow
+  }, news.map(function (article) {
+    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_NewsCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      key: article.title,
+      imagesrc: article.image,
+      title: article.title,
+      description: article.body,
+      date: article.time
+    });
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (index);
 
 /***/ }),
 
