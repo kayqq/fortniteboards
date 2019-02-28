@@ -58,7 +58,7 @@ const SearchBar = ({ handleResultSelect }) => {
         <Search
             input={{ fluid: true, icon: 'arrow circle right' }}
             loading={isSearching}
-            placeholder={'Enter your Epic username'}
+            placeholder={'Enter an Epic username'}
             onResultSelect={onResultSelect}
             onSearchChange={onSearchChange}
             results={results}

@@ -33,7 +33,10 @@ class Index extends Component {
                 }}
             >
                 <Grid centered textAlign="center">
-                    <Grid.Row as={Segment}>
+                    <Grid.Row
+                        as={Segment}
+                        style={{ color: 'white', backgroundColor: 'rgba(61, 74, 133, 0.3)' }}
+                    >
                         <h3>Fortnite Boards</h3>
                         <Container>
                             <h4>
@@ -54,7 +57,10 @@ class Index extends Component {
                         </Grid.Column>
                     </Grid.Row>
 
-                    <Grid.Row as={Segment}>
+                    <Grid.Row
+                        as={Segment}
+                        style={{ color: 'white', backgroundColor: 'rgba(61, 74, 133, 0.3)' }}
+                    >
                         <h3>News</h3>
                     </Grid.Row>
                     <Grid.Row>

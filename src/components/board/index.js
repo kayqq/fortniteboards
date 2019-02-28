@@ -4,12 +4,19 @@ import ModeHeader from './ModeHeader';
 import StatsHeader from './StatsHeader';
 import Player from './Player';
 
-const Index = ({ columns, players, removePlayer, handleModeChange, mode, loading }) => {
+const Index = ({
+    activeColumn,
+    columns,
+    players,
+    removePlayer,
+    handleModeChange,
+    mode,
+    loading
+}) => {
     return (
         <React.Fragment>
             <Grid style={{ backgroundColor: '#2c3c57', color: 'white' }}>
                 <ModeHeader mode={mode} handleModeChange={handleModeChange} />
-                <StatsHeader columns={columns} />
             </Grid>
 
             <Dimmer.Dimmable
@@ -20,6 +27,7 @@ const Index = ({ columns, players, removePlayer, handleModeChange, mode, loading
                 <Dimmer active={loading}>
                     <Loader>Loading...</Loader>
                 </Dimmer>
+                <StatsHeader activeColumn={activeColumn} columns={columns} />
 
                 {players.map((player, index) => (
                     <Player

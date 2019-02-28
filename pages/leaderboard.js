@@ -71,7 +71,7 @@ class Leaderboard extends Component {
             players: [],
             mode: props.mode || 'solo',
             columns: [],
-            column: null,
+            activeColumn: null,
             direction: null,
             loading: null
         };
@@ -149,7 +149,7 @@ class Leaderboard extends Component {
     };
 
     addPlayer = async player => {
-        const { players, column, mode, direction } = this.state;
+        const { players, activeColumn, mode, direction } = this.state;
         // Check if already added to board
         if (this.isPlayerSelected(player.uid)) return;
         // Not duplicate, get profile and add
@@ -157,8 +157,8 @@ class Leaderboard extends Component {
         let updatedPlayers = [...players, newPlayer];
 
         // if pre-sorted then apply sort setting to updated players
-        if (column !== null) {
-            updatedPlayers = this.sortPlayers(updatedPlayers, column, mode, direction);
+        if (activeColumn !== null) {
+            updatedPlayers = this.sortPlayers(updatedPlayers, activeColumn, mode, direction);
         }
 
         this.setState({ players: updatedPlayers }, () => this.updateURL());
@@ -190,14 +190,13 @@ class Leaderboard extends Component {
     };
 
     handleSort = accessor => () => {
-        const { column, players, direction, mode } = this.state;
-
+        const { activeColumn, players, direction, mode } = this.state;
         // Reverse order if direction set, else default to desc
         let sortDirection = direction === 'desc' ? 'asc' : 'desc';
-        let sortedColumn = column;
+        let sortedColumn = activeColumn;
 
         // Default to desc order on column switch
-        if (column !== accessor) {
+        if (activeColumn !== accessor) {
             // Default to asc order if username column
             sortDirection = accessor == 'username' ? 'asc' : 'desc';
             // Set sorted column name
@@ -207,7 +206,7 @@ class Leaderboard extends Component {
         const sortedPlayers = this.sortPlayers(players, accessor, mode, sortDirection);
         this.setState(
             {
-                column: sortedColumn,
+                activeColumn: sortedColumn,
                 players: sortedPlayers,
                 direction: sortDirection
             },
@@ -238,7 +237,7 @@ class Leaderboard extends Component {
     };
 
     render() {
-        const { columns, mode, players, loading } = this.state;
+        const { activeColumn, columns, mode, players, loading } = this.state;
 
         return (
             <Container
@@ -266,8 +265,17 @@ class Leaderboard extends Component {
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row className="compact">
-                        <Menu fluid borderless>
-                            <Menu.Item position="right" as="a">
+                        <Menu tabular fluid style={{ backgroundColor: 'rgba(61, 74, 133, 0)' }}>
+                            <Menu.Item
+                                fitted="vertically"
+                                position="right"
+                                as="a"
+                                style={{
+                                    backgroundColor: 'rgba(61, 74, 133, 0.3)',
+                                    borderRadius: '0.28571429rem',
+                                    color: 'white'
+                                }}
+                            >
                                 <CopyLinkPopup>
                                     <span>
                                         Share <Icon name="share" />
@@ -275,6 +283,13 @@ class Leaderboard extends Component {
                                 </CopyLinkPopup>
                             </Menu.Item>
                             <Menu.Item
+                                fitted="vertically"
+                                style={{
+                                    marginLeft: '5px',
+                                    borderRadius: '0.28571429rem',
+                                    backgroundColor: 'rgba(61, 74, 133, 0.3)',
+                                    color: 'white'
+                                }}
                                 as="a"
                                 disabled={loading}
                                 onClick={() => this.refreshBoard()}
@@ -289,6 +304,7 @@ class Leaderboard extends Component {
                     <Grid.Row>
                         <Grid.Column textAlign="center">
                             <Board
+                                activeColumn={activeColumn}
                                 columns={columns}
                                 mode={mode}
                                 players={players}

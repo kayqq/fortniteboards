@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Header, Responsive } from 'semantic-ui-react';
 
-const StatsHeader = ({ columns }) => {
+const StatsHeader = ({ activeColumn, columns }) => {
     return (
         <Grid.Row stretched>
             <Responsive
@@ -19,7 +19,9 @@ const StatsHeader = ({ columns }) => {
             </Responsive>
             {columns.map((column, index) => (
                 <Grid.Column
-                    style={{ backgroundColor: '#2c3c57' }}
+                    style={{
+                        backgroundColor: '#2c3c57'
+                    }}
                     className={index == 0 ? '' : 'compact'}
                     key={index}
                     onClick={() => column.sort()}
@@ -28,7 +30,12 @@ const StatsHeader = ({ columns }) => {
                     mobile={index == 0 ? '6' : '2'}
                 >
                     <Header size="tiny">
-                        <Header.Subheader as="h6" style={{ color: '#92a2bd' }}>
+                        <Header.Subheader
+                            as="h6"
+                            style={{
+                                color: column.accessor == activeColumn ? 'yellow' : '#92a2bd'
+                            }}
+                        >
                             {column.header}
                         </Header.Subheader>
                     </Header>

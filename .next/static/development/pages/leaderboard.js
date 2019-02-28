@@ -72752,13 +72752,13 @@ function (_Component) {
       var _ref4 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
       _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee3(player) {
-        var _this$state, players, column, mode, direction, newPlayer, updatedPlayers;
+        var _this$state, players, activeColumn, mode, direction, newPlayer, updatedPlayers;
 
         return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _this$state = _this.state, players = _this$state.players, column = _this$state.column, mode = _this$state.mode, direction = _this$state.direction; // Check if already added to board
+                _this$state = _this.state, players = _this$state.players, activeColumn = _this$state.activeColumn, mode = _this$state.mode, direction = _this$state.direction; // Check if already added to board
 
                 if (!_this.isPlayerSelected(player.uid)) {
                   _context3.next = 3;
@@ -72775,8 +72775,8 @@ function (_Component) {
                 newPlayer = _context3.sent;
                 updatedPlayers = [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(players), [newPlayer]); // if pre-sorted then apply sort setting to updated players
 
-                if (column !== null) {
-                  updatedPlayers = _this.sortPlayers(updatedPlayers, column, mode, direction);
+                if (activeColumn !== null) {
+                  updatedPlayers = _this.sortPlayers(updatedPlayers, activeColumn, mode, direction);
                 }
 
                 _this.setState({
@@ -72842,15 +72842,15 @@ function (_Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "handleSort", function (accessor) {
       return function () {
         var _this$state2 = _this.state,
-            column = _this$state2.column,
+            activeColumn = _this$state2.activeColumn,
             players = _this$state2.players,
             direction = _this$state2.direction,
             mode = _this$state2.mode; // Reverse order if direction set, else default to desc
 
         var sortDirection = direction === 'desc' ? 'asc' : 'desc';
-        var sortedColumn = column; // Default to desc order on column switch
+        var sortedColumn = activeColumn; // Default to desc order on column switch
 
-        if (column !== accessor) {
+        if (activeColumn !== accessor) {
           // Default to asc order if username column
           sortDirection = accessor == 'username' ? 'asc' : 'desc'; // Set sorted column name
 
@@ -72861,7 +72861,7 @@ function (_Component) {
         var sortedPlayers = _this.sortPlayers(players, accessor, mode, sortDirection);
 
         _this.setState({
-          column: sortedColumn,
+          activeColumn: sortedColumn,
           players: sortedPlayers,
           direction: sortDirection
         }, function () {
@@ -72909,7 +72909,7 @@ function (_Component) {
       players: [],
       mode: props.mode || 'solo',
       columns: [],
-      column: null,
+      activeColumn: null,
       direction: null,
       loading: null
     };
@@ -72935,6 +72935,7 @@ function (_Component) {
       var _this2 = this;
 
       var _this$state4 = this.state,
+          activeColumn = _this$state4.activeColumn,
           columns = _this$state4.columns,
           mode = _this$state4.mode,
           players = _this$state4.players,
@@ -72963,14 +72964,30 @@ function (_Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, {
         className: "compact"
       }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Menu"], {
+        tabular: true,
         fluid: true,
-        borderless: true
+        style: {
+          backgroundColor: 'rgba(61, 74, 133, 0)'
+        }
       }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Menu"].Item, {
+        fitted: "vertically",
         position: "right",
-        as: "a"
+        as: "a",
+        style: {
+          backgroundColor: 'rgba(61, 74, 133, 0.3)',
+          borderRadius: '0.28571429rem',
+          color: 'white'
+        }
       }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(CopyLinkPopup, null, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement("span", null, "Share ", react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Icon"], {
         name: "share"
       })))), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Menu"].Item, {
+        fitted: "vertically",
+        style: {
+          marginLeft: '5px',
+          borderRadius: '0.28571429rem',
+          backgroundColor: 'rgba(61, 74, 133, 0.3)',
+          color: 'white'
+        },
         as: "a",
         disabled: loading,
         onClick: function onClick() {
@@ -72981,6 +72998,7 @@ function (_Component) {
       }))))), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
         textAlign: "center"
       }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(_src_components_Board__WEBPACK_IMPORTED_MODULE_18__["default"], {
+        activeColumn: activeColumn,
         columns: columns,
         mode: mode,
         players: players,
@@ -73351,7 +73369,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var StatsHeader = function StatsHeader(_ref) {
-  var columns = _ref.columns;
+  var activeColumn = _ref.activeColumn,
+      columns = _ref.columns;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
     stretched: true
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"], {
@@ -73385,7 +73404,7 @@ var StatsHeader = function StatsHeader(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Header"].Subheader, {
       as: "h6",
       style: {
-        color: '#92a2bd'
+        color: column.accessor == activeColumn ? 'yellow' : '#92a2bd'
       }
     }, column.header)));
   }));
@@ -73417,7 +73436,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Index = function Index(_ref) {
-  var columns = _ref.columns,
+  var activeColumn = _ref.activeColumn,
+      columns = _ref.columns,
       players = _ref.players,
       removePlayer = _ref.removePlayer,
       handleModeChange = _ref.handleModeChange,
@@ -73431,8 +73451,6 @@ var Index = function Index(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ModeHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
     mode: mode,
     handleModeChange: handleModeChange
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StatsHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    columns: columns
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dimmer"].Dimmable, {
     as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"],
     dimmed: loading,
@@ -73442,7 +73460,10 @@ var Index = function Index(_ref) {
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dimmer"], {
     active: loading
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Loader"], null, "Loading...")), players.map(function (player, index) {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Loader"], null, "Loading...")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StatsHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    activeColumn: activeColumn,
+    columns: columns
+  }), players.map(function (player, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Player__WEBPACK_IMPORTED_MODULE_4__["default"], {
       key: index,
       columns: columns,
@@ -73584,7 +73605,7 @@ var SearchBar = function SearchBar(_ref2) {
       icon: 'arrow circle right'
     },
     loading: isSearching,
-    placeholder: 'Enter your Epic username',
+    placeholder: 'Enter an Epic username',
     onResultSelect: onResultSelect,
     onSearchChange: onSearchChange,
     results: results,

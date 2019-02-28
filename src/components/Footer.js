@@ -5,7 +5,11 @@ import { Container, Grid, Header, List, Segment, Divider } from 'semantic-ui-rea
 class Footer extends Component {
     render() {
         return (
-            <Segment inverted style={{ margin: '5em 0em 0em', padding: '5em 0em' }} vertical>
+            <Segment
+                inverted
+                style={{ backgroundColor: '#1B2137', margin: '5em 0em 0em', padding: '5em 0em' }}
+                vertical
+            >
                 <Container>
                     <Grid divided inverted stackable>
                         <Grid.Row>
