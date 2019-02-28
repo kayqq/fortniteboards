@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import _ from 'lodash';
+import copy from 'copy-to-clipboard';
 
-import { Container, Grid, Icon } from 'semantic-ui-react';
+import { Container, Grid, Icon, Popup, Button, Input, Header, Menu } from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
 import { getProfileByUsername, getProfileByUid } from '../src/actions';
 
@@ -9,6 +10,50 @@ import Board from '../src/components/Board';
 
 // show awards, i.e. most kills, most wins, highest kd etc etc in separate div
 // share / reset / refresh buttons
+
+const CopyLinkPopup = ({ children }) => {
+    const [isCopied, setCopied] = useState(false);
+    const [link, setLink] = useState('');
+
+    const handleCopyClipboard = link => {
+        const didCopy = copy(link);
+        setCopied(didCopy);
+    };
+
+    return (
+        <Popup
+            style={{ width: '100%' }}
+            hideOnScroll
+            hoverable
+            position="top center"
+            onOpen={() => setLink(location.href)}
+            onClose={() => setCopied(false)}
+            content={
+                <Grid textAlign="center">
+                    <Grid.Row textAlign="left">
+                        <Grid.Column textAlign="left">
+                            <Header as="h5" color={isCopied ? 'green' : 'grey'}>
+                                {isCopied ? 'Link copied!' : 'Link to custom leaderboard: '}
+                            </Header>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row style={{ paddingTop: '0px' }}>
+                        <Grid.Column>
+                            <Input value={link} />
+                            <Button
+                                icon={isCopied ? 'check' : 'linkify'}
+                                color={isCopied ? 'green' : 'grey'}
+                                compact
+                                onClick={() => handleCopyClipboard(link)}
+                            />
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            }
+            trigger={children}
+        />
+    );
+};
 
 class Leaderboard extends Component {
     static async getInitialProps({ query }) {
@@ -33,6 +78,7 @@ class Leaderboard extends Component {
     }
 
     componentDidMount() {
+        this.setState({ url: location.href });
         this.initColumns();
 
         const { usernames } = this.props;
@@ -94,6 +140,12 @@ class Leaderboard extends Component {
             },
             () => this.updateURL()
         );
+    };
+
+    refreshBoard = () => {
+        const { players } = this.state;
+        const usernames = players.map(player => player.username);
+        this.initPlayers(usernames);
     };
 
     addPlayer = async player => {
@@ -194,8 +246,8 @@ class Leaderboard extends Component {
                 textAlign="center"
                 style={{
                     paddingTop: '100px',
-                    paddingBottom: '100px',
-                    height: '100%'
+                    paddingBottom: '100px'
+                    // height: '100%'
                 }}
             >
                 <Grid centered textAlign="center">
@@ -213,13 +265,25 @@ class Leaderboard extends Component {
                             <SearchBar handleResultSelect={this.addPlayer} />
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row style={{ paddingTop: '0px' }} columns="2" divided>
-                        <Grid.Column textAlign="center">
-                            Share <Icon name="share" />
-                        </Grid.Column>
-                        <Grid.Column textAlign="center">
-                            Refresh <Icon name="sync alternate" />
-                        </Grid.Column>
+                    <Grid.Row className="compact">
+                        <Menu fluid borderless>
+                            <Menu.Item position="right" as="a">
+                                <CopyLinkPopup>
+                                    <span>
+                                        Share <Icon name="share" />
+                                    </span>
+                                </CopyLinkPopup>
+                            </Menu.Item>
+                            <Menu.Item
+                                as="a"
+                                disabled={loading}
+                                onClick={() => this.refreshBoard()}
+                            >
+                                <span>
+                                    Refresh <Icon name="sync alternate" />
+                                </span>
+                            </Menu.Item>
+                        </Menu>
                     </Grid.Row>
 
                     <Grid.Row>

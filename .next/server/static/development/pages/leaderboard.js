@@ -1636,15 +1636,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
-/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _src_components_SearchBar__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../src/components/SearchBar */ "./src/components/SearchBar.js");
-/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../src/actions */ "./src/actions/index.js");
-/* harmony import */ var _src_components_Board__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../src/components/Board */ "./src/components/Board/index.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var copy_to_clipboard__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! copy-to-clipboard */ "copy-to-clipboard");
+/* harmony import */ var copy_to_clipboard__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(copy_to_clipboard__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! semantic-ui-react */ "semantic-ui-react");
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _src_components_SearchBar__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../src/components/SearchBar */ "./src/components/SearchBar.js");
+/* harmony import */ var _src_actions__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../src/actions */ "./src/actions/index.js");
+/* harmony import */ var _src_components_Board__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../src/components/Board */ "./src/components/Board/index.js");
+
+
 
 
 
@@ -1664,6 +1669,64 @@ __webpack_require__.r(__webpack_exports__);
  // show awards, i.e. most kills, most wins, highest kd etc etc in separate div
 // share / reset / refresh buttons
 
+var CopyLinkPopup = function CopyLinkPopup(_ref) {
+  var children = _ref.children;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_12__["useState"])(false),
+      _useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_11__["default"])(_useState, 2),
+      isCopied = _useState2[0],
+      setCopied = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_12__["useState"])(''),
+      _useState4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_11__["default"])(_useState3, 2),
+      link = _useState4[0],
+      setLink = _useState4[1];
+
+  var handleCopyClipboard = function handleCopyClipboard(link) {
+    var didCopy = copy_to_clipboard__WEBPACK_IMPORTED_MODULE_14___default()(link);
+    setCopied(didCopy);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Popup"], {
+    style: {
+      width: '100%'
+    },
+    hideOnScroll: true,
+    hoverable: true,
+    position: "top center",
+    onOpen: function onOpen() {
+      return setLink(location.href);
+    },
+    onClose: function onClose() {
+      return setCopied(false);
+    },
+    content: react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"], {
+      textAlign: "center"
+    }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, {
+      textAlign: "left"
+    }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
+      textAlign: "left"
+    }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Header"], {
+      as: "h5",
+      color: isCopied ? 'green' : 'grey'
+    }, isCopied ? 'Link copied!' : 'Link to custom leaderboard: '))), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, {
+      style: {
+        paddingTop: '0px'
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, null, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Input"], {
+      value: link
+    }), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Button"], {
+      icon: isCopied ? 'check' : 'linkify',
+      color: isCopied ? 'green' : 'grey',
+      compact: true,
+      onClick: function onClick() {
+        return handleCopyClipboard(link);
+      }
+    })))),
+    trigger: children
+  });
+};
+
 var Leaderboard =
 /*#__PURE__*/
 function (_Component) {
@@ -1674,13 +1737,13 @@ function (_Component) {
     value: function () {
       var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee(_ref) {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee(_ref2) {
         var query, usernames, mode;
         return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                query = _ref.query;
+                query = _ref2.query;
                 usernames = query.usernames;
                 mode = query.mode;
 
@@ -1753,7 +1816,7 @@ function (_Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "initPlayers",
     /*#__PURE__*/
     function () {
-      var _ref2 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
       _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee2(usernames) {
         var initialPlayers;
@@ -1770,7 +1833,7 @@ function (_Component) {
 
                 _context2.next = 4;
                 return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a.all(usernames.map(function (username) {
-                  return Object(_src_actions__WEBPACK_IMPORTED_MODULE_15__["getProfileByUsername"])(username);
+                  return Object(_src_actions__WEBPACK_IMPORTED_MODULE_17__["getProfileByUsername"])(username);
                 }));
 
               case 4:
@@ -1793,14 +1856,23 @@ function (_Component) {
       }));
 
       return function (_x2) {
-        return _ref2.apply(this, arguments);
+        return _ref3.apply(this, arguments);
       };
     }());
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "refreshBoard", function () {
+      var players = _this.state.players;
+      var usernames = players.map(function (player) {
+        return player.username;
+      });
+
+      _this.initPlayers(usernames);
+    });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "addPlayer",
     /*#__PURE__*/
     function () {
-      var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      var _ref4 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
       _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee3(player) {
         var _this$state, players, column, mode, direction, newPlayer, updatedPlayers;
@@ -1820,7 +1892,7 @@ function (_Component) {
 
               case 3:
                 _context3.next = 5;
-                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_15__["getProfileByUid"])(player.uid);
+                return Object(_src_actions__WEBPACK_IMPORTED_MODULE_17__["getProfileByUid"])(player.uid);
 
               case 5:
                 newPlayer = _context3.sent;
@@ -1845,7 +1917,7 @@ function (_Component) {
       }));
 
       return function (_x3) {
-        return _ref3.apply(this, arguments);
+        return _ref4.apply(this, arguments);
       };
     }());
 
@@ -1922,9 +1994,9 @@ function (_Component) {
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this)), "sortPlayers", function (players, accessor, mode, direction) {
-      return accessor == 'username' ? lodash__WEBPACK_IMPORTED_MODULE_12___default.a.orderBy(_this.state.players, [function (o) {
+      return accessor == 'username' ? lodash__WEBPACK_IMPORTED_MODULE_13___default.a.orderBy(_this.state.players, [function (o) {
         return o.username.toLowerCase();
-      }], [direction]) : lodash__WEBPACK_IMPORTED_MODULE_12___default.a.orderBy(players, function (o) {
+      }], [direction]) : lodash__WEBPACK_IMPORTED_MODULE_13___default.a.orderBy(players, function (o) {
         return o.stats["".concat(accessor, "_").concat(mode)];
       }, [direction]);
     });
@@ -1970,6 +2042,9 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__["default"])(Leaderboard, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      this.setState({
+        url: location.href
+      });
       this.initColumns();
       var usernames = this.props.usernames;
 
@@ -1980,49 +2055,55 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$state4 = this.state,
           columns = _this$state4.columns,
           mode = _this$state4.mode,
           players = _this$state4.players,
           loading = _this$state4.loading;
-      return react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Container"], {
+      return react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Container"], {
         text: true,
         textAlign: "center",
         style: {
           paddingTop: '100px',
-          paddingBottom: '100px',
-          height: '100%'
+          paddingBottom: '100px' // height: '100%'
+
         }
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"], {
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"], {
         centered: true,
         textAlign: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("h3", null, "Leaderboards")), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Row, {
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement("h3", null, "Leaderboards")), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, {
         columns: "1"
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Column, {
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
         mobile: "16",
         computer: "6",
         largeScreen: "6",
         tablet: "6",
         widescreen: "6"
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(_src_components_SearchBar__WEBPACK_IMPORTED_MODULE_16__["default"], {
         handleResultSelect: this.addPlayer
-      }))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Row, {
-        style: {
-          paddingTop: '0px'
-        },
-        columns: "2",
-        divided: true
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Column, {
-        textAlign: "center"
-      }, "Share ", react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+      }))), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, {
+        className: "compact"
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Menu"], {
+        fluid: true,
+        borderless: true
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Menu"].Item, {
+        position: "right",
+        as: "a"
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(CopyLinkPopup, null, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement("span", null, "Share ", react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Icon"], {
         name: "share"
-      })), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Column, {
-        textAlign: "center"
-      }, "Refresh ", react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Icon"], {
+      })))), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Menu"].Item, {
+        as: "a",
+        disabled: loading,
+        onClick: function onClick() {
+          return _this2.refreshBoard();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement("span", null, "Refresh ", react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Icon"], {
         name: "sync alternate"
-      }))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_13__["Grid"].Column, {
+      }))))), react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
         textAlign: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_Board__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(_src_components_Board__WEBPACK_IMPORTED_MODULE_18__["default"], {
         columns: columns,
         mode: mode,
         players: players,
@@ -2034,7 +2115,7 @@ function (_Component) {
   }]);
 
   return Leaderboard;
-}(react__WEBPACK_IMPORTED_MODULE_11__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_12__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Leaderboard);
 
@@ -2699,6 +2780,17 @@ module.exports = __webpack_require__(/*! /Users/kenny/Documents/GitHub/fortniteb
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
+
+/***/ }),
+
+/***/ "copy-to-clipboard":
+/*!************************************!*\
+  !*** external "copy-to-clipboard" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("copy-to-clipboard");
 
 /***/ }),
 

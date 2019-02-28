@@ -2017,10 +2017,8 @@ var Navbar = function Navbar(_ref) {
     position: "right",
     style: {
       color: 'grey'
-    },
-    onClick: function onClick() {
-      return console.log('clicked!');
-    },
+    } // onClick={() => console.log('clicked!')}
+    ,
     maxWidth: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"].onlyMobile.maxWidth
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
     name: "bars",

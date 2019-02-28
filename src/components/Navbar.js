@@ -41,7 +41,7 @@ const Navbar = ({ router }) => {
                         icon
                         position="right"
                         style={{ color: 'grey' }}
-                        onClick={() => console.log('clicked!')}
+                        // onClick={() => console.log('clicked!')}
                         maxWidth={Responsive.onlyMobile.maxWidth}
                     >
                         <Icon name="bars" size="large" />
