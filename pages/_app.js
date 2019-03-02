@@ -2,7 +2,6 @@ import App, { Container } from 'next/app';
 import React from 'react';
 import { withRouter } from 'next/router';
 
-import Layout from '../src/components/Layout';
 import Navbar from '../src/components/Navbar';
 
 import '../src/styles/app.scss';
