@@ -18,12 +18,19 @@ const StatsTable = ({ kd, kills, wins, winrate, matches, mode }) => {
     }
 
     return (
-        <Grid style={{ backgroundColor: '#2c3c57', color: 'white' }}>
-            <Grid.Row style={{ backgroundColor }}>
+        <Grid
+            style={{
+                backgroundColor: '#2c3c57',
+                color: 'white',
+                marginBottom: '16px',
+                borderRadius: '4px'
+            }}
+        >
+            <Grid.Row
+                style={{ backgroundColor, borderTopLeftRadius: '4px', borderTopRightRadius: '4px' }}
+            >
                 <Grid.Column>{mode}</Grid.Column>
             </Grid.Row>
-            {/* <Divider clearing /> */}
-
             <Grid.Row columns="5" stretched style={{ height: '80px' }}>
                 <Grid.Column className="compact" textAlign="center" verticalAlign="middle">
                     <Header size="tiny" style={{ color: 'white' }}>

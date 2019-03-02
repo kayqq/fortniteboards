@@ -48,7 +48,7 @@ const Player = ({ columns, mode, player, boardIndex, removePlayer }) => {
                 textAlign="center"
                 mobile="1"
             >
-                <Header as="h6" style={{ color: '#92a2bd' }}>
+                <Header as="h4" style={{ color: '#92a2bd' }}>
                     {boardIndex + 1}
                 </Header>
             </Responsive>

@@ -3,6 +3,7 @@ import React from 'react';
 import { withRouter } from 'next/router';
 
 import Layout from '../src/components/Layout';
+import Navbar from '../src/components/Navbar';
 
 import '../src/styles/app.scss';
 
@@ -20,9 +21,8 @@ class MyApp extends App {
         const { Component, pageProps, router } = this.props;
         return (
             <Container>
-                <Layout router={router}>
-                    <Component router={router} {...pageProps} />
-                </Layout>
+                <Navbar router={router} />
+                <Component router={router} {...pageProps} />
             </Container>
         );
     }

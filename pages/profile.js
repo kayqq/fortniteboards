@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Divider } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 
 import { getProfileByUsername } from '../src/actions';
 
@@ -21,14 +21,9 @@ class Profile extends Component {
         super(props);
     }
 
-    async componentDidMount() {
-        const profile = await getProfileByUsername(this.props.profile.username);
-        console.log(profile);
-    }
-
     render() {
         const { profile } = this.props;
-        const { stats, totals, matches } = profile;
+        const { stats, totals } = profile;
         const season = profile.window.charAt(profile.window.length - 1);
 
         return (
@@ -50,7 +45,7 @@ class Profile extends Component {
                         winrate={totals.winrate}
                         matches={totals.matchesplayed}
                     />
-                    <Divider hidden />
+
                     <StatsTable
                         kd={stats.kd_solo}
                         kills={stats.kills_solo}
@@ -60,8 +55,6 @@ class Profile extends Component {
                         mode="SOLO"
                     />
 
-                    <Divider hidden />
-
                     <StatsTable
                         kd={stats.kd_duo}
                         kills={stats.kills_duo}
@@ -70,8 +63,6 @@ class Profile extends Component {
                         matches={stats.matchesplayed_duo}
                         mode="DUO"
                     />
-
-                    <Divider hidden />
 
                     <StatsTable
                         kd={stats.kd_squad}

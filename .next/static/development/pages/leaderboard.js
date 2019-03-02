@@ -72701,8 +72701,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // show awards, i.e. most kills, most wins, highest kd etc etc in separate div
-// share / reset / refresh buttons
+
 
 var CopyLinkPopup = function CopyLinkPopup(_ref) {
   var children = _ref.children;
@@ -73114,7 +73113,8 @@ function (_Component) {
         as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Segment"],
         style: {
           color: 'white',
-          backgroundColor: 'rgba(46, 49, 49, .6)'
+          backgroundColor: 'rgba(61, 74, 133, 0.3)' // backgroundColor: 'rgba(46, 49, 49, .6)'
+
         }
       }, react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_15__["Grid"].Column, {
         textAlign: "center"
@@ -73621,7 +73621,7 @@ var Player = function Player(_ref3) {
     textAlign: "center",
     mobile: "1"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"], {
-    as: "h6",
+    as: "h4",
     style: {
       color: '#92a2bd'
     }

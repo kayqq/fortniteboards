@@ -18,9 +18,6 @@ import { getStatsByUsername, getStatsByUid } from '../src/actions';
 
 import Board from '../src/components/Board';
 
-// show awards, i.e. most kills, most wins, highest kd etc etc in separate div
-// share / reset / refresh buttons
-
 const CopyLinkPopup = ({ children }) => {
     const [isCopied, setCopied] = useState(false);
     const [link, setLink] = useState('');
@@ -261,7 +258,11 @@ class Leaderboard extends Component {
                         textAlign="center"
                         columns="1"
                         as={Segment}
-                        style={{ color: 'white', backgroundColor: 'rgba(46, 49, 49, .6)' }}
+                        style={{
+                            color: 'white',
+                            backgroundColor: 'rgba(61, 74, 133, 0.3)'
+                            // backgroundColor: 'rgba(46, 49, 49, .6)'
+                        }}
                     >
                         <Grid.Column textAlign="center">
                             <h1>Leaderboards</h1>
