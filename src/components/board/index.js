@@ -15,7 +15,14 @@ const Index = ({
 }) => {
     return (
         <React.Fragment>
-            <Grid style={{ backgroundColor: '#2c3c57', color: 'white' }}>
+            <Grid
+                style={{
+                    backgroundColor: '#2c3c57',
+                    color: 'white',
+                    borderTopLeftRadius: '0.28571429rem',
+                    borderTopRightRadius: '0.28571429rem'
+                }}
+            >
                 <ModeHeader mode={mode} handleModeChange={handleModeChange} />
             </Grid>
 

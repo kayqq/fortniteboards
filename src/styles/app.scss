@@ -23,45 +23,63 @@ $grey6: #999999;
 // Typographies
 
 @font-face {
-    font-family: 'Burbank-Big';
-    src: url('../assets/Burbank-Big-Regular-Black.ttf');
+    font-family: 'Burbank-Big-Regular-Black';
+    src: url('../assets/fonts/Burbank-Big-Regular-Black.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Burbank-Big-Regular-Medium';
+    src: url('../assets/fonts/Burbank-Big-Regular-Medium.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Burbank-Big-Condensed-Bold';
+    src: url('../assets/fonts/BurbankBigCondensed-Bold.ttf');
     font-weight: normal;
 }
 
 h1 {
     font-size: 4em;
-    font-family: 'Burbank-Big';
+    font-family: 'Burbank-Big-Condensed-Bold';
 }
 h2 {
     font-size: 3em;
-    font-family: 'Burbank-Big';
+    font-family: 'Burbank-Big-Condensed-Bold';
 }
 h3 {
     font-size: 2em;
-    font-family: 'Burbank-Big';
+    font-family: 'Burbank-Big-Condensed-Bold';
 }
 h4 {
     font-size: 1.5em;
+    font-family: 'Burbank-Big-Condensed-Bold';
 }
 h5 {
     font-size: 1em;
+    font-family: 'Burbank-Big-Condensed-Bold';
 }
 h6 {
     font-size: 0.75em;
+    font-family: 'Burbank-Big-Condensed-Bold';
 }
 
 body {
-    font-family: 'Burbank-Big';
+    font-family: 'Burbank-Big-Condensed-Bold';
     font-size: 1em;
     color: $grey1;
     // width: 100vw;
     // background-color: #c6d2e5 !important;
     overflow-y: auto !important;
-    background-image: radial-gradient(
-        50% 97%,
-        rgb(229, 236, 246) 0%,
-        rgb(214, 225, 247) 98%
-    ) !important;
+    // background-image: radial-gradient(
+    //     50% 97%,
+    //     rgb(229, 236, 246) 0%,
+    //     rgb(214, 225, 247) 98%
+    // ) !important;
+    background-image: url('https://i.redd.it/00xj0ekhrv901.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 a {
     // color: $primary;

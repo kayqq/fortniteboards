@@ -2,9 +2,19 @@ import React, { Component, useState } from 'react';
 import _ from 'lodash';
 import copy from 'copy-to-clipboard';
 
-import { Container, Grid, Icon, Popup, Button, Input, Header, Menu } from 'semantic-ui-react';
+import {
+    Container,
+    Segment,
+    Grid,
+    Icon,
+    Popup,
+    Button,
+    Input,
+    Header,
+    Menu
+} from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
-import { getProfileByUsername, getProfileByUid } from '../src/actions';
+import { getStatsByUsername, getStatsByUid } from '../src/actions';
 
 import Board from '../src/components/Board';
 
@@ -128,9 +138,7 @@ class Leaderboard extends Component {
             players: new Array(usernames.length).fill(null)
         });
 
-        initialPlayers = await Promise.all(
-            usernames.map(username => getProfileByUsername(username))
-        );
+        initialPlayers = await Promise.all(usernames.map(username => getStatsByUsername(username)));
 
         // End load player stats
         this.setState(
@@ -153,7 +161,7 @@ class Leaderboard extends Component {
         // Check if already added to board
         if (this.isPlayerSelected(player.uid)) return;
         // Not duplicate, get profile and add
-        const newPlayer = await getProfileByUid(player.uid);
+        const newPlayer = await getStatsByUid(player.uid);
         let updatedPlayers = [...players, newPlayer];
 
         // if pre-sorted then apply sort setting to updated players
@@ -241,7 +249,6 @@ class Leaderboard extends Component {
 
         return (
             <Container
-                text
                 textAlign="center"
                 style={{
                     paddingTop: '100px',
@@ -250,22 +257,34 @@ class Leaderboard extends Component {
                 }}
             >
                 <Grid centered textAlign="center">
-                    <Grid.Row>
-                        <h3>Leaderboards</h3>
-                    </Grid.Row>
-                    <Grid.Row columns="1">
+                    <Grid.Row
+                        textAlign="center"
+                        columns="1"
+                        as={Segment}
+                        style={{ color: 'white', backgroundColor: 'rgba(46, 49, 49, .6)' }}
+                    >
+                        <Grid.Column textAlign="center">
+                            <h1>Leaderboards</h1>
+                        </Grid.Column>
+
                         <Grid.Column
                             mobile="16"
                             computer="6"
                             largeScreen="6"
                             tablet="6"
                             widescreen="6"
+                            style={{ paddingBottom: '1em', paddingTop: '1em' }}
                         >
                             <SearchBar handleResultSelect={this.addPlayer} />
                         </Grid.Column>
                     </Grid.Row>
+
                     <Grid.Row className="compact">
-                        <Menu tabular fluid style={{ backgroundColor: 'rgba(61, 74, 133, 0)' }}>
+                        <Menu
+                            tabular
+                            fluid
+                            style={{ border: 'none', backgroundColor: 'rgba(61, 74, 133, 0)' }}
+                        >
                             <Menu.Item
                                 fitted="vertically"
                                 position="right"

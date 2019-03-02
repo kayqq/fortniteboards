@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Grid, Image, Card } from 'semantic-ui-react';
 
-const TotalStatsTable = ({ username, kd, kills, wins, winrate, matches }) => {
+const TotalStatsTable = ({ username, season, kd, kills, wins, winrate, matches }) => {
     return (
         <Grid>
             <Card raised fluid style={{ backgroundColor: '#6c80a2' }}>
@@ -15,7 +15,7 @@ const TotalStatsTable = ({ username, kd, kills, wins, winrate, matches }) => {
                     <Card.Header>
                         <Header as="h1" style={{ color: 'white' }}>
                             {username}
-                            <Header.Subheader>Season 7</Header.Subheader>
+                            <Header.Subheader>Season {season}</Header.Subheader>
                         </Header>
                     </Card.Header>
                     <Card.Meta>{matches} Matches</Card.Meta>

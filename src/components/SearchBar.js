@@ -1,14 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { Search } from 'semantic-ui-react';
+import { Search, Grid, Icon } from 'semantic-ui-react';
 import { getUsernames } from '../actions';
 
 import { useDebounce } from '../hooks/useDebounce';
 
-const resultRenderer = ({ uid, username }) => (
-    <span key={uid} title={username}>
-        {username}
-    </span>
-);
+const resultRenderer = ({ uid, username, platform }) => {
+    let iconName = 'keyboard outline';
+    switch (platform) {
+        case 'ps4':
+            iconName = 'game';
+            break;
+        case 'nintendo':
+            iconName = 'game';
+            break;
+        default:
+            break;
+    }
+
+    return (
+        <Grid>
+            <Grid.Column width="13">
+                <span key={uid} title={username}>
+                    {username}
+                </span>
+            </Grid.Column>
+            <Grid.Column textAlign="center" width="3" floated="right">
+                {platform == 'pc' ? 'PC' : <Icon name={iconName} />}
+            </Grid.Column>
+        </Grid>
+    );
+};
 
 const SearchBar = ({ handleResultSelect }) => {
     const [searchTerm, setSearchTerm] = useState('');

@@ -21,9 +21,15 @@ class Profile extends Component {
         super(props);
     }
 
+    async componentDidMount() {
+        const profile = await getProfileByUsername(this.props.profile.username);
+        console.log(profile);
+    }
+
     render() {
         const { profile } = this.props;
-        const { stats, totals } = profile;
+        const { stats, totals, matches } = profile;
+        const season = profile.window.charAt(profile.window.length - 1);
 
         return (
             <div>
@@ -37,6 +43,7 @@ class Profile extends Component {
                 >
                     <TotalStatsTable
                         username={profile.username}
+                        season={season}
                         kd={totals.kd}
                         kills={totals.kills}
                         wins={totals.wins}

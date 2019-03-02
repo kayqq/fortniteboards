@@ -28,22 +28,26 @@ class Index extends Component {
                 textAlign="center"
                 style={{
                     paddingTop: '100px',
-                    paddingBottom: '100px',
-                    height: '100%'
+                    paddingBottom: '100px'
                 }}
             >
                 <Grid centered textAlign="center">
                     <Grid.Row
                         as={Segment}
+                        columns="1"
                         style={{ color: 'white', backgroundColor: 'rgba(61, 74, 133, 0.3)' }}
                     >
-                        <h3>Fortnite Boards</h3>
-                        <Container>
-                            <h4>
-                                Welcome to Fortnite Boards! Search player stats by battle tag or
-                                build your own Leaderboard and share to your friends!
-                            </h4>
-                        </Container>
+                        <Grid.Column textAlign="center">
+                            <h1>Fortnite Boards</h1>
+                        </Grid.Column>
+                        <Grid.Column textAlign="center">
+                            <Container text>
+                                <h4>
+                                    Welcome to Fortnite Boards! Search player stats by battle tag or
+                                    build your own Leaderboard and share to your friends!
+                                </h4>
+                            </Container>
+                        </Grid.Column>
 
                         <Grid.Column
                             mobile="16"
