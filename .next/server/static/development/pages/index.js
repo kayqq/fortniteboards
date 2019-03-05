@@ -853,15 +853,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var axiosInstance = axios__WEBPACK_IMPORTED_MODULE_3___default.a.create({
   baseURL: "https://fortnite-public-api.theapinetwork.com/prod09"
-}); // const onDownloadProgress = {
-//     onDownloadProgress: progressEvent => {
-//         let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-//         console.log(progressEvent.lengthComputable);
-//         console.log(percentCompleted);
-//     }
-// };
-// V1
-
+});
 var getUsernames =
 /*#__PURE__*/
 function () {
@@ -1058,7 +1050,7 @@ function () {
 
           case 4:
             uid = _context6.sent;
-            // Async requests
+            // Start async requests
             responseMatches = getMatchesByUid(uid);
             responseStats = getStatsByUid(uid, platform, window); // Await till all promises are resolved
 
@@ -1126,7 +1118,7 @@ function () {
   return function getNews() {
     return _ref7.apply(this, arguments);
   };
-}(); // V2
+}();
 
 /***/ }),
 

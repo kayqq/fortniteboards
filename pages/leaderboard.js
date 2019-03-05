@@ -1,66 +1,12 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import _ from 'lodash';
-import copy from 'copy-to-clipboard';
 
-import {
-    Container,
-    Segment,
-    Grid,
-    Icon,
-    Popup,
-    Button,
-    Input,
-    Header,
-    Menu
-} from 'semantic-ui-react';
 import SearchBar from '../src/components/SearchBar';
-import { getStatsByUsername, getStatsByUid } from '../src/actions';
-
 import Board from '../src/components/Board';
+import CopyLinkPopup from '../src/components/CopyLinkPopup';
 
-const CopyLinkPopup = ({ children }) => {
-    const [isCopied, setCopied] = useState(false);
-    const [link, setLink] = useState('');
-
-    const handleCopyClipboard = link => {
-        const didCopy = copy(link);
-        setCopied(didCopy);
-    };
-
-    return (
-        <Popup
-            style={{ width: '100%' }}
-            hideOnScroll
-            hoverable
-            position="top center"
-            onOpen={() => setLink(location.href)}
-            onClose={() => setCopied(false)}
-            content={
-                <Grid textAlign="center">
-                    <Grid.Row textAlign="left">
-                        <Grid.Column textAlign="left">
-                            <Header as="h5" color={isCopied ? 'green' : 'grey'}>
-                                {isCopied ? 'Link copied!' : 'Link to custom leaderboard: '}
-                            </Header>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row style={{ paddingTop: '0px' }}>
-                        <Grid.Column>
-                            <Input value={link} />
-                            <Button
-                                icon={isCopied ? 'check' : 'linkify'}
-                                color={isCopied ? 'green' : 'grey'}
-                                compact
-                                onClick={() => handleCopyClipboard(link)}
-                            />
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-            }
-            trigger={children}
-        />
-    );
-};
+import { getStatsByUsername, getStatsByUid } from '../src/actions';
+import { Container, Segment, Grid, Icon, Menu } from 'semantic-ui-react';
 
 class Leaderboard extends Component {
     static async getInitialProps({ query }) {

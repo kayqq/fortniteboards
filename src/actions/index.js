@@ -4,16 +4,6 @@ const axiosInstance = axios.create({
     baseURL: `https://fortnite-public-api.theapinetwork.com/prod09`
 });
 
-// const onDownloadProgress = {
-//     onDownloadProgress: progressEvent => {
-//         let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-//         console.log(progressEvent.lengthComputable);
-//         console.log(percentCompleted);
-//     }
-// };
-
-// V1
-
 export const getUsernames = async username => {
     const endPoint = `/users/search?username=${username}`;
     const response = await axiosInstance.get(endPoint);
@@ -48,7 +38,7 @@ export const getStatsByUsername = async (username, platform = 'pc', window = 'se
 export const getProfileByUsername = async (username, platform = 'pc', window = 'season8') => {
     const uid = await getUidByUsername(username);
 
-    // Async requests
+    // Start async requests
     const responseMatches = getMatchesByUid(uid);
     const responseStats = getStatsByUid(uid, platform, window);
 
@@ -63,5 +53,3 @@ export const getNews = async (language = 'en') => {
     const response = await axiosInstance.get(endPoint);
     return response.data;
 };
-
-// V2

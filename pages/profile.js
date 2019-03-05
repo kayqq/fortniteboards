@@ -3,6 +3,7 @@ import { Container } from 'semantic-ui-react';
 
 import { getProfileByUsername } from '../src/actions';
 
+import ProfileHeader from '../src/components/Profile/ProfileHeader';
 import StatsTable from '../src/components/Profile/StatsTable';
 import TotalStatsTable from '../src/components/Profile/TotalStatsTable';
 
@@ -36,14 +37,17 @@ class Profile extends Component {
                         height: '100%'
                     }}
                 >
-                    <TotalStatsTable
+                    <ProfileHeader
                         username={profile.username}
                         season={season}
+                        matches={totals.matchesplayed}
+                    />
+
+                    <TotalStatsTable
                         kd={totals.kd}
                         kills={totals.kills}
                         wins={totals.wins}
                         winrate={totals.winrate}
-                        matches={totals.matchesplayed}
                     />
 
                     <StatsTable
