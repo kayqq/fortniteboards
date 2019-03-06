@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Menu, Responsive } from 'semantic-ui-react';
+import { Container, Menu } from 'semantic-ui-react';
 
 const Navbar = ({ router }) => {
     const changeRoute = path => {
@@ -17,15 +17,15 @@ const Navbar = ({ router }) => {
                 >
                     <span as="a">Leaderboards</span>
                 </Menu.Item>
-
-                <Responsive
+                {/* Integrate Menu Icon when more paths available */}
+                {/* <Responsive
                     as={Menu.Item}
                     icon="bars"
                     fitted="horizontally"
                     position="right"
                     size="large"
                     maxWidth={Responsive.onlyMobile.maxWidth}
-                />
+                /> */}
             </Container>
         </Menu>
     );

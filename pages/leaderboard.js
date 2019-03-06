@@ -199,15 +199,7 @@ class Leaderboard extends Component {
                 }}
             >
                 <Grid centered textAlign="center">
-                    <Grid.Row
-                        textAlign="center"
-                        columns="1"
-                        as={Segment}
-                        style={{
-                            color: 'white',
-                            backgroundColor: 'rgba(61, 74, 133, 0.3)'
-                        }}
-                    >
+                    <Grid.Row textAlign="center" columns="1" as={Segment} className="clear-panel">
                         <Grid.Column textAlign="center">
                             <h1>Leaderboards</h1>
                         </Grid.Column>

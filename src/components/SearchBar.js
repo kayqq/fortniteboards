@@ -21,11 +21,11 @@ const resultRenderer = ({ uid, username, platform }) => {
         <Grid>
             <Grid.Column width="13">
                 <span key={uid} title={username}>
-                    {username}
+                    <h4>{username}</h4>
                 </span>
             </Grid.Column>
             <Grid.Column textAlign="center" width="3" floated="right">
-                {platform == 'pc' ? 'PC' : <Icon name={iconName} />}
+                <h4>{platform == 'pc' ? 'PC' : <Icon name={iconName} />}</h4>
             </Grid.Column>
         </Grid>
     );

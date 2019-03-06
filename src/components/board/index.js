@@ -13,12 +13,7 @@ const Index = ({
     loading
 }) => {
     return (
-        <Grid
-            style={{
-                backgroundColor: 'rgba(61, 74, 133, 0.3)',
-                color: 'white'
-            }}
-        >
+        <Grid className="clear-panel">
             <ModeHeader mode={mode} handleModeChange={handleModeChange} />
             <StatsHeader activeColumn={activeColumn} columns={columns} loading={loading} />
             <StatsBody

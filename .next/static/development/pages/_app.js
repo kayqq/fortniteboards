@@ -52606,14 +52606,7 @@ var Navbar = function Navbar(_ref) {
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     as: "a"
-  }, "Leaderboards")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"], {
-    as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Menu"].Item,
-    icon: "bars",
-    fitted: "horizontally",
-    position: "right",
-    size: "large",
-    maxWidth: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"].onlyMobile.maxWidth
-  })));
+  }, "Leaderboards"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);

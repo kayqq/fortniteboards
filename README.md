@@ -6,6 +6,6 @@ A web app for player stats search and custom leaderboards creation. Data is retr
 
 **[Live Demo](https://www.google.com/)**
 
-**Libraries:** React, Next.js, Express.js [moment.js](https://momentjs.com/), [axios](https://github.com/mzabriskie/axios), [lodash](https://github.com/lodash/lodash)
+**Libraries:** React, Next.js, Express.js, [axios](https://github.com/mzabriskie/axios), [lodash](https://github.com/lodash/lodash)
 
 **Tools:** webpack, npm

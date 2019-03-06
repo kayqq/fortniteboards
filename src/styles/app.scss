@@ -18,6 +18,9 @@ $grey3: #333333;
 $grey4: #444444;
 $grey5: #666666;
 $grey6: #999999;
+$solo: #14c8ff;
+$duo: #f3af19;
+$squad: #9d4dbb;
 // Grad: #11998E --> 38EF7D / Top-to-down
 
 // --------------------------------------------------------------
@@ -70,45 +73,67 @@ body {
     font-family: 'Burbank-Big-Condensed-Bold';
     font-size: 1em;
     color: $grey1;
-    // width: 100vw;
-    // background-color: #c6d2e5 !important;
     overflow-y: auto !important;
-    // background-image: radial-gradient(
-    //     50% 97%,
-    //     rgb(229, 236, 246) 0%,
-    //     rgb(214, 225, 247) 98%
-    // ) !important;
+    background-image: radial-gradient(50% 97%, rgb(229, 236, 246) 0%, rgb(214, 225, 247) 98%);
     background-image: url('https://i.redd.it/00xj0ekhrv901.jpg');
     background-size: cover;
     background-attachment: fixed;
-}
-a {
-    // color: $primary;
 }
 
 small {
     font-size: 0.75em;
 }
 
-.search {
-    .results {
-        overflow-y: auto;
-        max-height: 300px;
-    }
-}
-
+// mode colors
 .solo {
-    background-color: #14c8ff;
+    background-color: $solo;
 }
 
 .duo {
-    background-color: #f3af19;
+    background-color: $duo;
 }
 
 .squad {
-    background-color: #9d4dbb;
+    background-color: $squad;
 }
 
+.clear-panel {
+    background-color: rgba(61, 74, 133, 0.3) !important;
+    color: white;
+}
+
+// Search
+.ui.search > .results {
+    width: 100%;
+    margin: 0;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+// Navbar menu items
+.Navbar {
+    background-color: #1b2137 !important;
+    color: white !important;
+}
+.ui.menu .item {
+    color: white;
+}
+
+.ui.menu .item:hover:not(.active) {
+    color: white !important;
+}
+
+.ui.secondary.pointing.menu .active.item {
+    background-color: yellow;
+    color: #1b2137;
+}
+
+.ui.secondary.pointing.menu .active.item:hover {
+    background-color: yellow;
+    color: #1b2137;
+}
+
+// custom compact grid mode
 .ui.compact.grid .row:not(:first-child),
 .ui.grid .compact.row {
     padding-top: 0;
@@ -146,27 +171,4 @@ small {
 .ui.menu .link.item:active,
 .ui.menu a.item:active {
     background-color: yellow;
-}
-
-// Navbar menu items
-.Navbar {
-    background-color: #1b2137 !important;
-    color: white !important;
-}
-.ui.menu .item {
-    color: white;
-}
-
-.ui.menu .item:hover:not(.active) {
-    color: white !important;
-}
-
-.ui.secondary.pointing.menu .active.item {
-    background-color: yellow;
-    color: #1b2137;
-}
-
-.ui.secondary.pointing.menu .active.item:hover {
-    background-color: yellow;
-    color: #1b2137;
 }

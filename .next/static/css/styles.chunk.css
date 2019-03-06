@@ -41,16 +41,13 @@ body {
   font-size: 1em;
   color: #111111;
   overflow-y: auto !important;
+  background-image: radial-gradient(50% 97%, #e5ecf6 0%, #d6e1f7 98%);
   background-image: url("https://i.redd.it/00xj0ekhrv901.jpg");
   background-size: cover;
   background-attachment: fixed; }
 
 small {
   font-size: 0.75em; }
-
-.search .results {
-  overflow-y: auto;
-  max-height: 300px; }
 
 .solo {
   background-color: #14c8ff; }
@@ -60,6 +57,34 @@ small {
 
 .squad {
   background-color: #9d4dbb; }
+
+.clear-panel {
+  background-color: rgba(61, 74, 133, 0.3) !important;
+  color: white; }
+
+.ui.search > .results {
+  width: 100%;
+  margin: 0;
+  overflow-y: auto;
+  max-height: 300px; }
+
+.Navbar {
+  background-color: #1b2137 !important;
+  color: white !important; }
+
+.ui.menu .item {
+  color: white; }
+
+.ui.menu .item:hover:not(.active) {
+  color: white !important; }
+
+.ui.secondary.pointing.menu .active.item {
+  background-color: yellow;
+  color: #1b2137; }
+
+.ui.secondary.pointing.menu .active.item:hover {
+  background-color: yellow;
+  color: #1b2137; }
 
 .ui.compact.grid .row:not(:first-child),
 .ui.grid .compact.row {
@@ -94,24 +119,6 @@ small {
 .ui.menu .link.item:active,
 .ui.menu a.item:active {
   background-color: yellow; }
-
-.Navbar {
-  background-color: #1b2137 !important;
-  color: white !important; }
-
-.ui.menu .item {
-  color: white; }
-
-.ui.menu .item:hover:not(.active) {
-  color: white !important; }
-
-.ui.secondary.pointing.menu .active.item {
-  background-color: yellow;
-  color: #1b2137; }
-
-.ui.secondary.pointing.menu .active.item:hover {
-  background-color: yellow;
-  color: #1b2137; }
 
 
 /*# sourceMappingURL=styles.chunk.css.map*/

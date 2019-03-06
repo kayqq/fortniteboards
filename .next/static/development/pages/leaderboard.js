@@ -73049,10 +73049,7 @@ function (_Component) {
         textAlign: "center",
         columns: "1",
         as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Segment"],
-        style: {
-          color: 'white',
-          backgroundColor: 'rgba(61, 74, 133, 0.3)'
-        }
+        className: "clear-panel"
       }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Grid"].Column, {
         textAlign: "center"
       }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("h1", null, "Leaderboards")), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Grid"].Column, {
@@ -73724,10 +73721,7 @@ var Index = function Index(_ref) {
       mode = _ref.mode,
       loading = _ref.loading;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
-    style: {
-      backgroundColor: 'rgba(61, 74, 133, 0.3)',
-      color: 'white'
-    }
+    className: "clear-panel"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ModeHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
     mode: mode,
     handleModeChange: handleModeChange
@@ -73888,13 +73882,13 @@ var resultRenderer = function resultRenderer(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("span", {
     key: uid,
     title: username
-  }, username)), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Grid"].Column, {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("h4", null, username))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Grid"].Column, {
     textAlign: "center",
     width: "3",
     floated: "right"
-  }, platform == 'pc' ? 'PC' : react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("h4", null, platform == 'pc' ? 'PC' : react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_4__["Icon"], {
     name: iconName
-  })));
+  }))));
 };
 
 var SearchBar = function SearchBar(_ref2) {
