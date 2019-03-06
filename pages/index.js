@@ -13,13 +13,18 @@ class Index extends Component {
             news: []
         };
     }
-    async componentDidMount() {
-        const data = await getNews();
-        this.setState({ news: data.entries.slice(0, 3) });
+    componentDidMount() {
+        this.initNews();
     }
 
+    initNews = async () => {
+        const data = await getNews();
+        this.setState({ news: data.entries.slice(0, 3) });
+    };
+
     handleResultSelect = player => {
-        this.props.router.push(`/profile/${player.username}`);
+        const { router } = this.props;
+        router.push(`/profile/${player.username}`);
     };
 
     render() {

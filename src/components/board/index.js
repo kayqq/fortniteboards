@@ -1,9 +1,8 @@
 import React from 'react';
-import { Grid, Dimmer, Loader } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import ModeHeader from './ModeHeader';
 import StatsHeader from './StatsHeader';
-import Player from './Player';
-
+import StatsBody from './StatsBody';
 const Index = ({
     activeColumn,
     columns,
@@ -14,40 +13,30 @@ const Index = ({
     loading
 }) => {
     return (
-        <React.Fragment>
-            <Grid
-                style={{
-                    backgroundColor: '#2c3c57',
-                    color: 'white',
-                    borderTopLeftRadius: '0.28571429rem',
-                    borderTopRightRadius: '0.28571429rem'
-                }}
-            >
-                <ModeHeader mode={mode} handleModeChange={handleModeChange} />
-            </Grid>
+        <Grid
+            style={{
+                backgroundColor: 'rgba(61, 74, 133, 0.3)',
+                color: 'white'
+            }}
+        >
+            <ModeHeader mode={mode} handleModeChange={handleModeChange} />
+            <StatsHeader activeColumn={activeColumn} columns={columns} loading={loading} />
+            <StatsBody
+                columns={columns}
+                players={players}
+                removePlayer={removePlayer}
+                mode={mode}
+                loading={loading}
+            />
 
-            <Dimmer.Dimmable
-                as={Grid}
-                dimmed={loading}
-                style={{ backgroundColor: '#2c3c57', color: 'white' }}
-            >
-                <Dimmer active={loading}>
-                    <Loader>Loading...</Loader>
-                </Dimmer>
-                <StatsHeader activeColumn={activeColumn} columns={columns} />
-
-                {players.map((player, index) => (
-                    <Player
-                        key={index}
-                        columns={columns}
-                        player={player}
-                        mode={mode}
-                        boardIndex={index}
-                        removePlayer={removePlayer}
-                    />
-                ))}
-            </Dimmer.Dimmable>
-        </React.Fragment>
+            {!players.length && (
+                <Grid.Row style={{ height: '70px' }}>
+                    <Grid.Column textAlign="center" verticalAlign="middle">
+                        <h4>Add a player to get started!</h4>
+                    </Grid.Column>
+                </Grid.Row>
+            )}
+        </Grid>
     );
 };
 

@@ -38576,7 +38576,7 @@ var partitionHTMLProps = function partitionHTMLProps(props) {
 /*!*************************************************************!*\
   !*** ./node_modules/semantic-ui-react/dist/es/lib/index.js ***!
   \*************************************************************/
-/*! exports provided: AutoControlledComponent, getChildMapping, mergeChildMappings, childrenUtils, useKeyOnly, useKeyOrValueAndKey, useValueAndKey, useMultipleProp, useTextAlignProp, useVerticalAlignProp, useWidthProp, customPropTypes, debug, makeDebugger, eventStack, getUnhandledProps, getElementType, handleRef, htmlInputAttrs, htmlInputEvents, htmlInputProps, htmlImageProps, partitionHTMLProps, isBrowser, doesNodeContainClick, leven, createPaginationItems, SUI, numberToWordMap, numberToWord, normalizeOffset, normalizeTransitionDuration, objectDiff, createShorthand, createShorthandFactory, createHTMLDivision, createHTMLIframe, createHTMLImage, createHTMLInput, createHTMLLabel, createHTMLParagraph */
+/*! exports provided: AutoControlledComponent, getChildMapping, mergeChildMappings, childrenUtils, useKeyOnly, useKeyOrValueAndKey, useValueAndKey, useMultipleProp, useTextAlignProp, useVerticalAlignProp, useWidthProp, customPropTypes, debug, makeDebugger, eventStack, createShorthand, createShorthandFactory, createHTMLDivision, createHTMLIframe, createHTMLImage, createHTMLInput, createHTMLLabel, createHTMLParagraph, getUnhandledProps, getElementType, handleRef, htmlInputAttrs, htmlInputEvents, htmlInputProps, htmlImageProps, partitionHTMLProps, isBrowser, doesNodeContainClick, leven, createPaginationItems, SUI, numberToWordMap, numberToWord, normalizeOffset, normalizeTransitionDuration, objectDiff */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52581,47 +52581,28 @@ __webpack_require__.r(__webpack_exports__);
 
 var Navbar = function Navbar(_ref) {
   var router = _ref.router;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Segment"], {
-    style: {
-      backgroundColor: '#1B2137',
-      color: 'white',
-      padding: '0px'
-    },
-    textAlign: "center",
-    vertical: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Menu"], {
+
+  var changeRoute = function changeRoute(path) {
+    router.push(router.pathname == path ? router.asPath : path);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Menu"], {
+    className: "Navbar",
     pointing: true,
     fixed: "top",
     secondary: true,
-    size: "large",
-    style: {
-      backgroundColor: '#1B2137',
-      color: 'white'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Container"], {
-    style: {
-      backgroundColor: '#1B2137',
-      color: 'white'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Menu"].Item, {
+    size: "large"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Container"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Menu"].Item, {
     active: router.pathname == '/',
-    style: {
-      color: router.pathname == '/' ? '#1B2137' : 'white',
-      backgroundColor: router.pathname == '/' ? 'yellow' : null
-    },
     onClick: function onClick() {
-      router.push('/');
+      return changeRoute('/');
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     as: "a"
   }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Menu"].Item, {
     active: router.pathname == '/leaderboard',
-    style: {
-      color: router.pathname == '/leaderboard' ? '#1B2137' : 'white',
-      backgroundColor: router.pathname == '/leaderboard' ? 'yellow' : null
-    },
     onClick: function onClick() {
-      router.push(router.pathname == '/leaderboard' ? router.asPath : '/leaderboard');
+      return changeRoute('/leaderboard');
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     as: "a"
@@ -52631,11 +52612,8 @@ var Navbar = function Navbar(_ref) {
     fitted: "horizontally",
     position: "right",
     size: "large",
-    style: {
-      color: 'grey'
-    },
     maxWidth: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"].onlyMobile.maxWidth
-  }))));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);

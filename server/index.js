@@ -34,7 +34,9 @@ app.prepare().then(() => {
 
     function startServer() {
         server.listen(port, () => {
+            /* eslint-disable no-alert, no-console */
             console.log(`> Ready on http://localhost:${port}`);
+            /* eslint-enable no-alert */
         });
     }
 });

@@ -73040,8 +73040,7 @@ function (_Component) {
         textAlign: "center",
         style: {
           paddingTop: '100px',
-          paddingBottom: '100px' // height: '100%'
-
+          paddingBottom: '100px'
         }
       }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Grid"], {
         centered: true,
@@ -73052,8 +73051,7 @@ function (_Component) {
         as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Segment"],
         style: {
           color: 'white',
-          backgroundColor: 'rgba(61, 74, 133, 0.3)' // backgroundColor: 'rgba(46, 49, 49, .6)'
-
+          backgroundColor: 'rgba(61, 74, 133, 0.3)'
         }
       }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Grid"].Column, {
         textAlign: "center"
@@ -73072,31 +73070,19 @@ function (_Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Grid"].Row, {
         className: "compact"
       }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Menu"], {
-        tabular: true,
         fluid: true,
         style: {
           border: 'none',
           backgroundColor: 'rgba(61, 74, 133, 0)'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Menu"].Item, {
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_CopyLinkPopup__WEBPACK_IMPORTED_MODULE_15__["default"], null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Menu"].Item, {
         fitted: "vertically",
         position: "right",
-        as: "a",
-        style: {
-          backgroundColor: 'rgba(61, 74, 133, 0.3)',
-          borderRadius: '0.28571429rem',
-          color: 'white'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_src_components_CopyLinkPopup__WEBPACK_IMPORTED_MODULE_15__["default"], null, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("span", null, "Share ", react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Icon"], {
+        as: "a"
+      }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("span", null, "Share ", react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Icon"], {
         name: "share"
       })))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_17__["Menu"].Item, {
         fitted: "vertically",
-        style: {
-          marginLeft: '5px',
-          borderRadius: '0.28571429rem',
-          backgroundColor: 'rgba(61, 74, 133, 0.3)',
-          color: 'white'
-        },
         as: "a",
         disabled: loading,
         onClick: function onClick() {
@@ -73457,12 +73443,13 @@ var ModeHeader = function ModeHeader(_ref) {
       return handleModeChange('reverse');
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
-    name: "angle left"
+    name: "angle left",
+    size: "big"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
     as: "span",
     textAlign: "center",
     verticalAlign: "middle"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
     as: "span",
     floated: "right",
     textAlign: "right",
@@ -73471,7 +73458,8 @@ var ModeHeader = function ModeHeader(_ref) {
       return handleModeChange('forward');
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Icon"], {
-    name: "angle right"
+    name: "angle right",
+    size: "big"
   })));
 };
 
@@ -73479,10 +73467,10 @@ var ModeHeader = function ModeHeader(_ref) {
 
 /***/ }),
 
-/***/ "./src/components/Board/Player.js":
-/*!****************************************!*\
-  !*** ./src/components/Board/Player.js ***!
-  \****************************************/
+/***/ "./src/components/Board/StatsBody.js":
+/*!*******************************************!*\
+  !*** ./src/components/Board/StatsBody.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -73490,97 +73478,48 @@ var ModeHeader = function ModeHeader(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
-
- // import { Link } from '../../../routes';
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
+/* harmony import */ var _StatsRow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StatsRow */ "./src/components/Board/StatsRow.js");
 
 
 
-var StatsColumn = function StatsColumn(_ref) {
-  var index = _ref.index,
-      _ref$content = _ref.content,
-      content = _ref$content === void 0 ? null : _ref$content,
-      _ref$matches = _ref.matches,
-      matches = _ref$matches === void 0 ? null : _ref$matches;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
-    className: index == 0 ? '' : 'compact',
-    textAlign: index == 0 ? 'left' : 'center',
-    mobile: index == 0 ? '6' : '2'
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"], {
-    as: index == 0 ? 'h4' : 'h4',
+
+var StatsBody = function StatsBody(_ref) {
+  var columns = _ref.columns,
+      players = _ref.players,
+      removePlayer = _ref.removePlayer,
+      mode = _ref.mode,
+      loading = _ref.loading;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dimmer"].Dimmable, {
+    as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row,
+    dimmed: loading,
     style: {
-      color: 'white'
+      backgroundColor: '#2c3c57',
+      color: 'white',
+      padding: '0',
+      margin: '0'
     }
-  }, content == null ? 'XXXX' : content, index == 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"].Subheader, {
-    size: "small",
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dimmer"], {
+    active: loading
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Loader"], null, "Loading...")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
     style: {
-      color: '#92a2bd',
-      whiteSpace: 'nowrap'
+      width: '100%',
+      margin: '0',
+      padding: '0'
     }
-  }, matches == null ? '0000' : matches, " Matches") : null));
-};
-
-var TrashColumn = function TrashColumn(_ref2) {
-  var index = _ref2.index,
-      removePlayer = _ref2.removePlayer;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
-    textAlign: "center",
-    mobile: "1",
-    onClick: function onClick() {
-      removePlayer(index);
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
-    size: "small",
-    color: "red",
-    name: "trash alternate outline"
-  }));
-};
-
-var Player = function Player(_ref3) {
-  var columns = _ref3.columns,
-      mode = _ref3.mode,
-      player = _ref3.player,
-      boardIndex = _ref3.boardIndex,
-      removePlayer = _ref3.removePlayer;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Row, {
-    stretched: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Responsive"], {
-    as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column,
-    minWidth: semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Responsive"].onlyMobile.maxWidth,
-    textAlign: "center",
-    mobile: "1"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"], {
-    as: "h4",
-    style: {
-      color: '#92a2bd'
-    }
-  }, boardIndex + 1)), columns.map(function (column, columnIndex) {
-    if (!player) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StatsColumn, {
-        key: columnIndex,
-        index: columnIndex
-      });
-    }
-
-    var columnContent = columnIndex === 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      href: "/profile/".concat(player.username)
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, player.username)) : player.stats["".concat(column.accessor, "_").concat(mode)];
-    var matches = player.stats["matchesplayed_".concat(mode)];
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StatsColumn, {
-      key: columnIndex,
-      index: columnIndex,
-      content: columnContent,
-      matches: matches
+  }, players.map(function (player, index) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StatsRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      key: index,
+      columns: columns,
+      player: player,
+      mode: mode,
+      boardIndex: index,
+      removePlayer: removePlayer
     });
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TrashColumn, {
-    index: boardIndex,
-    removePlayer: removePlayer
-  }));
+  })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Player);
+/* harmony default export */ __webpack_exports__["default"] = (StatsBody);
 
 /***/ }),
 
@@ -73601,10 +73540,18 @@ __webpack_require__.r(__webpack_exports__);
 
 var StatsHeader = function StatsHeader(_ref) {
   var activeColumn = _ref.activeColumn,
-      columns = _ref.columns;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
-    stretched: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"], {
+      columns = _ref.columns,
+      loading = _ref.loading;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dimmer"].Dimmable, {
+    as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row,
+    dimmed: loading,
+    style: {
+      backgroundColor: '#2c3c57',
+      color: 'white'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dimmer"], {
+    active: loading
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"], {
     as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column,
     minWidth: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Responsive"].onlyMobile.maxWidth,
     textAlign: "center",
@@ -73645,6 +73592,108 @@ var StatsHeader = function StatsHeader(_ref) {
 
 /***/ }),
 
+/***/ "./src/components/Board/StatsRow.js":
+/*!******************************************!*\
+  !*** ./src/components/Board/StatsRow.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
+
+
+
+
+var StatsColumn = function StatsColumn(_ref) {
+  var index = _ref.index,
+      _ref$content = _ref.content,
+      content = _ref$content === void 0 ? null : _ref$content,
+      _ref$matches = _ref.matches,
+      matches = _ref$matches === void 0 ? null : _ref$matches;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
+    className: index == 0 ? '' : 'compact',
+    textAlign: index == 0 ? 'left' : 'center',
+    mobile: index == 0 ? '6' : '2'
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"], {
+    as: index == 0 ? 'h4' : 'h4',
+    style: {
+      color: 'white'
+    }
+  }, content == null ? 'XXXX' : content, index == 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"].Subheader, {
+    size: "small",
+    style: {
+      color: '#92a2bd',
+      whiteSpace: 'nowrap'
+    }
+  }, matches == null ? '0000' : matches, " Matches")));
+};
+
+var TrashColumn = function TrashColumn(_ref2) {
+  var index = _ref2.index,
+      removePlayer = _ref2.removePlayer;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
+    textAlign: "center",
+    mobile: "1",
+    onClick: function onClick() {
+      removePlayer(index);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
+    size: "small",
+    color: "red",
+    name: "trash alternate outline"
+  }));
+};
+
+var StatsRow = function StatsRow(_ref3) {
+  var columns = _ref3.columns,
+      mode = _ref3.mode,
+      player = _ref3.player,
+      boardIndex = _ref3.boardIndex,
+      removePlayer = _ref3.removePlayer;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Row, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Responsive"], {
+    as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column,
+    minWidth: semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Responsive"].onlyMobile.maxWidth,
+    textAlign: "center",
+    mobile: "1"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Header"], {
+    as: "h4",
+    style: {
+      color: '#92a2bd'
+    }
+  }, boardIndex + 1)), columns.map(function (column, columnIndex) {
+    if (!player) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StatsColumn, {
+        key: columnIndex,
+        index: columnIndex
+      });
+    }
+
+    var columnContent = columnIndex === 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      href: "/profile/".concat(player.username)
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, player.username)) : player.stats["".concat(column.accessor, "_").concat(mode)];
+    var matches = player.stats["matchesplayed_".concat(mode)];
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StatsColumn, {
+      key: columnIndex,
+      index: columnIndex,
+      content: columnContent,
+      matches: matches
+    });
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TrashColumn, {
+    index: boardIndex,
+    removePlayer: removePlayer
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (StatsRow);
+
+/***/ }),
+
 /***/ "./src/components/Board/index.js":
 /*!***************************************!*\
   !*** ./src/components/Board/index.js ***!
@@ -73659,7 +73708,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
 /* harmony import */ var _ModeHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ModeHeader */ "./src/components/Board/ModeHeader.js");
 /* harmony import */ var _StatsHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StatsHeader */ "./src/components/Board/StatsHeader.js");
-/* harmony import */ var _Player__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Player */ "./src/components/Board/Player.js");
+/* harmony import */ var _StatsBody__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./StatsBody */ "./src/components/Board/StatsBody.js");
 
 
 
@@ -73674,38 +73723,32 @@ var Index = function Index(_ref) {
       handleModeChange = _ref.handleModeChange,
       mode = _ref.mode,
       loading = _ref.loading;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"], {
     style: {
-      backgroundColor: '#2c3c57',
-      color: 'white',
-      borderTopLeftRadius: '0.28571429rem',
-      borderTopRightRadius: '0.28571429rem'
+      backgroundColor: 'rgba(61, 74, 133, 0.3)',
+      color: 'white'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ModeHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
     mode: mode,
     handleModeChange: handleModeChange
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dimmer"].Dimmable, {
-    as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"],
-    dimmed: loading,
-    style: {
-      backgroundColor: '#2c3c57',
-      color: 'white'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Dimmer"], {
-    active: loading
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Loader"], null, "Loading...")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StatsHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StatsHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
     activeColumn: activeColumn,
-    columns: columns
-  }), players.map(function (player, index) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Player__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      key: index,
-      columns: columns,
-      player: player,
-      mode: mode,
-      boardIndex: index,
-      removePlayer: removePlayer
-    });
-  })));
+    columns: columns,
+    loading: loading
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StatsBody__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    columns: columns,
+    players: players,
+    removePlayer: removePlayer,
+    mode: mode,
+    loading: loading
+  }), !players.length && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Row, {
+    style: {
+      height: '70px'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Grid"].Column, {
+    textAlign: "center",
+    verticalAlign: "middle"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Add a player to get started!"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
@@ -73993,7 +74036,7 @@ var useDebounce = function useDebounce(value, delay) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!***********************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fleaderboard&absolutePagePath=%2FUsers%2Fkenny%2FDocuments%2FGitHub%2Ffortniteboards%2Fpages%2Fleaderboard.js ***!
   \***********************************************************************************************************************************************************/
@@ -74016,5 +74059,5 @@ module.exports = dll_228480eb734ad466119d;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]));;
+},[[2,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=leaderboard.js.map

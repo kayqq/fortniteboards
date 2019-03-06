@@ -196,7 +196,6 @@ class Leaderboard extends Component {
                 style={{
                     paddingTop: '100px',
                     paddingBottom: '100px'
-                    // height: '100%'
                 }}
             >
                 <Grid centered textAlign="center">
@@ -207,7 +206,6 @@ class Leaderboard extends Component {
                         style={{
                             color: 'white',
                             backgroundColor: 'rgba(61, 74, 133, 0.3)'
-                            // backgroundColor: 'rgba(46, 49, 49, .6)'
                         }}
                     >
                         <Grid.Column textAlign="center">
@@ -228,34 +226,19 @@ class Leaderboard extends Component {
 
                     <Grid.Row className="compact">
                         <Menu
-                            tabular
                             fluid
                             style={{ border: 'none', backgroundColor: 'rgba(61, 74, 133, 0)' }}
                         >
-                            <Menu.Item
-                                fitted="vertically"
-                                position="right"
-                                as="a"
-                                style={{
-                                    backgroundColor: 'rgba(61, 74, 133, 0.3)',
-                                    borderRadius: '0.28571429rem',
-                                    color: 'white'
-                                }}
-                            >
-                                <CopyLinkPopup>
+                            <CopyLinkPopup>
+                                <Menu.Item fitted="vertically" position="right" as="a">
                                     <span>
                                         Share <Icon name="share" />
                                     </span>
-                                </CopyLinkPopup>
-                            </Menu.Item>
+                                </Menu.Item>
+                            </CopyLinkPopup>
+
                             <Menu.Item
                                 fitted="vertically"
-                                style={{
-                                    marginLeft: '5px',
-                                    borderRadius: '0.28571429rem',
-                                    backgroundColor: 'rgba(61, 74, 133, 0.3)',
-                                    color: 'white'
-                                }}
                                 as="a"
                                 disabled={loading}
                                 onClick={() => this.refreshBoard()}

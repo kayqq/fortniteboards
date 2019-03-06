@@ -2,13 +2,14 @@
 // Semantic UI
 $icons-font-path: '/node_modules/semantic-ui-sass/icons';
 $flags-image-path: '/node_modules/semantic-ui-sass/images';
-@import 'semantic-ui';
+// @import 'semantic-ui';
 
 // --------------------------------------------------------------
 // Colors
 $primary: #38ef7d;
 $secondary: #11998e;
 $highlight: #ff3366;
+$yellow: yellow;
 $black: #000000;
 $white: #ffffff;
 $grey1: #111111;
@@ -125,4 +126,47 @@ small {
 .ui.grid .compact.row .column:not(:last-child),
 .ui.grid .compact.column {
     padding-right: 0;
+}
+
+// Leaderboard menu tabs
+.ui.link.menu .item,
+.ui.menu .link.item,
+.ui.menu a.item {
+    background-color: rgba(61, 74, 133, 0.3);
+}
+
+.ui.link.menu .item:hover,
+.ui.menu .dropdown.item:hover,
+.ui.menu .link.item:hover,
+.ui.menu a.item:hover {
+    background-color: rgba(61, 74, 133, 0.3);
+}
+
+.ui.link.menu .item:active,
+.ui.menu .link.item:active,
+.ui.menu a.item:active {
+    background-color: yellow;
+}
+
+// Navbar menu items
+.Navbar {
+    background-color: #1b2137 !important;
+    color: white !important;
+}
+.ui.menu .item {
+    color: white;
+}
+
+.ui.menu .item:hover:not(.active) {
+    color: white !important;
+}
+
+.ui.secondary.pointing.menu .active.item {
+    background-color: yellow;
+    color: #1b2137;
+}
+
+.ui.secondary.pointing.menu .active.item:hover {
+    background-color: yellow;
+    color: #1b2137;
 }

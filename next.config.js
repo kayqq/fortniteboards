@@ -19,5 +19,4 @@ module.exports = withSass({
         });
         return config;
     }
-    //   distDir: "build"
 });

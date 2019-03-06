@@ -17,10 +17,10 @@ const ModeHeader = ({ mode, handleModeChange }) => {
                 verticalAlign="middle"
                 onClick={() => handleModeChange('reverse')}
             >
-                <Icon name="angle left" />
+                <Icon name="angle left" size="big" />
             </Grid.Column>
             <Grid.Column as="span" textAlign="center" verticalAlign="middle">
-                <h4>{title}</h4>
+                <h3>{title}</h3>
             </Grid.Column>
             <Grid.Column
                 as="span"
@@ -29,7 +29,7 @@ const ModeHeader = ({ mode, handleModeChange }) => {
                 verticalAlign="middle"
                 onClick={() => handleModeChange('forward')}
             >
-                <Icon name="angle right" />
+                <Icon name="angle right" size="big" />
             </Grid.Column>
         </Grid.Row>
     );

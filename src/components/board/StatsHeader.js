@@ -1,9 +1,15 @@
 import React from 'react';
-import { Grid, Header, Responsive } from 'semantic-ui-react';
+import { Grid, Header, Responsive, Dimmer } from 'semantic-ui-react';
 
-const StatsHeader = ({ activeColumn, columns }) => {
+const StatsHeader = ({ activeColumn, columns, loading }) => {
     return (
-        <Grid.Row stretched>
+        <Dimmer.Dimmable
+            as={Grid.Row}
+            dimmed={loading}
+            style={{ backgroundColor: '#2c3c57', color: 'white' }}
+        >
+            <Dimmer active={loading} />
+
             <Responsive
                 as={Grid.Column}
                 minWidth={Responsive.onlyMobile.maxWidth}
@@ -41,7 +47,7 @@ const StatsHeader = ({ activeColumn, columns }) => {
                     </Header>
                 </Grid.Column>
             ))}
-        </Grid.Row>
+        </Dimmer.Dimmable>
     );
 };
 
