@@ -1,6 +1,6 @@
 # Fornite Boards
 
-A web app for player stats search and custom leaderboards creation. Data is retrieved from [Fortnite Api](https://fortniteapi.com/).
+A web app for tracking player stats in Fortnite and custom leaderboards creation. Data is retrieved from [Fortnite Api](https://fortniteapi.com/).
 
 <br>
 

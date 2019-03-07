@@ -4,7 +4,8 @@ eslint-options.js
 
 # ignore an entire directory
 /.vscode
-.next/
+/.next
+/node_modules
 
 # ignore a file type
 .env
@@ -16,4 +17,3 @@ eslint-options.js
 # add an exception (using !) to the preceding rule to track a specific file
 !package.json
 
-node_modules/
