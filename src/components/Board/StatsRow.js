@@ -27,6 +27,7 @@ const StatsColumn = ({ index, content = null, matches = null }) => {
 const TrashColumn = ({ index, removePlayer }) => {
     return (
         <Grid.Column
+            style={{ cursor: 'pointer' }}
             textAlign="center"
             mobile="1"
             onClick={() => {

@@ -16,6 +16,7 @@ const StatsHeader = ({ activeColumn, columns, loading }) => {
                 textAlign="center"
                 verticalAlign="middle"
                 mobile="1"
+                style={{ cursor: 'pointer' }}
             >
                 <Header size="tiny">
                     <Header.Subheader as="h6" style={{ color: '#92a2bd' }}>
@@ -26,7 +27,7 @@ const StatsHeader = ({ activeColumn, columns, loading }) => {
             {columns.map((column, index) => (
                 <Grid.Column
                     style={{
-                        backgroundColor: '#2c3c57'
+                        cursor: 'pointer'
                     }}
                     className={index == 0 ? '' : 'compact'}
                     key={index}

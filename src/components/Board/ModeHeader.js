@@ -11,6 +11,7 @@ const ModeHeader = ({ mode, handleModeChange }) => {
             style={{ borderTopLeftRadius: '0.28571429rem', borderTopRightRadius: '0.28571429rem' }}
         >
             <Grid.Column
+                style={{ cursor: 'pointer' }}
                 as="span"
                 floated="left"
                 textAlign="left"
@@ -23,6 +24,7 @@ const ModeHeader = ({ mode, handleModeChange }) => {
                 <h3>{title}</h3>
             </Grid.Column>
             <Grid.Column
+                style={{ cursor: 'pointer' }}
                 as="span"
                 floated="right"
                 textAlign="right"
