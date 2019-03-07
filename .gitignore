@@ -1,6 +1,19 @@
-.prettierrc
-.eslintrc.json
-eslint options
-
+# ignore a single file
 junk-code.js
 eslint-options.js
+
+# ignore an entire directory
+/.vscode
+.next/
+
+# ignore a file type
+.env
+.eslintrc
+.eslintrc.json
+.DS_Store
+.prettierrc
+
+# add an exception (using !) to the preceding rule to track a specific file
+!package.json
+
+node_modules/

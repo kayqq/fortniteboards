@@ -61,7 +61,6 @@ class Leaderboard extends Component {
                 {
                     header: 'Kills',
                     accessor: 'kills',
-
                     sort: this.handleSort('kills')
                 },
                 {
